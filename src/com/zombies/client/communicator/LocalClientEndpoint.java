@@ -1,8 +1,11 @@
 package com.zombies.client.communicator;
 
+import com.zombies.server.LocalServerEndpoint;
 import org.json.JSONObject;
 
 public class LocalClientEndpoint {
+
+    private final LocalServerEndpoint session = new LocalServerEndpoint();
 
     public void onMessage(String message) {
         JSONObject json = new JSONObject(message);
@@ -15,7 +18,7 @@ public class LocalClientEndpoint {
     }
 
     public void sendMessage(String message) {
-
+        session.onMessage(message);
     }
 
 

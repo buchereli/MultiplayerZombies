@@ -28,7 +28,6 @@ public class Client extends JApplet implements MouseListener, KeyListener {
 
         g.drawImage(offscreen, 0, 0, this);
         repaint();
-        // WHAT???
     }
 
 
