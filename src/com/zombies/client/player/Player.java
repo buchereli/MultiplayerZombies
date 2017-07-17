@@ -1,7 +1,7 @@
 package com.zombies.client.player;
 
-import com.badlogic.gdx.physics.box2d.*;
 import com.zombies.server.util.Character;
+import org.jbox2d.dynamics.World;
 
 import java.awt.*;
 import java.util.ArrayList;

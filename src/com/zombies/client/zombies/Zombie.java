@@ -1,8 +1,9 @@
 package com.zombies.client.zombies;
 
-import com.badlogic.gdx.physics.box2d.*;
 import com.zombies.client.player.Player;
 import com.zombies.server.util.Character;
+import org.jbox2d.common.Vec2;
+import org.jbox2d.dynamics.World;
 
 import java.awt.*;
 
@@ -41,7 +42,7 @@ public class Zombie extends Character {
                 setVY(-speed);
             }
         } else {
-            body.setLinearVelocity(0.0f, 0.0f);
+            body.setLinearVelocity(new Vec2(0.0f, 0.0f));
         }
         bounds = new Rectangle((int)body.getPosition().x, (int)body.getPosition().y, bounds.width, bounds.height);
     }

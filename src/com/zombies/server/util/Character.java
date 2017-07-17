@@ -1,6 +1,8 @@
 package com.zombies.server.util;
 
-import com.badlogic.gdx.physics.box2d.*;
+import org.jbox2d.collision.shapes.PolygonShape;
+import org.jbox2d.common.Vec2;
+import org.jbox2d.dynamics.*;
 
 import java.awt.*;
 
@@ -12,7 +14,7 @@ public class Character {
 
     public Character(Rectangle bounds, World w, String id) {
         BodyDef bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.DynamicBody;
+        bodyDef.type = BodyType.DYNAMIC;
         bodyDef.position.set(bounds.x, bounds.y);
 
         body = w.createBody(bodyDef);
@@ -26,18 +28,17 @@ public class Character {
 
         body.createFixture(fixtureDef);
         body.setUserData(id);
-        shape.dispose();
     }
 
     public void setVelocities(float vx, float vy) {
-        body.setLinearVelocity(vx, vy);
+        body.setLinearVelocity(new Vec2(vx, vy));
     }
 
     public void setVX(float vx) {
-        body.setLinearVelocity(vx, body.getLinearVelocity().y);
+        body.setLinearVelocity(new Vec2(vx, body.getLinearVelocity().y));
     }
 
     public void setVY(float vy) {
-        body.setLinearVelocity(body.getLinearVelocity().x, vy);
+        body.setLinearVelocity(new Vec2(body.getLinearVelocity().x, vy));
     }
 }
