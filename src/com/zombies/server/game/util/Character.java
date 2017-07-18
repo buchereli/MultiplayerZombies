@@ -1,4 +1,4 @@
-package com.zombies.server.util;
+package com.zombies.server.game.util;
 
 import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.Vec2;
