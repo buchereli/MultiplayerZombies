@@ -1,7 +1,7 @@
 package com.zombies.client.communicator;
 
 import com.google.gson.Gson;
-import com.zombies.client.Client;
+import com.zombies.client.game.Client;
 import org.json.JSONObject;
 
 import javax.websocket.ContainerProvider;

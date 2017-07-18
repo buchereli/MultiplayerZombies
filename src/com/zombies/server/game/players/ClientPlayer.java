@@ -9,7 +9,7 @@ public class ClientPlayer {
 
     private Rectangle bounds;
 
-    public ClientPlayer(Rectangle bounds){
+    public ClientPlayer(Rectangle bounds) {
         this.bounds = bounds;
     }
 }

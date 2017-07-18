@@ -1,4 +1,4 @@
-package com.zombies.client.zombies;
+package com.zombies.client.game.zombies;
 
 import java.awt.*;
 

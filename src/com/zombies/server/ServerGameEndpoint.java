@@ -20,6 +20,20 @@ public class ServerGameEndpoint {
     private static final ArrayList<Session> sessions = new ArrayList<>();
     private static final HashMap<String, Session> clients = new HashMap<>();
 
+    public static void broadcast(String user, String message) {
+        if (clients.containsKey(user)) {
+            Session session = clients.get(user);
+            if (session != null && session.isOpen()) {
+                try {
+                    session.getBasicRemote().sendText(message);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else
+                clients.remove(user);
+        }
+    }
+
     @OnOpen
     public void onCreateSession(Session session) {
         sessions.add(session);
@@ -48,19 +62,5 @@ public class ServerGameEndpoint {
 
         sessions.remove(session);
         System.out.println("USER " + userToRemove + " LEFT");
-    }
-
-    public static void broadcast(String user, String message) {
-        if (clients.containsKey(user)) {
-            Session session = clients.get(user);
-            if (session != null && session.isOpen()) {
-                try {
-                    session.getBasicRemote().sendText(message);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else
-                clients.remove(user);
-        }
     }
 }

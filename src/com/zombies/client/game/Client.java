@@ -1,7 +1,7 @@
-package com.zombies.client;
+package com.zombies.client.game;
 
-import com.zombies.client.player.Player;
-import com.zombies.client.zombies.Zombie;
+import com.zombies.client.game.player.Player;
+import com.zombies.client.game.zombies.Zombie;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,6 +1,5 @@
 package com.zombies.server.game.zombies;
 
-import com.zombies.client.Client;
 import com.zombies.server.game.players.Player;
 import com.zombies.server.game.util.Character;
 import org.jbox2d.common.Vec2;
@@ -22,7 +21,7 @@ public class Zombie extends Character {
         speed = 100;
     }
 
-    public ClientZombie clientZombie(){
+    public ClientZombie clientZombie() {
         return new ClientZombie(new Rectangle((int) (body.getPosition().x), (int) (body.getPosition().y), bounds.width, bounds.height));
     }
 
@@ -53,16 +52,16 @@ public class Zombie extends Character {
     }
 
     // Find closest player to zombie
-    private Player closestPlayer(ArrayList<Player> players){
-        if(players.isEmpty())
+    private Player closestPlayer(ArrayList<Player> players) {
+        if (players.isEmpty())
             return null;
 
         Player closestPlayer = players.get(0);
         double distance = getDistance(closestPlayer.getBounds());
 
-        for(Player player : players){
+        for (Player player : players) {
             double tempDistance = getDistance(player.getBounds());
-            if(tempDistance < distance){
+            if (tempDistance < distance) {
                 distance = tempDistance;
                 closestPlayer = player;
             }
@@ -81,7 +80,7 @@ public class Zombie extends Character {
     }
 
     // Get the distance from the zombie to player bounds
-    private double getDistance(Rectangle pBounds){
+    private double getDistance(Rectangle pBounds) {
         return Math.sqrt(Math.pow((bounds.x - pBounds.x), 2) + Math.pow((bounds.y - pBounds.y), 2));
     }
 
