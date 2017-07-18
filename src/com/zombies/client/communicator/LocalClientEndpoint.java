@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import com.zombies.client.game.Client;
 import com.zombies.client.game.player.Player;
 import com.zombies.client.game.zombies.Zombie;
+import com.zombies.client.util.Compressor;
 import com.zombies.server.LocalServerEndpoint;
 import org.json.JSONObject;
 
@@ -15,8 +16,10 @@ public class LocalClientEndpoint {
 
     private static final LocalServerEndpoint session = new LocalServerEndpoint();
 
-    public void onMessage(String message) {
-        JSONObject json = new JSONObject(message);
+    public void onMessage(byte[] message) {
+        System.out.println("RECEIVED MSG FROM SERVER OF SIZE: " + message.length);
+
+        JSONObject json = new JSONObject(Compressor.decompress(message));
         if (json.getString("packetType").equals("gamePacket")) {
             Type type = new TypeToken<ArrayList<Zombie>>() {
             }.getType();

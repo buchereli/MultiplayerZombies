@@ -23,7 +23,7 @@ public class Player extends Character {
         alive = true;
         vx = 0;
         vy = 0;
-        maxSpeed = 300;
+        maxSpeed = 100;
         accel = 100;
         dirs = new ArrayList<>();
     }
@@ -56,8 +56,8 @@ public class Player extends Character {
             setVY((float) vy);
             setVX((float) vx);
 
-            vx *= .9;
-            vy *= .9;
+            vx *= .8;
+            vy *= .8;
 
             bounds = new Rectangle((int) body.getPosition().x, (int) body.getPosition().y, bounds.width, bounds.height);
         }
@@ -71,7 +71,7 @@ public class Player extends Character {
         alive = false;
     }
 
-    public void setDirs(String[] dirs){
+    public void setDirs(String[] dirs) {
         this.dirs = new ArrayList<>(Arrays.asList(dirs));
     }
 }

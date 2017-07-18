@@ -23,7 +23,7 @@ public class Character {
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
         fixtureDef.density = 1.0f;
-        fixtureDef.friction = .4f;
+        fixtureDef.friction = 0.4f;
         fixtureDef.restitution = 0.0f;
 
         body.createFixture(fixtureDef);
@@ -36,6 +36,7 @@ public class Character {
 
     public void setVX(float vx) {
         body.setLinearVelocity(new Vec2(vx, body.getLinearVelocity().y));
+        System.out.println(body.getLinearVelocity().x);
     }
 
     public void setVY(float vy) {

@@ -3,6 +3,7 @@ package com.zombies.server;
 import com.google.gson.Gson;
 import com.zombies.client.communicator.LocalClientEndpoint;
 import com.zombies.server.game.Game;
+import com.zombies.server.game.util.Compressor;
 import org.json.JSONObject;
 
 public class LocalServerEndpoint {
@@ -12,7 +13,7 @@ public class LocalServerEndpoint {
     private final static Gson gson = new Gson();
 
     public static void broadcast(String user, String message) {
-        client.onMessage(message);
+        client.onMessage(Compressor.compress(message));
     }
 
     public void onMessage(String message) {
