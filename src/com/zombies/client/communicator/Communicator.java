@@ -7,7 +7,6 @@ import org.json.JSONObject;
 import javax.websocket.ContainerProvider;
 import javax.websocket.DeploymentException;
 import javax.websocket.WebSocketContainer;
-import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -46,11 +45,11 @@ public class Communicator {
             endpoint.sendMessage(message.toString());
     }
 
-    static void setLocation(Point location) {
+    public static void setDirection(String[] directions) {
         JSONObject message = new JSONObject();
-        message.put("method", "setLocation");
-        message.put("userID", user);
-        message.put("location", new Gson().toJson(location));
+        message.put("method", "setDirection");
+        message.put("user", user);
+        message.put("directions", new Gson().toJson(directions));
 
 
         if (Client.LOCAL)

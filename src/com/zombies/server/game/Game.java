@@ -30,20 +30,19 @@ public class Game {
 
         // Create 100 zombies with random locations and add them to the world
         zombies = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             zombies.add(new Zombie(new Rectangle((int) (Math.random() * 1000), (int) (Math.random() * 1000),
                     10, 10), world));
         }
 
         players = new HashMap<>();
-        dirs = new ArrayList<>();
 
         // Main game timer loop
         int time = 30;
         Timer timer = new Timer(time, ae -> {
             // Update player velocity vector
             for (Player player : players.values())
-                player.move(dirs);
+                player.move();
 
             // Update zombie velocity vector
             for (Zombie zed : zombies)
@@ -76,4 +75,8 @@ public class Game {
         players.put(user, new Player(world));
     }
 
+    public void setDirection(String user, String[] directions) {
+        if (players.containsKey(user))
+            players.get(user).setDirs(directions);
+    }
 }

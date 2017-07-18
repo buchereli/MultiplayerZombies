@@ -5,6 +5,7 @@ import org.jbox2d.dynamics.World;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Faylo on 7/11/2017.
@@ -14,6 +15,7 @@ public class Player extends Character {
     private double vx, vy, accel;
     private int maxSpeed;
     private boolean alive;
+    private ArrayList<String> dirs;
 
     public Player(World world) {
         super(new Rectangle(500, 500, 9, 9), world, "Player");
@@ -23,13 +25,14 @@ public class Player extends Character {
         vy = 0;
         maxSpeed = 300;
         accel = 100;
+        dirs = new ArrayList<>();
     }
 
     public ClientPlayer clientPlayer() {
         return new ClientPlayer(new Rectangle((int) (body.getPosition().x), (int) (body.getPosition().y), bounds.width, bounds.height));
     }
 
-    public void move(ArrayList<String> dirs) {
+    public void move() {
         if (alive) {
             if (dirs.contains("up"))
                 vy -= accel;
@@ -66,5 +69,9 @@ public class Player extends Character {
 
     public void hit() {
         alive = false;
+    }
+
+    public void setDirs(String[] dirs){
+        this.dirs = new ArrayList<>(Arrays.asList(dirs));
     }
 }

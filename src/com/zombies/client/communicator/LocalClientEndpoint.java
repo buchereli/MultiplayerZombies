@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class LocalClientEndpoint {
 
-    private final LocalServerEndpoint session = new LocalServerEndpoint();
+    private static final LocalServerEndpoint session = new LocalServerEndpoint();
 
     public void onMessage(String message) {
         JSONObject json = new JSONObject(message);

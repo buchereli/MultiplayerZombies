@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Client extends JApplet implements MouseListener, KeyListener {
 
-    public static final boolean LOCAL = true;
+    public static final boolean LOCAL = false;
     public static ArrayList<Zombie> zombies;
     public static ArrayList<Player> players;
     private Graphics bufferGraphics;
@@ -78,6 +78,10 @@ public class Client extends JApplet implements MouseListener, KeyListener {
                 dirs.add("left");
             }
         }
+
+        String[] dirsArray = new String[dirs.size()];
+        dirsArray = dirs.toArray(dirsArray);
+        Communicator.setDirection(dirsArray);
     }
 
     @Override
@@ -91,6 +95,10 @@ public class Client extends JApplet implements MouseListener, KeyListener {
         } else if (e.getKeyChar() == 'a') {
             dirs.remove("left");
         }
+
+        String[] dirsArray = new String[dirs.size()];
+        dirsArray = dirs.toArray(dirsArray);
+        Communicator.setDirection(dirsArray);
     }
 
     @Override
