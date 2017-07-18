@@ -16,6 +16,9 @@ public class LocalServerEndpoint {
     public void onMessage(String message) {
         JSONObject jsonObject = new JSONObject(message);
         switch (jsonObject.getString("method")) {
+            case "addPlayer":
+                game.addPlayer(jsonObject.getString("user"));
+                break;
             default:
                 System.out.println("UNKNOWN METHOD CALL");
                 break;

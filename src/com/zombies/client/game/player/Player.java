@@ -1,15 +1,12 @@
-package com.zombies.client.game.zombies;
+package com.zombies.client.game.player;
 
 import java.awt.*;
 
-/**
- * Created by buche on 7/16/2017.
- */
-public class Zombie {
+public class Player {
     private Rectangle bounds;
 
     public void draw(Graphics g) {
-        g.setColor(Color.GREEN);
+        g.setColor(Color.BLUE);
         g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
     }
 }

@@ -1,5 +1,6 @@
 package com.zombies.client.game;
 
+import com.zombies.client.communicator.Communicator;
 import com.zombies.client.game.player.Player;
 import com.zombies.client.game.zombies.Zombie;
 
@@ -14,14 +15,11 @@ import java.util.ArrayList;
 public class Client extends JApplet implements MouseListener, KeyListener {
 
     public static final boolean LOCAL = true;
-
+    public static ArrayList<Zombie> zombies;
+    public static ArrayList<Player> players;
     private Graphics bufferGraphics;
     private Image offscreen;
-
     private ArrayList<String> dirs;
-
-    private ArrayList<Zombie> zombies;
-    private ArrayList<Player> players;
 
     public void init() {
         Rectangle screen = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
@@ -31,6 +29,9 @@ public class Client extends JApplet implements MouseListener, KeyListener {
         dirs = new ArrayList<>();
         zombies = new ArrayList<>();
         players = new ArrayList<>();
+
+        Communicator.connect();
+        Communicator.joinGame("Eli");
 
         addMouseListener(this);
         addKeyListener(this);

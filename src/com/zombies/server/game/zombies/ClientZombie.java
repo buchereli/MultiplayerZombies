@@ -9,7 +9,7 @@ public class ClientZombie {
 
     private Rectangle bounds;
 
-    public ClientZombie(Rectangle bounds) {
+    ClientZombie(Rectangle bounds) {
         this.bounds = bounds;
     }
 }

@@ -25,11 +25,8 @@ public class Player extends Character {
         accel = 100;
     }
 
-    public void draw(Graphics g) {
-        g.setColor(Color.BLUE);
-        if (alive) {
-            g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
-        }
+    public ClientPlayer clientPlayer() {
+        return new ClientPlayer(new Rectangle((int) (body.getPosition().x), (int) (body.getPosition().y), bounds.width, bounds.height));
     }
 
     public void move(ArrayList<String> dirs) {

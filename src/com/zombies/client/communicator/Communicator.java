@@ -16,11 +16,13 @@ public class Communicator {
 
     private static WebSocketContainer container;
     private static ClientGameEndpoint endpoint;
-    private static ClientGameEndpoint localEndpoint;
-    private static String userID;
+    private static LocalClientEndpoint localEndpoint;
+    private static String user;
 
-    static void connect() {
-        if (!Client.LOCAL) {
+    public static void connect() {
+        if (Client.LOCAL) {
+            localEndpoint = new LocalClientEndpoint();
+        } else {
             container = ContainerProvider.getWebSocketContainer();
             endpoint = new ClientGameEndpoint();
 
@@ -32,11 +34,11 @@ public class Communicator {
         }
     }
 
-    static void joinGame(String user) {
-        userID = user;
+    public static void joinGame(String userName) {
+        user = userName;
         JSONObject message = new JSONObject();
-        message.put("method", "addUser");
-        message.put("userID", userID);
+        message.put("method", "addPlayer");
+        message.put("user", user);
 
         if (Client.LOCAL)
             localEndpoint.sendMessage(message.toString());
@@ -47,7 +49,7 @@ public class Communicator {
     static void setLocation(Point location) {
         JSONObject message = new JSONObject();
         message.put("method", "setLocation");
-        message.put("userID", userID);
+        message.put("userID", user);
         message.put("location", new Gson().toJson(location));
 
 
