@@ -28,9 +28,9 @@ public class Game {
         // Create a box2d world with no gravity
         world = new World(new Vec2(0, 0));
 
-        // Create 10 zombies with random locations and add them to the world
+        // Create 100 zombies with random locations and add them to the world
         zombies = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             zombies.add(new Zombie(new Rectangle((int) (Math.random() * 1000), (int) (Math.random() * 1000),
                     10, 10), world));
         }

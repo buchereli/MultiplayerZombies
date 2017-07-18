@@ -22,7 +22,7 @@ public class Client extends JApplet implements MouseListener, KeyListener {
     private ArrayList<String> dirs;
 
     public void init() {
-        setSize(800, 800);
+        setSize(1000, 1000);
         setFocusable(true);
 
         Rectangle screen = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
