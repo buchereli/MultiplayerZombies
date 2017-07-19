@@ -1,5 +1,11 @@
 package com.zombies.client.communicator;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.zombies.client.game.Client;
+import com.zombies.client.game.player.Player;
+import com.zombies.client.game.zombies.Zombie;
+import com.zombies.client.util.Compressor;
 import org.json.JSONObject;
 
 import javax.websocket.Endpoint;
@@ -7,6 +13,8 @@ import javax.websocket.EndpointConfig;
 import javax.websocket.MessageHandler;
 import javax.websocket.Session;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 /**
  * DO NOT MODIFY THIS CLASS UNLESS YOU KNOW WHAT YOU ARE DOING!
@@ -18,19 +26,7 @@ public class ClientGameEndpoint extends Endpoint {
     public void onOpen(Session session, EndpointConfig endpointConfig) {
         this.session = session;
 
-        this.session.addMessageHandler(new MessageHandler.Whole<String>() {
-            @Override
-            public void onMessage(String message) {
-                System.out.println("Message received from server: " + message);
-                JSONObject json = new JSONObject(message);
-                if (json.getString("packet type").equals("game packet")) {
-//                        Client.food = new Gson().fromJson(json.getString("food"), Point.class);
-//                        Type snakesMap = new TypeToken<HashMap<String, Snake>>() {
-//                        }.getType();
-//                        Client.snakes = new Gson().fromJson(json.getString("snakes"), snakesMap);
-                }
-            }
-        });
+        this.session.addMessageHandler((MessageHandler.Whole<byte[]>) Communicator::processMessage);
     }
 
     public void sendMessage(String message) {
