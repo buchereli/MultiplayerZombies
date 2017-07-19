@@ -20,24 +20,25 @@ public class Communicator {
             System.out.println("RECEIVED PING REQUEST");
             if (!LOCAL)
                 ServerGameEndpoint.broadcast("pong");
-        }
-        JSONObject json = new JSONObject(message);
-        switch (json.getString("method")) {
-            case "addPlayer":
-                String user = json.getString("user");
-                game.addPlayer(user);
-                if (!LOCAL)
-                    ServerGameEndpoint.setUser(user, session);
-                break;
-            case "setDirection":
-                game.setDirection(json.getString("user"), gson.fromJson(json.getString("directions"), String[].class));
-                break;
-            case "newGame":
-                game = new Game();
-                break;
-            default:
-                System.out.println("UNKNOWN METHOD CALL... " + json.getString("method"));
-                break;
+        } else {
+            JSONObject json = new JSONObject(message);
+            switch (json.getString("method")) {
+                case "addPlayer":
+                    String user = json.getString("user");
+                    game.addPlayer(user);
+                    if (!LOCAL)
+                        ServerGameEndpoint.setUser(user, session);
+                    break;
+                case "setDirection":
+                    game.setDirection(json.getString("user"), gson.fromJson(json.getString("directions"), String[].class));
+                    break;
+                case "newGame":
+                    game = new Game();
+                    break;
+                default:
+                    System.out.println("UNKNOWN METHOD CALL... " + json.getString("method"));
+                    break;
+            }
         }
     }
 }
