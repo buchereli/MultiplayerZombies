@@ -1,6 +1,6 @@
 package com.zombies.client.communicator;
 
-import com.zombies.server.LocalServerEndpoint;
+import com.zombies.server.communicator.LocalServerEndpoint;
 
 public class LocalClientEndpoint {
 

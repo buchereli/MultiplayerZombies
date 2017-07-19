@@ -1,6 +1,4 @@
-package com.zombies.server;
-
-import org.json.JSONObject;
+package com.zombies.server.communicator;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -34,6 +32,10 @@ public class ServerGameEndpoint {
         }
     }
 
+    static void setUser(String user, Session session) {
+        clients.put(user, session);
+    }
+
     @OnOpen
     public void onCreateSession(Session session) {
         sessions.add(session);
@@ -41,14 +43,8 @@ public class ServerGameEndpoint {
     }
 
     @OnMessage
-    public void onMessage(String message) {
-        System.out.println("Message received: " + message);
-        JSONObject jsonObject = new JSONObject(message);
-        switch (jsonObject.getString("method")) {
-            default:
-                System.out.println("UNKNOWN METHOD CALL");
-                break;
-        }
+    public void onMessage(String message, Session session) {
+        Communicator.processMessage(message, session);
     }
 
     @OnClose
