@@ -1,6 +1,7 @@
 package com.zombies.client.util;
 
 import java.io.*;
+import java.nio.ByteBuffer;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -9,15 +10,15 @@ import java.util.zip.GZIPOutputStream;
  */
 public class Compressor {
 
-    public static byte[] compress(String data) {
+    public static ByteBuffer compress(String data) {
         ByteArrayOutputStream bos = new ByteArrayOutputStream(data.length());
         GZIPOutputStream gzip;
-        byte[] compressed = new byte[0];
+        ByteBuffer compressed = null;
         try {
             gzip = new GZIPOutputStream(bos);
             gzip.write(data.getBytes());
             gzip.close();
-            compressed = bos.toByteArray();
+            compressed = ByteBuffer.wrap(bos.toByteArray());
             bos.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -26,8 +27,8 @@ public class Compressor {
         return compressed;
     }
 
-    public static String decompress(byte[] compressed) {
-        ByteArrayInputStream bis = new ByteArrayInputStream(compressed);
+    public static String decompress(ByteBuffer compressed) {
+        ByteArrayInputStream bis = new ByteArrayInputStream(compressed.array());
         GZIPInputStream gis;
         StringBuilder sb = new StringBuilder();
         try {

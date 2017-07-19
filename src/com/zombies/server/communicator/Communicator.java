@@ -11,11 +11,16 @@ import javax.websocket.Session;
  */
 public class Communicator {
 
-    public static final boolean LOCAL = true;
+    public static final boolean LOCAL = false;
     private final static Gson gson = new Gson();
     private static Game game = new Game();
 
     static void processMessage(String message, Session session) {
+        if (message.equals("ping")) {
+            System.out.println("RECEIVED PING REQUEST");
+            if (!LOCAL)
+                ServerGameEndpoint.broadcast("pong");
+        }
         JSONObject json = new JSONObject(message);
         switch (json.getString("method")) {
             case "addPlayer":

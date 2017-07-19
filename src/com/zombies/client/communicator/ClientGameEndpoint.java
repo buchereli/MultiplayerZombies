@@ -5,6 +5,7 @@ import javax.websocket.EndpointConfig;
 import javax.websocket.MessageHandler;
 import javax.websocket.Session;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 
 /**
  * DO NOT MODIFY THIS CLASS UNLESS YOU KNOW WHAT YOU ARE DOING!
@@ -16,7 +17,7 @@ public class ClientGameEndpoint extends Endpoint {
     public void onOpen(Session session, EndpointConfig endpointConfig) {
         this.session = session;
 
-        this.session.addMessageHandler((MessageHandler.Whole<byte[]>) Communicator::processMessage);
+        this.session.addMessageHandler((MessageHandler.Whole<ByteBuffer>) Communicator::processMessage);
     }
 
     public void sendMessage(String message) {

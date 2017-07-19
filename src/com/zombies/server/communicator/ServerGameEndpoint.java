@@ -1,9 +1,8 @@
 package com.zombies.server.communicator;
 
-import javax.websocket.OnClose;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
+import com.zombies.server.game.util.Compressor;
+
+import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,8 +22,8 @@ public class ServerGameEndpoint {
             Session session = clients.get(user);
             if (session != null && session.isOpen()) {
                 try {
-                    session.getBasicRemote().sendText(message);
-                } catch (IOException e) {
+                    session.getBasicRemote().sendObject(Compressor.compress(message));
+                } catch (IOException | EncodeException e) {
                     e.printStackTrace();
                 }
             } else
@@ -32,8 +31,21 @@ public class ServerGameEndpoint {
         }
     }
 
+    static void broadcast(String message) {
+        for (Session session : sessions) {
+            if (session != null && session.isOpen()) {
+                try {
+                    session.getBasicRemote().sendText(message);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     static void setUser(String user, Session session) {
         clients.put(user, session);
+        System.out.println("NEW USER " + user);
     }
 
     @OnOpen

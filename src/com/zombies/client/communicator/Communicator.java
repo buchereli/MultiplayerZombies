@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
 public class Communicator {
@@ -24,8 +25,8 @@ public class Communicator {
     private static LocalClientEndpoint localEndpoint;
     private static String user;
 
-    static void processMessage(byte[] message) {
-        System.out.println("RECEIVED MSG FROM SERVER OF SIZE: " + message.length);
+    static void processMessage(ByteBuffer message) {
+        System.out.println("RECEIVED MSG FROM SERVER OF SIZE: " + message.remaining());
 
         JSONObject json = new JSONObject(Compressor.decompress(message));
         if (json.getString("packetType").equals("gamePacket")) {
@@ -51,6 +52,8 @@ public class Communicator {
             } catch (DeploymentException | IOException | URISyntaxException e) {
                 e.printStackTrace();
             }
+
+            endpoint.sendMessage("ping");
         }
     }
 
