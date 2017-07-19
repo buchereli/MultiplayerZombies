@@ -2,7 +2,7 @@ package com.zombies.client.communicator;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.zombies.client.game.Client;
+import com.zombies.client.Client;
 import com.zombies.client.game.player.Player;
 import com.zombies.client.game.zombies.Zombie;
 import com.zombies.client.util.Compressor;
@@ -48,6 +48,7 @@ public class Communicator {
     public static void connect() {
         if (Client.LOCAL) {
             localEndpoint = new LocalClientEndpoint();
+            localEndpoint.sendMessage("ping");
         } else {
             container = ContainerProvider.getWebSocketContainer();
             endpoint = new ClientGameEndpoint();

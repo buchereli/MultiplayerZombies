@@ -1,4 +1,4 @@
-package com.zombies.client.game;
+package com.zombies.client;
 
 import com.zombies.client.communicator.Communicator;
 import com.zombies.client.game.player.Player;

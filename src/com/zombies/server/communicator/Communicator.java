@@ -13,7 +13,7 @@ public class Communicator {
 
     public static final boolean LOCAL = false;
     private final static Gson gson = new Gson();
-    private static Game game = new Game();
+    private static Game game = null;
 
     static void processMessage(String message, Session session) {
         if (message.equals("ping")) {
@@ -24,6 +24,8 @@ public class Communicator {
             JSONObject json = new JSONObject(message);
             switch (json.getString("method")) {
                 case "addPlayer":
+                    if (game == null)
+                        game = new Game();
                     String user = json.getString("user");
                     game.addPlayer(user);
                     if (!LOCAL)
