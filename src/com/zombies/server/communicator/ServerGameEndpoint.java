@@ -2,7 +2,10 @@ package com.zombies.server.communicator;
 
 import com.zombies.server.game.util.Compressor;
 
-import javax.websocket.*;
+import javax.websocket.OnClose;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,8 +25,8 @@ public class ServerGameEndpoint {
             Session session = clients.get(user);
             if (session != null && session.isOpen()) {
                 try {
-                    session.getBasicRemote().sendObject(Compressor.compress(message));
-                } catch (IOException | EncodeException e) {
+                    session.getBasicRemote().sendBinary(Compressor.compress(message));
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             } else
