@@ -36,7 +36,6 @@ public class Character {
 
     public void setVX(float vx) {
         body.setLinearVelocity(new Vec2(vx, body.getLinearVelocity().y));
-        System.out.println(body.getLinearVelocity().x);
     }
 
     public void setVY(float vy) {

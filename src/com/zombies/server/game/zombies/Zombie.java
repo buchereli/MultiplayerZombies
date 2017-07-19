@@ -34,14 +34,13 @@ public class Zombie extends Character {
             if (inSight(pBounds)) {
                 if (pBounds.x > body.getPosition().x) {
                     setVX(speed);
-                }
-                if (pBounds.x < body.getPosition().x) {
+                } else if (pBounds.x < body.getPosition().x) {
                     setVX(-speed);
                 }
+
                 if (pBounds.y > body.getPosition().y) {
                     setVY(speed);
-                }
-                if (pBounds.y < body.getPosition().y) {
+                } else if (pBounds.y < body.getPosition().y) {
                     setVY(-speed);
                 }
             } else {
@@ -73,10 +72,7 @@ public class Zombie extends Character {
     // Check if zombie can see player
     private boolean inSight(Rectangle pBounds) {
         double distance = getDistance(pBounds);
-        if (distance < 500)
-            return true;
-        else
-            return false;
+        return distance < 250;
     }
 
     // Get the distance from the zombie to player bounds

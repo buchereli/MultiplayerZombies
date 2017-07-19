@@ -16,8 +16,9 @@ public class Player extends Character {
     private int maxSpeed;
     private boolean alive;
     private ArrayList<String> dirs;
+    private String user;
 
-    public Player(World world) {
+    public Player(World world, String user) {
         super(new Rectangle(500, 500, 9, 9), world, "Player");
         bounds = new Rectangle(500, 500, 10, 10);
         alive = true;
@@ -26,6 +27,7 @@ public class Player extends Character {
         maxSpeed = 100;
         accel = 100;
         dirs = new ArrayList<>();
+        this.user = user;
     }
 
     public ClientPlayer clientPlayer() {
@@ -73,5 +75,13 @@ public class Player extends Character {
 
     public void setDirs(String[] dirs) {
         this.dirs = new ArrayList<>(Arrays.asList(dirs));
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public boolean isAlive() {
+        return alive;
     }
 }
