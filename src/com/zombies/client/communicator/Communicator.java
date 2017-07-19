@@ -26,17 +26,22 @@ public class Communicator {
     private static String user;
 
     static void processMessage(ByteBuffer message) {
-        System.out.println("RECEIVED MSG FROM SERVER OF SIZE: " + message.remaining());
+        String msg = Compressor.decompress(message);
+        System.out.println("RECEIVED MSG FROM SERVER OF SIZE: " + msg.length());
 
-        JSONObject json = new JSONObject(Compressor.decompress(message));
-        if (json.getString("packetType").equals("gamePacket")) {
-            Type type = new TypeToken<ArrayList<Zombie>>() {
-            }.getType();
-            Client.zombies = new Gson().fromJson(json.getString("zombies"), type);
+        if (msg.equals("pong"))
+            System.out.println("pong");
+        else {
+            JSONObject json = new JSONObject(msg);
+            if (json.getString("packetType").equals("gamePacket")) {
+                Type type = new TypeToken<ArrayList<Zombie>>() {
+                }.getType();
+                Client.zombies = new Gson().fromJson(json.getString("zombies"), type);
 
-            type = new TypeToken<ArrayList<Player>>() {
-            }.getType();
-            Client.players = new Gson().fromJson(json.getString("players"), type);
+                type = new TypeToken<ArrayList<Player>>() {
+                }.getType();
+                Client.players = new Gson().fromJson(json.getString("players"), type);
+            }
         }
     }
 
