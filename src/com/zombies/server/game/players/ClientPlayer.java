@@ -12,5 +12,6 @@ public class ClientPlayer {
 
     ClientPlayer(Rectangle bounds, String user) {
         this.bounds = bounds;
+        this.user = user;
     }
 }
