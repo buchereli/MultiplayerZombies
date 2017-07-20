@@ -47,6 +47,8 @@ public class Zombie extends Character {
                 body.setLinearVelocity(new Vec2(0.0f, 0.0f));
             }
             bounds = new Rectangle((int) body.getPosition().x, (int) body.getPosition().y, bounds.width, bounds.height);
+        } else {
+            body.setLinearVelocity(new Vec2(0.0f, 0.0f));
         }
     }
 
