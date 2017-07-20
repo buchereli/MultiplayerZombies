@@ -13,13 +13,14 @@ public class Player {
             g.setColor(Color.BLUE);
         else
             g.setColor(Color.BLACK);
-        g.fillRect(bounds.x + shift.x, bounds.x + shift.y, bounds.width, bounds.height);
+        g.fillRect(bounds.x + shift.x, bounds.y + shift.y, bounds.width, bounds.height);
     }
 
     public String getUser() {
         return user;
     }
-    public Rectangle getBounds(){
+
+    public Rectangle getBounds() {
         return bounds;
     }
 }

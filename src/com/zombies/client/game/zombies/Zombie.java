@@ -8,8 +8,8 @@ import java.awt.*;
 public class Zombie {
     private Rectangle bounds;
 
-    public void draw(Graphics g) {
+    public void draw(Graphics g, Point shift) {
         g.setColor(Color.GREEN);
-        g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+        g.fillRect(bounds.x + shift.x, bounds.y + shift.y, bounds.width, bounds.height);
     }
 }

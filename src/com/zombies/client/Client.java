@@ -28,7 +28,6 @@ public class Client extends JApplet implements MouseListener, KeyListener {
         System.out.print("ENTER A USERNAME: ");
         user = sc.next();
 
-
         setSize(1000, 1000);
         setFocusable(true);
 
@@ -46,22 +45,15 @@ public class Client extends JApplet implements MouseListener, KeyListener {
         addMouseListener(this);
         addKeyListener(this);
     }
-    public Point getShift(Player player){
-        return new Point(player.getBounds().x-player.getBounds().width/2+getWidth()/2, player.getBounds().y-player.getBounds().height/2+getHeight()/2);
-    }
 
     public void paint(Graphics g) {
         bufferGraphics.clearRect(0, 0, offscreen.getWidth(this), offscreen.getHeight(this));
 
-        for (Zombie zombie : zombies)
-            zombie.draw(bufferGraphics);
+        Point shift = getShift();
 
-        Player ourPlayer = getPlayer();
-        Point shift;
-        if(ourPlayer != null)
-            shift = getShift(ourPlayer);
-        else
-            shift = new Point();
+        for (Zombie zombie : zombies)
+            zombie.draw(bufferGraphics, shift);
+
         for (Player player : players)
             player.draw(bufferGraphics, shift);
 
@@ -69,10 +61,18 @@ public class Client extends JApplet implements MouseListener, KeyListener {
         repaint();
     }
 
-    private Player getPlayer(){
-        for(Player player : players)
-            if(player.getUser().equals(user))
-                return  player;
+    private Point getShift() {
+        Player player = getPlayer();
+        if (player == null)
+            return new Point();
+        return new Point(-player.getBounds().x - player.getBounds().width / 2 + getWidth() / 2,
+                -player.getBounds().y - player.getBounds().height / 2 + getHeight() / 2);
+    }
+
+    private Player getPlayer() {
+        for (Player player : players)
+            if (player.getUser().equals(user))
+                return player;
         return null;
     }
 
