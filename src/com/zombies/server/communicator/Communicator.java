@@ -11,7 +11,7 @@ import javax.websocket.Session;
  */
 public class Communicator {
 
-    public static final boolean LOCAL = false;
+    public static final boolean LOCAL = true;
     private final static Gson gson = new Gson();
     private static Game game = null;
 

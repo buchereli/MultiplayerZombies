@@ -12,8 +12,8 @@ import java.util.ArrayList;
  * Created by Faylo on 7/11/2017.
  */
 public class Zombie extends Character {
-    private Rectangle bounds;
-    private int speed;
+    Rectangle bounds;
+    int speed;
 
     public Zombie(Rectangle bounds, World w) {
         super(bounds, w, "Zombie");
