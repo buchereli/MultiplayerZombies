@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Client extends JApplet implements MouseListener, KeyListener {
 
@@ -20,8 +21,14 @@ public class Client extends JApplet implements MouseListener, KeyListener {
     private Graphics bufferGraphics;
     private Image offscreen;
     private ArrayList<String> dirs;
+    private String user;
 
     public void init() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("ENTER A USERNAME: ");
+        user = sc.next();
+
+
         setSize(1000, 1000);
         setFocusable(true);
 
@@ -34,7 +41,7 @@ public class Client extends JApplet implements MouseListener, KeyListener {
         players = new ArrayList<>();
 
         Communicator.connect();
-        Communicator.joinGame("Eli");
+        Communicator.joinGame(user);
 
         addMouseListener(this);
         addKeyListener(this);

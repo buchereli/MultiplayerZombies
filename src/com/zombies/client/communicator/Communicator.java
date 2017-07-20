@@ -27,7 +27,7 @@ public class Communicator {
 
     static void processMessage(ByteBuffer message) {
         String msg = Compressor.decompress(message);
-        System.out.println("RECEIVED MSG FROM SERVER OF SIZE: " + msg.length());
+        System.out.println("RECEIVED MSG FROM SERVER OF SIZE: " + message.remaining() + " - " + msg.length());
 
         if (msg.equals("pong"))
             System.out.println("pong");
