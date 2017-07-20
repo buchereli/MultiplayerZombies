@@ -14,5 +14,6 @@ public class FatZombie extends Zombie {
         bounds.width = 20;
         bounds.height = 20;
         speed = 80;
+        attackPower = 10;
     }
 }

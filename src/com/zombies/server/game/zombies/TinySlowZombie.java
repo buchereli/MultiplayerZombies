@@ -14,5 +14,6 @@ public class TinySlowZombie extends Zombie {
         bounds.width = 5;
         bounds.height = 5;
         speed = 50;
+        attackPower = 3;
     }
 }

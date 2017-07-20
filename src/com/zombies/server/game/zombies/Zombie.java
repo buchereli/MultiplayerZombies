@@ -14,11 +14,13 @@ import java.util.ArrayList;
 public class Zombie extends Character {
     Rectangle bounds;
     int speed;
+    double attackPower;
 
     public Zombie(Rectangle bounds, World w) {
         super(bounds, w, "Zombie");
         this.bounds = bounds;
         speed = 100;
+        attackPower = 5;
     }
 
     public ClientZombie clientZombie() {
@@ -45,9 +47,9 @@ public class Zombie extends Character {
                 }
             } else {
                 // Players in world but not in sight
-                if(Math.random() < .015) {
-                    setVX( (float) Math.random() * speed - (speed / 2));
-                    setVY( (float) Math.random() * speed - (speed / 2));
+                if (Math.random() < .015) {
+                    setVX((float) Math.random() * speed - (speed / 2));
+                    setVY((float) Math.random() * speed - (speed / 2));
                 }
             }
             bounds = new Rectangle((int) body.getPosition().x, (int) body.getPosition().y, bounds.width, bounds.height);
@@ -93,7 +95,7 @@ public class Zombie extends Character {
 
     private void act(Player player) {
         if (contains(player.getBounds())) {
-            player.hit();
+            player.hit(attackPower);
         }
     }
 }
