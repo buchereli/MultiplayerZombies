@@ -46,6 +46,9 @@ public class Client extends JApplet implements MouseListener, KeyListener {
         addMouseListener(this);
         addKeyListener(this);
     }
+    public Point getShift(Player player){
+        return new Point(player.getBounds().x-player.getBounds().width/2+getWidth()/2, player.getBounds().y-player.getBounds().height/2+getHeight()/2);
+    }
 
     public void paint(Graphics g) {
         bufferGraphics.clearRect(0, 0, offscreen.getWidth(this), offscreen.getHeight(this));
@@ -53,11 +56,24 @@ public class Client extends JApplet implements MouseListener, KeyListener {
         for (Zombie zombie : zombies)
             zombie.draw(bufferGraphics);
 
+        Player ourPlayer = getPlayer();
+        Point shift;
+        if(ourPlayer != null)
+            shift = getShift(ourPlayer);
+        else
+            shift = new Point();
         for (Player player : players)
-            player.draw(bufferGraphics);
+            player.draw(bufferGraphics, shift);
 
         g.drawImage(offscreen, 0, 0, this);
         repaint();
+    }
+
+    private Player getPlayer(){
+        for(Player player : players)
+            if(player.getUser().equals(user))
+                return  player;
+        return null;
     }
 
     @Override
