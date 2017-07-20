@@ -4,24 +4,28 @@ import com.zombies.client.communicator.Communicator;
 import com.zombies.client.game.player.Player;
 import com.zombies.client.game.zombies.Zombie;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Client extends JApplet implements MouseListener, KeyListener {
 
-    public static final boolean LOCAL = true;
+    public static final boolean LOCAL = false;
     public static ArrayList<Zombie> zombies;
     public static ArrayList<Player> players;
     private Graphics bufferGraphics;
     private Image offscreen;
     private ArrayList<String> dirs;
     public static String user;
+    private BufferedImage map;
 
     public void init() {
         Scanner sc = new Scanner(System.in);
@@ -34,6 +38,12 @@ public class Client extends JApplet implements MouseListener, KeyListener {
         Rectangle screen = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
         offscreen = createImage(screen.width, screen.height);
         bufferGraphics = offscreen.getGraphics();
+
+        try {
+            map = ImageIO.read(Client.class.getResourceAsStream("/res/background.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         dirs = new ArrayList<>();
         zombies = new ArrayList<>();
@@ -50,6 +60,8 @@ public class Client extends JApplet implements MouseListener, KeyListener {
         bufferGraphics.clearRect(0, 0, offscreen.getWidth(this), offscreen.getHeight(this));
 
         Point shift = getShift();
+
+        bufferGraphics.drawImage(map, shift.x, shift.y, this);
 
         for (Zombie zombie : zombies)
             zombie.draw(bufferGraphics, shift);
