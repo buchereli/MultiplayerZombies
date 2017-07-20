@@ -44,10 +44,15 @@ public class Zombie extends Character {
                     setVY(-speed);
                 }
             } else {
-                body.setLinearVelocity(new Vec2(0.0f, 0.0f));
+                // Players in world but not in sight
+                if(Math.random() < .015) {
+                    setVX( (float) Math.random() * speed - (speed / 2));
+                    setVY( (float) Math.random() * speed - (speed / 2));
+                }
             }
             bounds = new Rectangle((int) body.getPosition().x, (int) body.getPosition().y, bounds.width, bounds.height);
         } else {
+            // No players in world
             body.setLinearVelocity(new Vec2(0.0f, 0.0f));
         }
     }
