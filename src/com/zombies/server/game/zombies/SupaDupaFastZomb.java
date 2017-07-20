@@ -14,5 +14,6 @@ public class SupaDupaFastZomb extends Zombie{
         speed = 500;
         bounds.width = 8;
         bounds.height = 8;
+        attackPower = 2;
     }
 }
