@@ -8,8 +8,9 @@ import java.awt.*;
 public class ClientPlayer {
 
     private Rectangle bounds;
+    private String user;
 
-    ClientPlayer(Rectangle bounds) {
+    ClientPlayer(Rectangle bounds, String user) {
         this.bounds = bounds;
     }
 }

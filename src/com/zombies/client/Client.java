@@ -21,7 +21,7 @@ public class Client extends JApplet implements MouseListener, KeyListener {
     private Graphics bufferGraphics;
     private Image offscreen;
     private ArrayList<String> dirs;
-    private String user;
+    public static String user;
 
     public void init() {
         Scanner sc = new Scanner(System.in);

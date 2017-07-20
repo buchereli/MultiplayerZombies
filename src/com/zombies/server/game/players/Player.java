@@ -31,7 +31,8 @@ public class Player extends Character {
     }
 
     public ClientPlayer clientPlayer() {
-        return new ClientPlayer(new Rectangle((int) (body.getPosition().x), (int) (body.getPosition().y), bounds.width, bounds.height));
+        return new ClientPlayer(new Rectangle((int) (body.getPosition().x), (int) (body.getPosition().y),
+                bounds.width, bounds.height), user);
     }
 
     public void move() {
