@@ -17,6 +17,7 @@ public class Player extends Character {
     private boolean alive;
     private ArrayList<String> dirs;
     private String user;
+    private double health;
 
     public Player(World world, String user) {
         super(new Rectangle(500, 500, 9, 9), world, "Player");
@@ -28,6 +29,7 @@ public class Player extends Character {
         accel = 100;
         dirs = new ArrayList<>();
         this.user = user;
+        health = 100;
     }
 
     public ClientPlayer clientPlayer() {
@@ -70,8 +72,10 @@ public class Player extends Character {
         return bounds;
     }
 
-    public void hit() {
-        alive = false;
+    public void hit(double attackPower) {
+        health -= attackPower;
+        if (health <= 0)
+            alive = false;
     }
 
     public void setDirs(String[] dirs) {
