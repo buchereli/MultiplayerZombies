@@ -31,7 +31,13 @@ public class Client extends JApplet implements MouseListener, KeyListener {
     public void init() {
         Scanner sc = new Scanner(System.in);
         System.out.print("ENTER A USERNAME: ");
-        user = sc.next();
+
+        String nameEntered = sc.next();
+        while(nameEntered.length() > 10) {
+            System.out.print("Name too long, enter again: ");
+            nameEntered = sc.next();
+        }
+        user = nameEntered;
 
         setSize(1000, 1000);
         setFocusable(true);
