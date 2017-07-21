@@ -19,7 +19,7 @@ public class Player {
         FontMetrics fontMetrics = g.getFontMetrics();
         int strWidth = fontMetrics.stringWidth(user);
 
-        g.drawString(user, bounds.x + shift.x - strWidth/2 + bounds.width/2, bounds.y + shift.y - 6);
+        g.drawString(user, bounds.x + shift.x - strWidth / 2 + bounds.width / 2, bounds.y + shift.y - 6);
     }
 
     public String getUser() {

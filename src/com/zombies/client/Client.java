@@ -29,10 +29,10 @@ public class Client extends JApplet implements MouseListener, KeyListener {
     public static final boolean LOCAL = true;
     public static ArrayList<Zombie> zombies;
     public static ArrayList<Player> players;
+    public static String user;
     private Graphics bufferGraphics;
     private Image offscreen;
     private ArrayList<String> dirs;
-    public static String user;
     private BufferedImage map;
 
     public void init() {

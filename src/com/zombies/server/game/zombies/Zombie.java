@@ -14,6 +14,18 @@ import java.util.ArrayList;
  */
 public class Zombie extends Character {
 
+    private Rectangle bounds;
+    private float speed;
+    private double attackPower;
+    private float sight;
+    private Zombie(World world, Rectangle bounds, float speed, double attackPower, int sight) {
+        super(world, bounds, "Zombie");
+        this.bounds = new Rectangle(10, 10);
+        this.speed = speed;
+        this.attackPower = 5;
+        this.sight = 250;
+    }
+
     // Different types of zombies that do not modify methods
     public static Zombie normal(World w, int x, int y) {
         return new Zombie(w, new Rectangle(x, y, 10, 10), 50, 5, 250);
@@ -21,19 +33,6 @@ public class Zombie extends Character {
 
     public static Zombie fat(World w, int x, int y) {
         return new Zombie(w, new Rectangle(x, y, 10, 10), 30, 25, 250);
-    }
-
-    private Rectangle bounds;
-    private float speed;
-    private double attackPower;
-    private float sight;
-
-    private Zombie(World world, Rectangle bounds, float speed, double attackPower, int sight) {
-        super(world, bounds, "Zombie");
-        this.bounds = new Rectangle(10, 10);
-        this.speed = speed;
-        this.attackPower = 5;
-        this.sight = 250;
     }
 
     public ClientZombie clientZombie() {

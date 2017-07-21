@@ -19,10 +19,10 @@ import java.util.ArrayList;
  * Created by buche on 7/18/2017.
  */
 public class Game {
+    public static final float PPM = 20.0f;
     private ArrayList<Player> players;
     private ArrayList<Zombie> zombies;
     private World world;
-    public static final float PPM = 20.0f;
 
     public Game() {
         // Create a box2d world with no gravity

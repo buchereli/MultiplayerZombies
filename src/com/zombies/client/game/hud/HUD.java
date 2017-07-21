@@ -7,7 +7,7 @@ import java.awt.*;
  */
 public class HUD {
 
-    public static void draw(Graphics g){
+    public static void draw(Graphics g) {
 
     }
 
