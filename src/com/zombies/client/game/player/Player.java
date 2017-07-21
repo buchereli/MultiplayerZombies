@@ -7,6 +7,7 @@ import java.awt.*;
 public class Player {
     private Rectangle bounds;
     private String user;
+    double health;
 
     public void draw(Graphics g, Point shift) {
         if (Client.user.equals(user))
@@ -28,6 +29,10 @@ public class Player {
 
     public Rectangle getBounds() {
         return bounds;
+    }
+
+    public double getHealth(){
+        return health;
     }
 }
 

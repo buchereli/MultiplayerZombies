@@ -76,7 +76,7 @@ public class Client extends JApplet implements MouseListener, KeyListener {
         for (Player player : players)
             player.draw(bufferGraphics, shift);
 
-        HUD.draw(bufferGraphics);
+        HUD.draw(bufferGraphics, getWidth());
 
         g.drawImage(offscreen, 0, 0, this);
         repaint();
@@ -92,8 +92,10 @@ public class Client extends JApplet implements MouseListener, KeyListener {
 
     private Player getPlayer() {
         for (Player player : players)
-            if (player.getUser().equals(user))
+            if (player.getUser().equals(user)) {
+            HUD.player = player;
                 return player;
+            }
         return null;
     }
 

@@ -34,7 +34,7 @@ public class Player extends Character {
     }
 
     public ClientPlayer clientPlayer() {
-        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user);
+        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health);
     }
 
     public void move() {
