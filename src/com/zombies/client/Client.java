@@ -19,7 +19,7 @@ import java.util.Scanner;
 
 public class Client extends JApplet implements MouseListener, KeyListener {
 
-    public static final boolean LOCAL = false;
+    public static final boolean LOCAL = true;
     public static ArrayList<Zombie> zombies;
     public static ArrayList<Player> players;
     private Graphics bufferGraphics;

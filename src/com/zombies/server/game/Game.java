@@ -7,8 +7,6 @@ import com.zombies.server.communicator.ServerGameEndpoint;
 import com.zombies.server.game.players.ClientPlayer;
 import com.zombies.server.game.players.Player;
 import com.zombies.server.game.zombies.ClientZombie;
-import com.zombies.server.game.zombies.FatZombie;
-import com.zombies.server.game.zombies.TinySlowZombie;
 import com.zombies.server.game.zombies.Zombie;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
@@ -25,6 +23,7 @@ public class Game {
     private ArrayList<Player> players;
     private ArrayList<Zombie> zombies;
     private World world;
+    public static final float PPM = 10.0f;
 
     public Game() {
         // Create a box2d world with no gravity
@@ -32,8 +31,7 @@ public class Game {
 
         // Create 100 zombies with random locations and add them to the world
         zombies = new ArrayList<>();
-        zombies.add(new TinySlowZombie(new Rectangle(0, 0, 100, 100), world));
-        zombies.add(new FatZombie(new Rectangle(10, 10, 100, 100), world));
+//        zombies.add(new TinySlowZombie(new Rectangle(0, 0, 100, 100), world));
         for (int i = 0; i < 100; i++) {
             zombies.add(new Zombie(new Rectangle((int) (Math.random() * 10000) - 5000, (int) (Math.random() * 10000) - 5000,
                     10, 10), world));

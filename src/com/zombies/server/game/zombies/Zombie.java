@@ -1,5 +1,6 @@
 package com.zombies.server.game.zombies;
 
+import com.zombies.server.game.Game;
 import com.zombies.server.game.players.Player;
 import com.zombies.server.game.util.Character;
 import org.jbox2d.common.Vec2;
@@ -12,19 +13,21 @@ import java.util.ArrayList;
  * Created by Faylo on 7/11/2017.
  */
 public class Zombie extends Character {
-    Rectangle bounds;
-    int speed;
+    private Rectangle bounds;
+    float speed;
     double attackPower;
+    float sight;
 
     public Zombie(Rectangle bounds, World w) {
-        super(bounds, w, "Zombie");
+        super(bounds.x / Game.PPM, bounds.y / Game.PPM, bounds.width / Game.PPM, bounds.height / Game.PPM, w, "Zombie");
         this.bounds = bounds;
-        speed = 100;
+        speed = 50 / Game.PPM;
         attackPower = 5;
+        sight = 250;
     }
 
     public ClientZombie clientZombie() {
-        return new ClientZombie(new Rectangle((int) (body.getPosition().x), (int) (body.getPosition().y), bounds.width, bounds.height));
+        return new ClientZombie(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height));
     }
 
     public void move(ArrayList<Player> players) {
@@ -34,15 +37,15 @@ public class Zombie extends Character {
             Rectangle pBounds = player.getBounds();
             act(player);
             if (inSight(pBounds)) {
-                if (pBounds.x > body.getPosition().x) {
+                if (pBounds.x > bounds.x) {
                     setVX(speed);
-                } else if (pBounds.x < body.getPosition().x) {
+                } else if (pBounds.x < bounds.x) {
                     setVX(-speed);
                 }
 
-                if (pBounds.y > body.getPosition().y) {
+                if (pBounds.y > bounds.y) {
                     setVY(speed);
-                } else if (pBounds.y < body.getPosition().y) {
+                } else if (pBounds.y < bounds.y) {
                     setVY(-speed);
                 }
             } else {
@@ -52,7 +55,9 @@ public class Zombie extends Character {
                     setVY((float) Math.random() * speed - (speed / 2));
                 }
             }
-            bounds = new Rectangle((int) body.getPosition().x, (int) body.getPosition().y, bounds.width, bounds.height);
+
+            bounds.x = (int) (body.getPosition().x * Game.PPM);
+            bounds.y = (int) (body.getPosition().y * Game.PPM);
         } else {
             // No players in world
             body.setLinearVelocity(new Vec2(0.0f, 0.0f));
@@ -81,7 +86,8 @@ public class Zombie extends Character {
     // Check if zombie can see player
     private boolean inSight(Rectangle pBounds) {
         double distance = getDistance(pBounds);
-        return distance < 250;
+        System.out.println(distance);
+        return distance < sight;
     }
 
     // Get the distance from the zombie to player bounds

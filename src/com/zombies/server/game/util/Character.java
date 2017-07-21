@@ -4,22 +4,20 @@ import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.*;
 
-import java.awt.*;
-
 /**
  * Created by jack on 7/16/17.
  */
 public class Character {
     protected Body body;
 
-    public Character(Rectangle bounds, World w, String id) {
+    public Character(float x, float y, float width, float height, World w, String id) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyType.DYNAMIC;
-        bodyDef.position.set(bounds.x, bounds.y);
+        bodyDef.position.set(x, y);
 
         body = w.createBody(bodyDef);
         PolygonShape shape = new PolygonShape();
-        shape.setAsBox((bounds.width / 2.0f), (bounds.height / 2.0f));
+        shape.setAsBox((width / 2.0f), (height / 2.0f));
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
         fixtureDef.density = 1.0f;

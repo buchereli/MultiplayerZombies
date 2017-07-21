@@ -1,5 +1,6 @@
 package com.zombies.server.game.players;
 
+import com.zombies.server.game.Game;
 import com.zombies.server.game.util.Character;
 import org.jbox2d.dynamics.World;
 
@@ -13,19 +14,19 @@ import java.util.Arrays;
 public class Player extends Character {
     private Rectangle bounds;
     private double vx, vy, accel;
-    private int maxSpeed;
+    private float maxSpeed;
     private boolean alive;
     private ArrayList<String> dirs;
     private String user;
     private double health;
 
     public Player(World world, String user) {
-        super(new Rectangle(500, 500, 9, 9), world, "Player");
-        bounds = new Rectangle(500, 500, 10, 10);
+        super(500 / Game.PPM, 500 / Game.PPM, 9 / Game.PPM, 9 / Game.PPM, world, "Player");
+        bounds = new Rectangle(10, 10);
         alive = true;
         vx = 0;
         vy = 0;
-        maxSpeed = 100;
+        maxSpeed = 100 / Game.PPM;
         accel = 100;
         dirs = new ArrayList<>();
         this.user = user;
@@ -33,8 +34,7 @@ public class Player extends Character {
     }
 
     public ClientPlayer clientPlayer() {
-        return new ClientPlayer(new Rectangle((int) (body.getPosition().x), (int) (body.getPosition().y),
-                bounds.width, bounds.height), user);
+        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user);
     }
 
     public void move() {
@@ -64,7 +64,8 @@ public class Player extends Character {
             vx *= .8;
             vy *= .8;
 
-            bounds = new Rectangle((int) body.getPosition().x, (int) body.getPosition().y, bounds.width, bounds.height);
+            bounds.x = (int) (body.getPosition().x * Game.PPM);
+            bounds.y = (int) (body.getPosition().y * Game.PPM);
         }
     }
 
