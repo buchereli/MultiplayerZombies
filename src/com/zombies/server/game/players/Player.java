@@ -21,12 +21,12 @@ public class Player extends Character {
     private double health;
 
     public Player(World world, String user) {
-        super(500 / Game.PPM, 500 / Game.PPM, 9 / Game.PPM, 9 / Game.PPM, world, "Player");
+        super(world, new Rectangle(500, 500, 9, 9), "Player");
         bounds = new Rectangle(10, 10);
         alive = true;
         vx = 0;
         vy = 0;
-        maxSpeed = 100 / Game.PPM;
+        maxSpeed = 100;
         accel = 100;
         dirs = new ArrayList<>();
         this.user = user;

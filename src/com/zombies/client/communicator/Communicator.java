@@ -88,4 +88,10 @@ public class Communicator {
             endpoint.sendMessage(message.toString());
     }
 
+    public static void newGame() {
+        JSONObject message = new JSONObject();
+        message.put("method", "newGame");
+        endpoint.sendMessage(message.toString());
+    }
+
 }

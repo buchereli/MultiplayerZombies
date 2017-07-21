@@ -13,17 +13,27 @@ import java.util.ArrayList;
  * Created by Faylo on 7/11/2017.
  */
 public class Zombie extends Character {
-    private Rectangle bounds;
-    float speed;
-    double attackPower;
-    float sight;
 
-    public Zombie(Rectangle bounds, World w) {
-        super(bounds.x / Game.PPM, bounds.y / Game.PPM, bounds.width / Game.PPM, bounds.height / Game.PPM, w, "Zombie");
-        this.bounds = bounds;
-        speed = 50 / Game.PPM;
-        attackPower = 5;
-        sight = 250;
+    // Different types of zombies that do not modify methods
+    public static Zombie normal(World w, int x, int y) {
+        return new Zombie(w, new Rectangle(x, y, 10, 10), 50, 5, 250);
+    }
+
+    public static Zombie fat(World w, int x, int y) {
+        return new Zombie(w, new Rectangle(x, y, 10, 10), 30, 25, 250);
+    }
+
+    private Rectangle bounds;
+    private float speed;
+    private double attackPower;
+    private float sight;
+
+    private Zombie(World world, Rectangle bounds, float speed, double attackPower, int sight) {
+        super(world, bounds, "Zombie");
+        this.bounds = new Rectangle(10, 10);
+        this.speed = speed;
+        this.attackPower = 5;
+        this.sight = 250;
     }
 
     public ClientZombie clientZombie() {
@@ -37,17 +47,21 @@ public class Zombie extends Character {
             Rectangle pBounds = player.getBounds();
             act(player);
             if (inSight(pBounds)) {
-                if (pBounds.x > bounds.x) {
-                    setVX(speed);
-                } else if (pBounds.x < bounds.x) {
-                    setVX(-speed);
-                }
+                int d = pBounds.x - bounds.x;
+                if (d > 0)
+                    setVX(Math.min(d, speed));
+                else if (d < 0)
+                    setVX(Math.max(d, -speed));
+                else
+                    setVX(0);
 
-                if (pBounds.y > bounds.y) {
-                    setVY(speed);
-                } else if (pBounds.y < bounds.y) {
-                    setVY(-speed);
-                }
+                d = pBounds.y - bounds.y;
+                if (d > 0)
+                    setVY(Math.min(d, speed));
+                else if (d < 0)
+                    setVY(Math.max(d, -speed));
+                else
+                    setVY(0);
             } else {
                 // Players in world but not in sight
                 if (Math.random() < .015) {
@@ -86,7 +100,6 @@ public class Zombie extends Character {
     // Check if zombie can see player
     private boolean inSight(Rectangle pBounds) {
         double distance = getDistance(pBounds);
-        System.out.println(distance);
         return distance < sight;
     }
 

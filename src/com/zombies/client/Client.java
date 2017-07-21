@@ -19,6 +19,13 @@ import java.util.Scanner;
 
 public class Client extends JApplet implements MouseListener, KeyListener {
 
+    /*
+        Make this a JPanel
+        Make another class that is the main JApplet.
+        Have all the JPanels added to a card layout.
+        Use the next command and first command to switch between login and game panels.
+     */
+
     public static final boolean LOCAL = true;
     public static ArrayList<Zombie> zombies;
     public static ArrayList<Player> players;
@@ -33,7 +40,7 @@ public class Client extends JApplet implements MouseListener, KeyListener {
         System.out.print("ENTER A USERNAME: ");
 
         String nameEntered = sc.next();
-        while(nameEntered.length() > 10) {
+        while (nameEntered.length() > 10) {
             System.out.print("Name too long, enter again: ");
             nameEntered = sc.next();
         }
