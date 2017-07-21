@@ -1,6 +1,7 @@
 package com.zombies.client;
 
 import com.zombies.client.communicator.Communicator;
+import com.zombies.client.game.hud.HUD;
 import com.zombies.client.game.player.Player;
 import com.zombies.client.game.zombies.Zombie;
 
@@ -68,6 +69,8 @@ public class Client extends JApplet implements MouseListener, KeyListener {
 
         for (Player player : players)
             player.draw(bufferGraphics, shift);
+
+        HUD.draw(bufferGraphics);
 
         g.drawImage(offscreen, 0, 0, this);
         repaint();
