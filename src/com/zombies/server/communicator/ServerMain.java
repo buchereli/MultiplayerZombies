@@ -1,4 +1,4 @@
-package com.boye.websocket;
+package com.zombies.server.communicator;
 
 import java.io.File;
 import javax.servlet.ServletException;
@@ -16,7 +16,7 @@ public class ServerMain {
             webPort = "8080";
         }
         tomcat.setPort(Integer.valueOf(webPort));
-        String webappDirLocation = "src/main/webapp/";
+        String webappDirLocation = "src/webapp/";
         tomcat.addWebapp("/", new File(webappDirLocation).getAbsolutePath());
         tomcat.start();
         tomcat.getServer().await();

@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class Login extends JPanel implements ActionListener {
 
     JLabel usernameLbl;
-    JLabel passwordLbl;
+JLabel passwordLbl;
     JTextField username;
     JTextField password;
     JButton submit;
