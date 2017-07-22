@@ -2,7 +2,7 @@ package com.zombies.client.communicator;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.zombies.client.Client;
+import com.zombies.client.screens.Client;
 import com.zombies.client.game.player.Player;
 import com.zombies.client.game.zombies.Zombie;
 import com.zombies.client.util.Compressor;

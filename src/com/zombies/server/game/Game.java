@@ -36,7 +36,7 @@ public class Game {
 
         players = new ArrayList<>();
 
-        // Main game timer loop
+        // ServerMain game timer loop
         int time = 30;
         Timer timer = new Timer(time, ae -> {
             // Remove dead players

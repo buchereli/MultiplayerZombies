@@ -1,4 +1,4 @@
-package com.zombies.client;
+package com.zombies.client.screens;
 
 import com.zombies.client.communicator.Communicator;
 import com.zombies.client.game.hud.HUD;
@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Client extends JApplet implements MouseListener, KeyListener {
+public class Client extends JPanel implements MouseListener, KeyListener {
 
     /*
         Make this a JPanel
@@ -35,7 +35,11 @@ public class Client extends JApplet implements MouseListener, KeyListener {
     private ArrayList<String> dirs;
     private BufferedImage map;
 
-    public void init() {
+    /*
+     * Now takes in the main window that
+     * holds the main panel.
+     */
+    public Client(JFrame window) {
         Scanner sc = new Scanner(System.in);
         System.out.print("ENTER A USERNAME: ");
 
@@ -46,11 +50,11 @@ public class Client extends JApplet implements MouseListener, KeyListener {
         }
         user = nameEntered;
 
-        setSize(1000, 1000);
-        setFocusable(true);
+        window.setSize(1000, 1000);
+        window.setFocusable(true);
 
         Rectangle screen = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
-        offscreen = createImage(screen.width, screen.height);
+        offscreen = new BufferedImage(screen.width, screen.height, BufferedImage.TYPE_INT_ARGB);
         bufferGraphics = offscreen.getGraphics();
 
         try {
@@ -66,8 +70,8 @@ public class Client extends JApplet implements MouseListener, KeyListener {
         Communicator.connect();
         Communicator.joinGame(user);
 
-        addMouseListener(this);
-        addKeyListener(this);
+        window.addMouseListener(this);
+        window.addKeyListener(this);
     }
 
     public void paint(Graphics g) {

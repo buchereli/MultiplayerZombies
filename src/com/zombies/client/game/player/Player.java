@@ -1,6 +1,6 @@
 package com.zombies.client.game.player;
 
-import com.zombies.client.Client;
+import com.zombies.client.screens.Client;
 
 import java.awt.*;
 
