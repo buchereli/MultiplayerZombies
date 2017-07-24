@@ -2,7 +2,8 @@ package com.zombies.server.game.zombies;
 
 import com.zombies.server.game.Game;
 import com.zombies.server.game.players.Player;
-import com.zombies.server.game.util.Character;
+import com.zombies.server.game.util.ActorInfo;
+import com.zombies.server.game.util.Actor;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 
@@ -12,14 +13,15 @@ import java.util.ArrayList;
 /**
  * Created by Faylo on 7/11/2017.
  */
-public class Zombie extends Character {
+public class Zombie extends Actor {
 
     private Rectangle bounds;
     private float speed;
     private double attackPower;
     private float sight;
+
     private Zombie(World world, Rectangle bounds, float speed, double attackPower, int sight) {
-        super(world, bounds, "Zombie");
+        super(world, bounds, new ActorInfo("Zombie"), 100);
         this.bounds = new Rectangle(10, 10);
         this.speed = speed;
         this.attackPower = 5;

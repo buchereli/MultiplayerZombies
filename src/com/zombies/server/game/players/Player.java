@@ -1,7 +1,9 @@
 package com.zombies.server.game.players;
 
 import com.zombies.server.game.Game;
-import com.zombies.server.game.util.Character;
+import com.zombies.server.game.util.ActorInfo;
+import com.zombies.server.game.util.Actor;
+import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 
 import java.awt.*;
@@ -11,26 +13,22 @@ import java.util.Arrays;
 /**
  * Created by Faylo on 7/11/2017.
  */
-public class Player extends Character {
+public class Player extends Actor {
     private Rectangle bounds;
     private double vx, vy, accel;
     private float maxSpeed;
-    private boolean alive;
     private ArrayList<String> dirs;
     private String user;
-    private double health;
 
     public Player(World world, String user) {
-        super(world, new Rectangle(500, 500, 9, 9), "Player");
+        super(world, new Rectangle(500, 500, 9, 9), new ActorInfo("Player"), 100);
         bounds = new Rectangle(10, 10);
-        alive = true;
         vx = 0;
         vy = 0;
         maxSpeed = 100;
         accel = 100;
         dirs = new ArrayList<>();
         this.user = user;
-        health = 100;
     }
 
     public ClientPlayer clientPlayer() {
@@ -73,12 +71,6 @@ public class Player extends Character {
         return bounds;
     }
 
-    public void hit(double attackPower) {
-        health -= attackPower;
-        if (health <= 0)
-            alive = false;
-    }
-
     public void setDirs(String[] dirs) {
         this.dirs = new ArrayList<>(Arrays.asList(dirs));
     }
@@ -87,7 +79,7 @@ public class Player extends Character {
         return user;
     }
 
-    public boolean isAlive() {
-        return alive;
+    public Vec2 getLoc() {
+        return body.getPosition();
     }
 }

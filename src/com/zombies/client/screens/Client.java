@@ -162,7 +162,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        Communicator.fireShot();
     }
 
     @Override

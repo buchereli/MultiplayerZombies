@@ -1,10 +1,15 @@
 package com.zombies.server.communicator;
 
-import java.io.File;
-import javax.servlet.ServletException;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 
+import javax.servlet.ServletException;
+import java.io.File;
+
+
+/**
+ * DO NOT MODIFY THIS CLASS UNLESS YOU KNOW WHAT YOU ARE DOING!
+ */
 public class ServerMain {
 
     public static void main(String[] args) throws ServletException, LifecycleException {

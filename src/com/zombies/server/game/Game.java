@@ -6,6 +6,7 @@ import com.zombies.server.communicator.LocalServerEndpoint;
 import com.zombies.server.communicator.ServerGameEndpoint;
 import com.zombies.server.game.players.ClientPlayer;
 import com.zombies.server.game.players.Player;
+import com.zombies.server.game.util.Ray;
 import com.zombies.server.game.zombies.ClientZombie;
 import com.zombies.server.game.zombies.Zombie;
 import org.jbox2d.common.Vec2;
@@ -13,6 +14,7 @@ import org.jbox2d.dynamics.World;
 import org.json.JSONObject;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -39,8 +41,9 @@ public class Game {
         // ServerMain game timer loop
         int time = 30;
         Timer timer = new Timer(time, ae -> {
-            // Remove dead players
+            // Remove dead actors
             players.removeIf(player -> !player.isAlive());
+            zombies.removeIf(zombie -> !zombie.isAlive());
 
             // Update player velocity vector
             for (Player player : players)
@@ -94,4 +97,16 @@ public class Game {
         if (player != null)
             player.setDirs(directions);
     }
+
+    public void fireShot(String fromUser, Point toPoint) {
+        Player player = null;
+        for (Player p : players)
+            if (p.getUser().equals(fromUser))
+                player = p;
+
+        if (player != null)
+            Ray.fireShot(world, player.getLoc(), new Vec2(player.getLoc().x, 0), 10);
+    }
+
+
 }

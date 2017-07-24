@@ -2,9 +2,9 @@ package com.zombies.client.communicator;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.zombies.client.screens.Client;
 import com.zombies.client.game.player.Player;
 import com.zombies.client.game.zombies.Zombie;
+import com.zombies.client.screens.Client;
 import com.zombies.client.util.Compressor;
 import org.json.JSONObject;
 
@@ -81,6 +81,17 @@ public class Communicator {
         message.put("user", user);
         message.put("directions", new Gson().toJson(directions));
 
+
+        if (Client.LOCAL)
+            localEndpoint.sendMessage(message.toString());
+        else
+            endpoint.sendMessage(message.toString());
+    }
+
+    public static void fireShot() {
+        JSONObject message = new JSONObject();
+        message.put("method", "fireShot");
+        message.put("user", user);
 
         if (Client.LOCAL)
             localEndpoint.sendMessage(message.toString());

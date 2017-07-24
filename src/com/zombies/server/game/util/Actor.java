@@ -10,10 +10,16 @@ import java.awt.*;
 /**
  * Created by jack on 7/16/17.
  */
-public class Character {
+public class Actor {
+
+    protected double health;
+    protected boolean alive;
     protected Body body;
 
-    public Character(World world, Rectangle bounds, String id) {
+    public Actor(World world, Rectangle bounds, ActorInfo actorInfo, double health) {
+        this.health = health;
+        this.alive = true;
+
         Float PPM = Game.PPM;
 
         BodyDef bodyDef = new BodyDef();
@@ -30,7 +36,9 @@ public class Character {
         fixtureDef.restitution = 0.0f;
 
         body.createFixture(fixtureDef);
-        body.setUserData(id);
+
+        actorInfo.setActor(this);
+        body.setUserData(actorInfo);
     }
 
     public void setVelocities(float vx, float vy) {
@@ -43,5 +51,15 @@ public class Character {
 
     public void setVY(float vy) {
         body.setLinearVelocity(new Vec2(body.getLinearVelocity().x, vy / Game.PPM));
+    }
+
+    public void hit(double dmg) {
+        health -= dmg;
+        if (health <= 0)
+            alive = false;
+    }
+
+    public boolean isAlive() {
+        return alive;
     }
 }
