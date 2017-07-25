@@ -1,5 +1,7 @@
 package com.zombies.client.screens;
 
+import com.zombies.client.communicator.Communicator;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,13 +13,17 @@ import java.awt.event.ActionListener;
 public class Login extends JPanel implements ActionListener {
 
     JLabel usernameLbl;
-JLabel passwordLbl;
+    JLabel passwordLbl;
+    JLabel errorLbl;
     JTextField username;
     JTextField password;
     JButton submit;
 
     CardLayout cardLayout;
     JPanel container;
+
+    Box vbox;
+
 
     /*
      * Takes in the card layout for screen switching,
@@ -39,6 +45,7 @@ JLabel passwordLbl;
         username = new JTextField();
         password = new JPasswordField();
         submit = new JButton("Submit");
+        errorLbl = new JLabel("Enter a username");
 
         //Set font sizes
         username.setFont(new Font("Arial", Font.PLAIN, 30));
@@ -48,16 +55,16 @@ JLabel passwordLbl;
         submit.addActionListener(this);
 
         //Make it look nice in this layout
-        Box vbox = Box.createVerticalBox();
-        vbox.setPreferredSize(new Dimension(window.getWidth() / 2, window.getHeight() / 5));
+        vbox = Box.createVerticalBox();
+        vbox.setPreferredSize(new Dimension(window.getWidth() - 20, window.getHeight() / 4));
 
         //Add it all to the boxLayout in the right order
+        vbox.add(errorLbl);
         vbox.add(usernameLbl);
         vbox.add(username);
-        vbox.add(passwordLbl);
-        vbox.add(password);
+        //vbox.add(passwordLbl);
+        //vbox.add(password);
         vbox.add(submit);
-
         this.add(vbox);
     }
 
@@ -74,6 +81,14 @@ JLabel passwordLbl;
     public void actionPerformed(ActionEvent actionEvent) {
         //When the button is pressed to login, check it here.
         //For now we will just switch to the next screen anyways.
-        cardLayout.next(container);
+        if(username.getText().length() < 12) {
+            Client.user = username.getText();
+            Communicator.connect();
+            Communicator.joinGame(Client.user);
+            cardLayout.next(container);
+        } else {
+            errorLbl.setFont(new Font("Arial", Font.PLAIN, 80));
+            errorLbl.setText("LESS THAN 12 CHARS");
+        }
     }
 }

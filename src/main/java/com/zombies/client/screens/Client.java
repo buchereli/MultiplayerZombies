@@ -40,15 +40,14 @@ public class Client extends JPanel implements MouseListener, KeyListener {
      * holds the main panel.
      */
     public Client(JFrame window) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("ENTER A USERNAME: ");
-
-        String nameEntered = sc.next();
-        while (nameEntered.length() > 10) {
-            System.out.print("Name too long, enter again: ");
-            nameEntered = sc.next();
-        }
-        user = nameEntered;
+//        Scanner sc = new Scanner(System.in);
+//        System.out.print("ENTER A USERNAME: ");
+//
+//        String nameEntered = sc.next();
+//        while (nameEntered.length() > 10) {
+//            System.out.print("Name too long, enter again: ");
+//            nameEntered = sc.next();
+//        }
 
         window.setSize(1000, 1000);
         window.setFocusable(true);
@@ -66,9 +65,6 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         dirs = new ArrayList<>();
         zombies = new ArrayList<>();
         players = new ArrayList<>();
-
-        Communicator.connect();
-        Communicator.joinGame(user);
 
         window.addMouseListener(this);
         window.addKeyListener(this);
