@@ -26,7 +26,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         Use the next command and first command to switch between login and game panels.
      */
 
-    public static final boolean LOCAL = true;
+    public static final boolean LOCAL = false;
     public static ArrayList<Zombie> zombies;
     public static ArrayList<Player> players;
     public static String user;
@@ -58,7 +58,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         bufferGraphics = offscreen.getGraphics();
 
         try {
-            map = ImageIO.read(Client.class.getResourceAsStream("/res/background.png"));
+            map = ImageIO.read(Client.class.getResourceAsStream("/background.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
