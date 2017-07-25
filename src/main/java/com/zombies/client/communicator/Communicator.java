@@ -88,10 +88,11 @@ public class Communicator {
             endpoint.sendMessage(message.toString());
     }
 
-    public static void fireShot() {
+    public static void fireShot(double radians) {
         JSONObject message = new JSONObject();
         message.put("method", "fireShot");
         message.put("user", user);
+        message.put("radians", radians);
 
         if (Client.LOCAL)
             localEndpoint.sendMessage(message.toString());

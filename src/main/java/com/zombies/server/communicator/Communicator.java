@@ -5,7 +5,6 @@ import com.zombies.server.game.Game;
 import org.json.JSONObject;
 
 import javax.websocket.Session;
-import java.awt.*;
 
 /**
  * Created by buche on 7/19/2017.
@@ -36,7 +35,7 @@ public class Communicator {
                     game.setDirection(json.getString("user"), gson.fromJson(json.getString("directions"), String[].class));
                     break;
                 case "fireShot":
-                    game.fireShot(json.getString("user"), new Point());
+                    game.fireShot(json.getString("user"), json.getDouble("radians"));
                     break;
                 case "newGame":
                     game = new Game();

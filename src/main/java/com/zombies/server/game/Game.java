@@ -102,14 +102,26 @@ public class Game {
             player.setDirs(directions);
     }
 
-    public void fireShot(String fromUser, Point toPoint) {
+    public void fireShot(String fromUser, double radians) {
         Player player = null;
         for (Player p : players)
             if (p.getUser().equals(fromUser))
                 player = p;
 
-        if (player != null)
-            Ray.fireShot(world, player.getLoc(), new Vec2(player.getLoc().x, 0), 10);
+        if (player != null) {
+            int range = 1000;
+            Point rangePoint = rotate(range, radians);
+
+            Ray.fireShot(world, player.getLoc(), new Vec2(player.getLoc().x + rangePoint.x,
+                    player.getLoc().y + rangePoint.y), 10);
+        }
+    }
+
+    private Point rotate(int range, double radians) {
+        Point xy = new Point();
+        xy.x = (int) (range * Math.cos(radians));
+        xy.y = (int) (range * Math.sin(radians));
+        return xy;
     }
 
 
