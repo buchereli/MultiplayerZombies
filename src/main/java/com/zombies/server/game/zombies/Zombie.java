@@ -14,11 +14,11 @@ import java.util.ArrayList;
  * Created by Faylo on 7/11/2017.
  */
 public class Zombie extends Actor {
-
     private Rectangle bounds;
     private float speed;
     private double attackPower;
     private float sight;
+
 
     private Zombie(World world, Rectangle bounds, float speed, double attackPower, int sight) {
         super(world, bounds, new ActorInfo("Zombie"), 100);
@@ -28,13 +28,27 @@ public class Zombie extends Actor {
         this.sight = 250;
     }
 
-    // Different types of zombies that do not modify methods
-    public static Zombie normal(World w, int x, int y) {
-        return new Zombie(w, new Rectangle(x, y, 10, 10), 50, 5, 250);
+    public static Point getSpawn() {
+        int x, y;
+        x = (int) (Math.random() * 10000) - 5000;
+        y = (int) (Math.random() * 10000) - 5000;
+        Rectangle rect = new Rectangle(0, 0, 1000, 1000);
+        while (rect.contains(x, y)) {
+            x = (int) (Math.random() * 10000) - 5000;
+            y = (int) (Math.random() * 10000) - 5000;
+        }
+        return new Point(x, y);
     }
 
-    public static Zombie fat(World w, int x, int y) {
-        return new Zombie(w, new Rectangle(x, y, 10, 10), 30, 25, 250);
+    // Different types of zombies that do not modify methods
+    public static Zombie normal(World w) {
+        Point spawn = getSpawn();
+        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 10, 10), 50, 5, 250);
+    }
+
+    public static Zombie fat(World w) {
+        Point spawn = getSpawn();
+        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 10, 10), 30, 25, 250);
     }
 
     public ClientZombie clientZombie() {
