@@ -14,7 +14,12 @@ public class Player {
             g.setColor(Color.BLUE);
         else
             g.setColor(Color.BLACK);
+//      create white border around each player
+
         g.fillRect(bounds.x + shift.x, bounds.y + shift.y, bounds.width, bounds.height);
+        g.setColor(Color.WHITE);
+        g.drawRect((bounds.x) + shift.x, (bounds.y) + shift.y, bounds.width, bounds.height);
+        g.setColor(Color.BLUE);
 
         g.setFont(new Font("default", Font.BOLD, 12));
         FontMetrics fontMetrics = g.getFontMetrics();
