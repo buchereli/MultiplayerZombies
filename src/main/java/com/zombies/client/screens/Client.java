@@ -77,10 +77,11 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         for (Zombie zombie : zombies)
             zombie.draw(bufferGraphics, shift);
 
-        for (Player player : players)
+        for (Player player : players) {
             player.draw(bufferGraphics, shift);
+        }
 
-        HUD.draw(bufferGraphics, getWidth());
+        HUD.draw(bufferGraphics, getHeight());
 
         g.drawImage(offscreen, 0, 0, this);
 
@@ -112,7 +113,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
     private Player getPlayer() {
         for (Player player : players)
             if (player.getUser().equals(user)) {
-            HUD.player = player;
+                HUD.player = player;
                 return player;
             }
         return null;
