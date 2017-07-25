@@ -40,14 +40,6 @@ public class Client extends JPanel implements MouseListener, KeyListener {
      * holds the main panel.
      */
     public Client(JFrame window) {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.print("ENTER A USERNAME: ");
-//
-//        String nameEntered = sc.next();
-//        while (nameEntered.length() > 10) {
-//            System.out.print("Name too long, enter again: ");
-//            nameEntered = sc.next();
-//        }
 
         window.setSize(1000, 1000);
         window.setFocusable(true);
@@ -70,6 +62,11 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         window.addKeyListener(this);
     }
 
+    //FPS variables
+    long nextSecond = System.currentTimeMillis() + 1000;
+    int framesInLastSecond = 0;
+    int framesInCurrentSecond = 0;
+
     public void paint(Graphics g) {
         bufferGraphics.clearRect(0, 0, offscreen.getWidth(this), offscreen.getHeight(this));
 
@@ -86,6 +83,21 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         HUD.draw(bufferGraphics, getWidth());
 
         g.drawImage(offscreen, 0, 0, this);
+
+        // start of FPS counter code
+        // every second, it counts the number of times it repaints
+        long currentTime = System.currentTimeMillis();
+        if (currentTime > nextSecond) {
+            nextSecond += 1000;
+            framesInLastSecond = framesInCurrentSecond;
+            framesInCurrentSecond = 0;
+        }
+        framesInCurrentSecond++;
+
+        g.setColor(Color.green);
+        g.drawString(framesInLastSecond + " fps", getWidth() - 40, 20);
+        // end
+
         repaint();
     }
 
