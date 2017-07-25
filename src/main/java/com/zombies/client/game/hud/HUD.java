@@ -8,12 +8,14 @@ import java.awt.*;
 public class HUD {
     public static Player player;
 
-    public static void draw(Graphics g, int width) {
+    public static void draw(Graphics g, int width, int fps) {
         g.setColor(Color.RED);
         g.fillRect(0, 0, width / 2, 40);
         g.setColor(Color.GREEN);
         if (player != null)
             g.fillRect(0, 0, (((int) player.getHealth()) * width)/200, 40);
+        g.setColor(Color.green);
+        g.drawString(fps + " fps", width - 40, 20);
     }
 
 }
