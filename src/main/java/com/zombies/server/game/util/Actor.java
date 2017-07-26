@@ -39,7 +39,6 @@ public class Actor {
 
         actorInfo.setActor(this);
         body.createFixture(fixtureDef).setUserData(this.actorInfo);
-        //body.setUserData(actorInfo);
     }
 
     public void setVelocities(float vx, float vy) {
