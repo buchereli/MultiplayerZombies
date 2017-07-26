@@ -7,6 +7,7 @@ import com.zombies.server.communicator.LocalServerEndpoint;
 import com.zombies.server.communicator.ServerGameEndpoint;
 import com.zombies.server.game.players.ClientPlayer;
 import com.zombies.server.game.players.Player;
+import com.zombies.server.game.util.CollisionCallbackHandler;
 import com.zombies.server.game.util.Ray;
 import com.zombies.server.game.zombies.ClientZombie;
 import com.zombies.server.game.zombies.Zombie;
@@ -30,6 +31,11 @@ public class Game {
     public Game() {
         // Create a box2d world with no gravity
         world = new World(new Vec2(0, 0));
+
+        //Create a collision handler
+        CollisionCallbackHandler callbackHandler = new CollisionCallbackHandler();
+        //Attach it to our world
+        world.setContactListener(callbackHandler);
 
         // Create 100 zombies with random locations and add them to the world
         zombies = new ArrayList<>();

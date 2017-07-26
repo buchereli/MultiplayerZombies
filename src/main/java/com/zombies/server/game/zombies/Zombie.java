@@ -60,7 +60,6 @@ public class Zombie extends Actor {
 
         if (player != null) {
             Rectangle pBounds = player.getBounds();
-            act(player);
             if (inSight(pBounds)) {
                 int d = (pBounds.x + pBounds.width / 2) - (bounds.x + bounds.width / 2);
                 if (d > 0)
@@ -125,11 +124,5 @@ public class Zombie extends Actor {
 
     public boolean contains(Rectangle rect) {
         return bounds.intersects(rect);
-    }
-
-    private void act(Player player) {
-        if (contains(player.getBounds())) {
-            player.hit(attackPower);
-        }
     }
 }

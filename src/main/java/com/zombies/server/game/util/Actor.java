@@ -15,10 +15,12 @@ public class Actor {
     protected double health;
     protected boolean alive;
     protected Body body;
+    protected ActorInfo actorInfo;
 
     public Actor(World world, Rectangle bounds, ActorInfo actorInfo, double health) {
         this.health = health;
         this.alive = true;
+        this.actorInfo = actorInfo;
 
         Float PPM = Game.PPM;
 
@@ -35,10 +37,9 @@ public class Actor {
         fixtureDef.friction = 0.4f;
         fixtureDef.restitution = 0.0f;
 
-        body.createFixture(fixtureDef);
-
         actorInfo.setActor(this);
-        body.setUserData(actorInfo);
+        body.createFixture(fixtureDef).setUserData(this.actorInfo);
+        //body.setUserData(actorInfo);
     }
 
     public void setVelocities(float vx, float vy) {
