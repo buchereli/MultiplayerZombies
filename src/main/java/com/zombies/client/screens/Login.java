@@ -81,7 +81,7 @@ public class Login extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         //When the button is pressed to login, check it here.
         //For now we will just switch to the next screen anyways.
-        if(username.getText().length() <= 12) {
+        if(username.getText().length() <= 12 && username.getText().length() > 0) {
             Client.user = username.getText();
             Communicator.connect();
             Communicator.joinGame(Client.user);
