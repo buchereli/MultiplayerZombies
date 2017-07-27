@@ -1,8 +1,8 @@
 package com.zombies.client.game.player;
 
 import com.zombies.client.screens.Client;
-import com.zombies.client.util.ImageManager;
 import com.zombies.client.util.Enums;
+import com.zombies.client.util.ImageManager;
 
 import java.awt.*;
 
@@ -23,7 +23,7 @@ public class Player {
         g.drawRect((bounds.x) + shift.x, (bounds.y) + shift.y, bounds.width, bounds.height);
         g.setColor(Color.BLUE);
 
-        g.drawImage(ImageManager.get("player"), bounds.x + shift.x, bounds.y + shift.y, null);
+        g.drawImage(ImageManager.get("player", facing), bounds.x + shift.x, bounds.y + shift.y, null);
 
         g.setFont(new Font("default", Font.BOLD, 12));
         FontMetrics fontMetrics = g.getFontMetrics();
@@ -45,6 +45,8 @@ public class Player {
         return health;
     }
 
-    public double getStamina(){return stamina;}
+    public double getStamina() {
+        return stamina;
+    }
 }
 
