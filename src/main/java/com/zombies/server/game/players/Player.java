@@ -19,6 +19,8 @@ public class Player extends Actor {
     private float maxSpeed;
     private ArrayList<String> dirs;
     private String user;
+    private enum direction {NORTH, EAST, SOUTH, WEST, NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST}
+    private direction facing;
 
     public Player(World world, String user) {
         super(world, new Rectangle(500, 500, 32, 32), new ActorInfo("Player"), 100);
@@ -29,6 +31,7 @@ public class Player extends Actor {
         this.accel = 100;
         this.dirs = new ArrayList<>();
         this.user = user;
+        this.facing = direction.NORTH;
     }
 
     public ClientPlayer clientPlayer() {
