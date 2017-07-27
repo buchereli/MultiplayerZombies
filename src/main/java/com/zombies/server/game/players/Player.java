@@ -42,12 +42,24 @@ public class Player extends Actor {
         if (alive) {
             if (dirs.contains("up"))
                 vy -= accel;
+                this.facing = direction.NORTH;
             if (dirs.contains("down"))
                 vy += accel;
+                this.facing = direction.SOUTH;
             if (dirs.contains("right"))
                 vx += accel;
+                this.facing = direction.EAST;
             if (dirs.contains("left"))
                 vx -= accel;
+                this.facing = direction.WEST;
+            if (dirs.contains("right") && dirs.contains("up"))
+                this.facing = direction.NORTH_EAST;
+            if (dirs.contains("left") && dirs.contains("up"))
+                this.facing = direction.NORTH_WEST;
+            if (dirs.contains("right") && dirs.contains("down"))
+                this.facing = direction.SOUTH_EAST;
+            if (dirs.contains("left") && dirs.contains("down"))
+                this.facing = direction.SOUTH_WEST;
 
             if (vx > maxSpeed)
                 vx = maxSpeed;
