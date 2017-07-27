@@ -46,7 +46,13 @@ public class ImageManager {
 
             if (rotatable) {
                 images.put(Enums.Direction.NORTH, image);
+                images.put(Enums.Direction.NORTH_EAST, rotate(image, -.25 * Math.PI));
                 images.put(Enums.Direction.EAST, rotate(image, -.5 * Math.PI));
+                images.put(Enums.Direction.SOUTH_EAST, rotate(image, -.75 * Math.PI));
+                images.put(Enums.Direction.SOUTH, rotate(image, -1 * Math.PI));
+                images.put(Enums.Direction.SOUTH_WEST, rotate(image, -1.25 * Math.PI));
+                images.put(Enums.Direction.WEST, rotate(image, -1.50 * Math.PI));
+                images.put(Enums.Direction.NORTH_WEST, rotate(image, -1.75 * Math.PI));
             }
         }
 
