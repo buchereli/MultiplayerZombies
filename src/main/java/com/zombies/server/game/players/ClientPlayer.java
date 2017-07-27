@@ -1,5 +1,7 @@
 package com.zombies.server.game.players;
 
+import com.zombies.server.game.util.Enums;
+
 import java.awt.*;
 
 /**
@@ -10,11 +12,13 @@ public class ClientPlayer {
     private Rectangle bounds;
     private String user;
     public double health, stamina;
+    private Enums.Direction facing;
 
-    ClientPlayer(Rectangle bounds, String user, double health, double stamina) {
+    ClientPlayer(Rectangle bounds, String user, double health, double stamina, Enums.Direction facing) {
         this.bounds = bounds;
         this.user = user;
         this.health = health;
         this.stamina = stamina;
+        this.facing = facing;
     }
 }

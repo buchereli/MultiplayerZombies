@@ -2,6 +2,7 @@ package com.zombies.client.game.player;
 
 import com.zombies.client.screens.Client;
 import com.zombies.client.util.ImageManager;
+import com.zombies.client.util.Enums;
 
 import java.awt.*;
 
@@ -9,7 +10,7 @@ public class Player {
     private Rectangle bounds;
     private String user;
     double health, stamina;
-
+    private Enums.Direction facing;
 
     public void draw(Graphics g, Point shift) {
 
