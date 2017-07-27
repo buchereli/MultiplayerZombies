@@ -1,7 +1,7 @@
 package com.zombies.client.game.player;
 
-import com.zombies.client.game.hud.Bar;
 import com.zombies.client.screens.Client;
+import com.zombies.client.util.ImageManager;
 
 import java.awt.*;
 
@@ -22,6 +22,8 @@ public class Player {
         g.drawRect((bounds.x) + shift.x, (bounds.y) + shift.y, bounds.width, bounds.height);
         g.setColor(Color.BLUE);
 
+        g.drawImage(ImageManager.get("player"), bounds.x + shift.x, bounds.y + shift.y, null);
+
         g.setFont(new Font("default", Font.BOLD, 12));
         FontMetrics fontMetrics = g.getFontMetrics();
         int strWidth = fontMetrics.stringWidth(user);
@@ -38,7 +40,7 @@ public class Player {
         return bounds;
     }
 
-    public double getHealth(){
+    public double getHealth() {
         return health;
     }
 }

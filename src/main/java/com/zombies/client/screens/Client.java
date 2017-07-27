@@ -15,7 +15,6 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Client extends JPanel implements MouseListener, KeyListener {
 
@@ -138,6 +137,8 @@ public class Client extends JPanel implements MouseListener, KeyListener {
             if (!dirs.contains("left")) {
                 dirs.add("left");
             }
+        } else if (e.getKeyChar() == ' ') {
+            Communicator.fireShot(getRotation());
         }
 
         String[] dirsArray = new String[dirs.size()];
@@ -169,7 +170,42 @@ public class Client extends JPanel implements MouseListener, KeyListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        Communicator.fireShot();
+    }
+
+    private double getRotation() {
+        double radians = 0;
+        if (dirs.contains("up")) {
+            radians += .5;
+            if (dirs.contains("right"))
+                radians -= .25;
+            if (dirs.contains("left"))
+                radians += .25;
+        }
+
+        if (dirs.contains("down")) {
+            radians -= .5;
+            if (dirs.contains("right"))
+                radians += .25;
+            if (dirs.contains("left"))
+                radians -= .25;
+        }
+
+        if (dirs.contains("right")) {
+            if (dirs.contains("down"))
+                radians -= .25;
+            if (dirs.contains("up"))
+                radians += .25;
+        }
+
+        if (dirs.contains("left")) {
+            radians += 1;
+            if (dirs.contains("down"))
+                radians += .25;
+            if (dirs.contains("up"))
+                radians -= .25;
+        }
+
+        return radians;
     }
 
     @Override
