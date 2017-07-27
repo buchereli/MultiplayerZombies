@@ -1,4 +1,4 @@
-package com.zombies.server.game.util;
+package com.zombies.client.util;
 
 /**
  * Created by buche on 7/27/2017.
