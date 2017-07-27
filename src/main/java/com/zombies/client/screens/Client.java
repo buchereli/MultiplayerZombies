@@ -63,8 +63,8 @@ public class Client extends JPanel implements MouseListener, KeyListener {
 
     //FPS variables
     long nextSecond = System.currentTimeMillis() + 1000;
-    int framesInLastSecond = 0;
     int framesInCurrentSecond = 0;
+    int framesInLastSecond = 0;
 
     public void paint(Graphics g) {
         bufferGraphics.clearRect(0, 0, offscreen.getWidth(this), offscreen.getHeight(this));
@@ -76,11 +76,10 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         for (Zombie zombie : zombies)
             zombie.draw(bufferGraphics, shift);
 
-        for (Player player : players) {
+        for (Player player : players)
             player.draw(bufferGraphics, shift);
-        }
 
-        HUD.draw(bufferGraphics, getHeight());
+        HUD.draw(bufferGraphics, getHeight(), getWidth(), framesInLastSecond);
 
         g.drawImage(offscreen, 0, 0, this);
 
@@ -93,9 +92,6 @@ public class Client extends JPanel implements MouseListener, KeyListener {
             framesInCurrentSecond = 0;
         }
         framesInCurrentSecond++;
-
-        g.setColor(Color.green);
-        g.drawString(framesInLastSecond + " fps", getWidth() - 40, 20);
         // end
 
         repaint();
@@ -112,7 +108,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
     private Player getPlayer() {
         for (Player player : players)
             if (player.getUser().equals(user)) {
-                HUD.player = player;
+            HUD.player = player;
                 return player;
             }
         return null;
