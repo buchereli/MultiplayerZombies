@@ -3,6 +3,7 @@ package com.zombies.server.game.players;
 import com.zombies.server.game.Game;
 import com.zombies.server.game.util.Actor;
 import com.zombies.server.game.util.ActorInfo;
+import com.zombies.server.game.util.Enums;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 
@@ -19,11 +20,10 @@ public class Player extends Actor {
     private float maxSpeed;
     private ArrayList<String> dirs;
     private String user;
-    private enum direction {NORTH, EAST, SOUTH, WEST, NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST}
-    private direction facing;
+    private Enums.Direction facing;
 
     public Player(World world, String user) {
-        super(world, new Rectangle(500, 500, 32, 32), new ActorInfo("Player"), 100);
+        super(world, new Rectangle(500, 500, 32, 32), new ActorInfo("Player"), 100, 100);
         this.bounds = new Rectangle(32, 32);
         this.vx = 0;
         this.vy = 0;
@@ -31,35 +31,35 @@ public class Player extends Actor {
         this.accel = 100;
         this.dirs = new ArrayList<>();
         this.user = user;
-        this.facing = direction.NORTH;
+        this.facing = Enums.Direction.NORTH;
     }
 
     public ClientPlayer clientPlayer() {
-        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health);
+        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health, stamina, this.facing);
     }
 
     public void move() {
         if (alive) {
             if (dirs.contains("up"))
                 vy -= accel;
-                this.facing = direction.NORTH;
+                this.facing = Enums.Direction.NORTH;
             if (dirs.contains("down"))
                 vy += accel;
-                this.facing = direction.SOUTH;
+                this.facing = Enums.Direction.SOUTH;
             if (dirs.contains("right"))
                 vx += accel;
-                this.facing = direction.EAST;
+                this.facing = Enums.Direction.EAST;
             if (dirs.contains("left"))
                 vx -= accel;
-                this.facing = direction.WEST;
+                this.facing = Enums.Direction.WEST;
             if (dirs.contains("right") && dirs.contains("up"))
-                this.facing = direction.NORTH_EAST;
+                this.facing = Enums.Direction.NORTH_EAST;
             if (dirs.contains("left") && dirs.contains("up"))
-                this.facing = direction.NORTH_WEST;
+                this.facing = Enums.Direction.NORTH_WEST;
             if (dirs.contains("right") && dirs.contains("down"))
-                this.facing = direction.SOUTH_EAST;
+                this.facing = Enums.Direction.SOUTH_EAST;
             if (dirs.contains("left") && dirs.contains("down"))
-                this.facing = direction.SOUTH_WEST;
+                this.facing = Enums.Direction.SOUTH_WEST;
 
             if (vx > maxSpeed)
                 vx = maxSpeed;
