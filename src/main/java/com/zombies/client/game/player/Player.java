@@ -17,10 +17,10 @@ public class Player {
             g.setColor(Color.BLUE);
         else
             g.setColor(Color.BLACK);
-        g.fillRect(bounds.x + shift.x, bounds.y + shift.y, bounds.width, bounds.height);
+//        g.fillRect(bounds.x + shift.x, bounds.y + shift.y, bounds.width, bounds.height);
         g.setColor(Color.WHITE);
         g.drawRect((bounds.x) + shift.x, (bounds.y) + shift.y, bounds.width, bounds.height);
-        g.setColor(Color.BLUE);
+        g.setColor(Color.RED);
 
         g.drawImage(ImageManager.get("player", facing), bounds.x + shift.x, bounds.y + shift.y, null);
 
