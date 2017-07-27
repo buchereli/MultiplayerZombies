@@ -141,12 +141,9 @@ public class Client extends JPanel implements MouseListener, KeyListener {
             Communicator.fireShot(getRotation());
         }
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-
-
-                if (!dirs.contains("TURBO SPEED"))
-
-                    dirs.add("TURBO SPEED");
-            }
+            if (!dirs.contains("TURBO SPEED"))
+                dirs.add("TURBO SPEED");
+        }
 
             String[] dirsArray = new String[dirs.size()];
             dirsArray = dirs.toArray(dirsArray);

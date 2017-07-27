@@ -17,7 +17,7 @@ import java.util.Arrays;
 public class Player extends Actor {
     private Rectangle bounds;
     private double vx, vy, accel;
-    private float maxSpeed;
+    private float maxSpeed, turboSpeed;
     private ArrayList<String> dirs;
     private String user;
     private Enums.Direction facing;
@@ -28,6 +28,7 @@ public class Player extends Actor {
         this.vx = 0;
         this.vy = 0;
         this.maxSpeed = 100;
+        this.turboSpeed = 50;
         this.accel = 100;
         this.dirs = new ArrayList<>();
         this.user = user;
@@ -40,18 +41,30 @@ public class Player extends Actor {
 
     public void move() {
         if (alive) {
-            if (dirs.contains("up"))
+            if (dirs.contains("up")&&!dirs.contains("TURBO SPEED")) {
                 vy -= accel;
                 this.facing = Enums.Direction.NORTH;
-            if (dirs.contains("down"))
+            }
+            if (dirs.contains("down")&&!dirs.contains("TURBO SPEED")) {
                 vy += accel;
                 this.facing = Enums.Direction.SOUTH;
-            if (dirs.contains("right"))
+            }
+            if (dirs.contains("right")&&!dirs.contains("TURBO SPEED")) {
                 vx += accel;
                 this.facing = Enums.Direction.EAST;
-            if (dirs.contains("left"))
+            }
+            if (dirs.contains("left")&&!dirs.contains("TURBO SPEED")) {
                 vx -= accel;
                 this.facing = Enums.Direction.WEST;
+            }
+            if (dirs.contains("up")&&dirs.contains("TURBO SPEED"))
+                vy -= turboSpeed;
+            if (dirs.contains("down")&&dirs.contains("TURBO SPEED"))
+                vy += turboSpeed;
+            if (dirs.contains("right")&&dirs.contains("TURBO SPEED"))
+                vx += turboSpeed;
+            if (dirs.contains("left")&&dirs.contains("TURBO SPEED"))
+                vx -= turboSpeed;
             if (dirs.contains("right") && dirs.contains("up"))
                 this.facing = Enums.Direction.NORTH_EAST;
             if (dirs.contains("left") && dirs.contains("up"))
@@ -61,14 +74,14 @@ public class Player extends Actor {
             if (dirs.contains("left") && dirs.contains("down"))
                 this.facing = Enums.Direction.SOUTH_WEST;
 
-            if (vx > maxSpeed)
+            if (vx > maxSpeed&&!dirs.contains("TURBO SPEED"))
                 vx = maxSpeed;
-            else if (vx < -maxSpeed)
+            else if (vx < -maxSpeed&&!dirs.contains("TURBO SPEED"))
                 vx = -maxSpeed;
 
-            if (vy > maxSpeed)
+            if (vy > maxSpeed&&!dirs.contains("TURBO SPEED"))
                 vy = maxSpeed;
-            else if (vy < -maxSpeed)
+            else if (vy < -maxSpeed&&!dirs.contains("TURBO SPEED"))
                 vy = -maxSpeed;
 
             setVY((float) vy);
@@ -80,6 +93,14 @@ public class Player extends Actor {
             bounds.x = (int) (body.getPosition().x * Game.PPM) - bounds.width / 2;
             bounds.y = (int) (body.getPosition().y * Game.PPM) - bounds.height / 2;
         }
+        if(dirs.contains("TURBO SPEED")&&stamina>0){
+            running();
+        } else if(stamina < 100) {
+            resting();
+        } else if(stamina <= 0){
+            dirs.remove("TURBO SPEED");
+        }
+
     }
 
     public Rectangle getBounds() {

@@ -22,7 +22,7 @@ public class Zombie extends Actor {
 
     private Zombie(World world, Rectangle bounds, float speed, double attackPower, int sight) {
         super(world, bounds, new ActorInfo("Zombie"), 100, 100);
-        this.bounds = new Rectangle(10, 10);
+        this.bounds = new Rectangle(32, 32);
         this.speed = speed;
         this.attackPower = 5;
         this.sight = 250;
@@ -43,12 +43,12 @@ public class Zombie extends Actor {
     // Different types of zombies that do not modify methods
     public static Zombie normal(World w) {
         Point spawn = getSpawn();
-        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 10, 10), 50, 5, 250);
+        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 32, 32), 50, 5, 250);
     }
 
     public static Zombie fat(World w) {
         Point spawn = getSpawn();
-        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 10, 10), 30, 25, 250);
+        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 32, 32), 30, 25, 250);
     }
 
     public ClientZombie clientZombie() {
