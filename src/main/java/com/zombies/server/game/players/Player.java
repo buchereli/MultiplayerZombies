@@ -103,6 +103,7 @@ public class Player extends Actor {
             vx *= .8;
             vy *= .8;
 
+
             bounds.x = (int) (body.getPosition().x * Game.PPM) - bounds.width / 2;
             bounds.y = (int) (body.getPosition().y * Game.PPM) - bounds.height / 2;
         }

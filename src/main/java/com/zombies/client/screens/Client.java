@@ -16,6 +16,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static java.awt.event.KeyEvent.VK_D;
+import static java.awt.event.KeyEvent.VK_S;
+
 public class Client extends JPanel implements MouseListener, KeyListener {
 
     /*
@@ -121,23 +124,23 @@ public class Client extends JPanel implements MouseListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyChar() == 'w') {
+        if (e.getKeyCode() == KeyEvent.VK_W) {
             if (!dirs.contains("up")) {
                 dirs.add("up");
             }
-        } else if (e.getKeyChar() == 's') {
+        } else if (e.getKeyCode() == KeyEvent.VK_S) {
             if (!dirs.contains("down")) {
                 dirs.add("down");
             }
-        } else if (e.getKeyChar() == 'd') {
+        } else if (e.getKeyCode() == KeyEvent.VK_D) {
             if (!dirs.contains("right")) {
                 dirs.add("right");
             }
-        } else if (e.getKeyChar() == 'a') {
+        } else if (e.getKeyCode() == KeyEvent.VK_A) {
             if (!dirs.contains("left")) {
                 dirs.add("left");
             }
-        } else if (e.getKeyChar() == ' ') {
+        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             Communicator.fireShot(getRotation());
         }
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
@@ -158,20 +161,17 @@ public class Client extends JPanel implements MouseListener, KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyChar() == 'w') {
+        if (e.getKeyCode() == KeyEvent.VK_W) {
             dirs.remove("up");
-        }  else if (e.getKeyChar() == 's') {
+        }  else if (e.getKeyCode() == VK_S) {
             dirs.remove("down");
-        }  else if (e.getKeyChar() == 'd') {
+        }  else if (e.getKeyCode() == KeyEvent.VK_D) {
             dirs.remove("right");
-        } else if (e.getKeyChar() == 'a') {
+        } else if (e.getKeyCode() == KeyEvent.VK_A) {
             dirs.remove("left");
         } else if (e.getKeyCode()==KeyEvent.VK_SHIFT) {
             dirs.remove("TURBO SPEED");
-            dirs.remove("up");
-            dirs.remove("down");
-            dirs.remove("right");
-            dirs.remove("left");
+
         }
 
         String[] dirsArray = new String[dirs.size()];
