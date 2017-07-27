@@ -9,11 +9,12 @@ public class ClientPlayer {
 
     private Rectangle bounds;
     private String user;
-    private double health;
+    public double health, stamina;
 
-    ClientPlayer(Rectangle bounds, String user, double health) {
+    ClientPlayer(Rectangle bounds, String user, double health, double stamina) {
         this.bounds = bounds;
         this.user = user;
         this.health = health;
+        this.stamina = stamina;
     }
 }

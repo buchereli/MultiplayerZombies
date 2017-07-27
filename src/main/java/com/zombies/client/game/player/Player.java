@@ -8,7 +8,7 @@ import java.awt.*;
 public class Player {
     private Rectangle bounds;
     private String user;
-    double health;
+    double health, stamina;
 
 
     public void draw(Graphics g, Point shift) {
@@ -43,5 +43,7 @@ public class Player {
     public double getHealth() {
         return health;
     }
+
+    public double getStamina(){return stamina;}
 }
 

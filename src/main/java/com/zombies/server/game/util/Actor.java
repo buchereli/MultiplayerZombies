@@ -12,13 +12,14 @@ import java.awt.*;
  */
 public class Actor {
 
-    protected double health;
-    protected boolean alive;
+    protected double health, stamina;
+    protected boolean alive, running;
     protected Body body;
     protected ActorInfo actorInfo;
 
-    public Actor(World world, Rectangle bounds, ActorInfo actorInfo, double health) {
+    public Actor(World world, Rectangle bounds, ActorInfo actorInfo, double health, double stamina) {
         this.health = health;
+        this.stamina = stamina;
         this.alive = true;
         this.actorInfo = actorInfo;
 
@@ -57,6 +58,14 @@ public class Actor {
         health -= dmg;
         if (health <= 0)
             alive = false;
+    }
+
+    public void running(){
+        stamina-=2;
+
+    }
+    public void resting(){
+        stamina+=.2;
     }
 
     public boolean isAlive() {

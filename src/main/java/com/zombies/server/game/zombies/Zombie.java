@@ -2,8 +2,8 @@ package com.zombies.server.game.zombies;
 
 import com.zombies.server.game.Game;
 import com.zombies.server.game.players.Player;
-import com.zombies.server.game.util.Actor;
 import com.zombies.server.game.util.ActorInfo;
+import com.zombies.server.game.util.Actor;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 
@@ -21,8 +21,8 @@ public class Zombie extends Actor {
 
 
     private Zombie(World world, Rectangle bounds, float speed, double attackPower, int sight) {
-        super(world, bounds, new ActorInfo("Zombie"), 100);
-        this.bounds = bounds;
+        super(world, bounds, new ActorInfo("Zombie"), 100, 100);
+        this.bounds = new Rectangle(10, 10);
         this.speed = speed;
         this.attackPower = 5;
         this.sight = 250;
@@ -43,12 +43,12 @@ public class Zombie extends Actor {
     // Different types of zombies that do not modify methods
     public static Zombie normal(World w) {
         Point spawn = getSpawn();
-        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 32, 32), 50, 5, 250);
+        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 10, 10), 50, 5, 250);
     }
 
     public static Zombie fat(World w) {
         Point spawn = getSpawn();
-        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 64, 64), 30, 25, 250);
+        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 10, 10), 30, 25, 250);
     }
 
     public ClientZombie clientZombie() {
@@ -60,8 +60,9 @@ public class Zombie extends Actor {
 
         if (player != null) {
             Rectangle pBounds = player.getBounds();
+            act(player);
             if (inSight(pBounds)) {
-                int d = (pBounds.x + pBounds.width / 2) - (bounds.x + bounds.width / 2);
+                int d = pBounds.x - bounds.x;
                 if (d > 0)
                     setVX(Math.min(d, speed));
                 else if (d < 0)
@@ -69,7 +70,7 @@ public class Zombie extends Actor {
                 else
                     setVX(0);
 
-                d = (pBounds.y + pBounds.height / 2) - (bounds.y + bounds.height / 2);
+                d = pBounds.y - bounds.y;
                 if (d > 0)
                     setVY(Math.min(d, speed));
                 else if (d < 0)
@@ -84,8 +85,8 @@ public class Zombie extends Actor {
                 }
             }
 
-            bounds.x = (int) (body.getPosition().x * Game.PPM) - bounds.width / 2;
-            bounds.y = (int) (body.getPosition().y * Game.PPM) - bounds.height / 2;
+            bounds.x = (int) (body.getPosition().x * Game.PPM);
+            bounds.y = (int) (body.getPosition().y * Game.PPM);
         } else {
             // No players in world
             body.setLinearVelocity(new Vec2(0.0f, 0.0f));
@@ -124,5 +125,11 @@ public class Zombie extends Actor {
 
     public boolean contains(Rectangle rect) {
         return bounds.intersects(rect);
+    }
+
+    private void act(Player player) {
+        if (contains(player.getBounds())) {
+            player.hit(attackPower);
+        }
     }
 }

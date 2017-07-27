@@ -140,21 +140,40 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         } else if (e.getKeyChar() == ' ') {
             Communicator.fireShot(getRotation());
         }
+        if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
 
-        String[] dirsArray = new String[dirs.size()];
-        dirsArray = dirs.toArray(dirsArray);
-        Communicator.setDirection(dirsArray);
-    }
+
+                if (!dirs.contains("TURBO SPEED"))
+
+                    dirs.add("TURBO SPEED");
+            }
+
+            String[] dirsArray = new String[dirs.size()];
+            dirsArray = dirs.toArray(dirsArray);
+            Communicator.setDirection(dirsArray);
+        }
+
+
+
+
+
+
 
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getKeyChar() == 'w') {
             dirs.remove("up");
-        } else if (e.getKeyChar() == 's') {
+        }  else if (e.getKeyChar() == 's') {
             dirs.remove("down");
-        } else if (e.getKeyChar() == 'd') {
+        }  else if (e.getKeyChar() == 'd') {
             dirs.remove("right");
         } else if (e.getKeyChar() == 'a') {
+            dirs.remove("left");
+        } else if (e.getKeyCode()==KeyEvent.VK_SHIFT){
+            dirs.remove("TURBO SPEED");
+            dirs.remove("up");
+            dirs.remove("down");
+            dirs.remove("right");
             dirs.remove("left");
         }
 

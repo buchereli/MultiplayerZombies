@@ -106,6 +106,7 @@ public class Game {
 
         if (player != null)
             player.setDirs(directions);
+
     }
 
     public void fireShot(String fromUser, double radians) {
@@ -129,6 +130,7 @@ public class Game {
         xy.y = (int) (range * Math.sin(radians));
         return xy;
     }
+
 
 
 }
