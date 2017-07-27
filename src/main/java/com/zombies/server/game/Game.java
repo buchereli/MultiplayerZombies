@@ -1,6 +1,7 @@
 package com.zombies.server.game;
 
 import com.google.gson.Gson;
+import com.zombies.client.game.hud.Bar;
 import com.zombies.server.communicator.Communicator;
 import com.zombies.server.communicator.LocalServerEndpoint;
 import com.zombies.server.communicator.ServerGameEndpoint;
