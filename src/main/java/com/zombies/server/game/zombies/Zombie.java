@@ -2,8 +2,8 @@ package com.zombies.server.game.zombies;
 
 import com.zombies.server.game.Game;
 import com.zombies.server.game.players.Player;
-import com.zombies.server.game.util.ActorInfo;
 import com.zombies.server.game.util.Actor;
+import com.zombies.server.game.util.ActorInfo;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 
@@ -85,8 +85,8 @@ public class Zombie extends Actor {
                 }
             }
 
-            bounds.x = (int) (body.getPosition().x * Game.PPM);
-            bounds.y = (int) (body.getPosition().y * Game.PPM);
+            bounds.x = (int) (body.getPosition().x * Game.PPM) - bounds.width / 2;
+            bounds.y = (int) (body.getPosition().y * Game.PPM) - bounds.height / 2;
         } else {
             // No players in world
             body.setLinearVelocity(new Vec2(0.0f, 0.0f));

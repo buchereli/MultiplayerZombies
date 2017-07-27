@@ -13,7 +13,6 @@ public class Player {
     private Enums.Direction facing;
 
     public void draw(Graphics g, Point shift) {
-
         if (Client.user.equals(user))
             g.setColor(Color.BLUE);
         else

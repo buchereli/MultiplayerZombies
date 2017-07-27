@@ -11,6 +11,8 @@ public class Zombie {
     private Rectangle bounds;
 
     public void draw(Graphics g, Point shift) {
+        g.setColor(Color.WHITE);
+        g.drawRect((bounds.x) + shift.x, (bounds.y) + shift.y, bounds.width, bounds.height);
         g.drawImage(ImageManager.get("zombie"), bounds.x + shift.x, bounds.y + shift.y, null);
     }
 }
