@@ -79,7 +79,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         for (Player player : players)
             player.draw(bufferGraphics, shift);
 
-        HUD.draw(bufferGraphics, getWidth(), framesInLastSecond);
+        HUD.draw(bufferGraphics, getHeight(), getWidth(), framesInLastSecond);
 
         g.drawImage(offscreen, 0, 0, this);
 
