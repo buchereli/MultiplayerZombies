@@ -2,14 +2,15 @@ package com.zombies.client.game.player;
 
 import com.zombies.client.screens.Client;
 import com.zombies.client.util.ImageManager;
+import com.zombies.server.game.util.Enums;
 
 import java.awt.*;
 
 public class Player {
     private Rectangle bounds;
     private String user;
-    double health, stamina;
-
+    double health;
+    private Enums.Direction facing;
 
     public void draw(Graphics g, Point shift) {
 
@@ -43,7 +44,5 @@ public class Player {
     public double getHealth() {
         return health;
     }
-
-    public double getStamina(){return stamina;}
 }
 
