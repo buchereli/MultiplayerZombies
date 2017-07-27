@@ -13,7 +13,7 @@ import java.awt.*;
 public class Actor {
 
     protected double health, stamina;
-    protected boolean alive, running;
+    protected boolean alive;
     protected Body body;
     protected ActorInfo actorInfo;
 
@@ -66,6 +66,7 @@ public class Actor {
     }
     public void resting(){
         stamina+=.2;
+
     }
 
     public boolean isAlive() {

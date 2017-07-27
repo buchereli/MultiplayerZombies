@@ -166,7 +166,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
             dirs.remove("right");
         } else if (e.getKeyChar() == 'a') {
             dirs.remove("left");
-        } else if (e.getKeyCode()==KeyEvent.VK_SHIFT){
+        } else if (e.getKeyCode()==KeyEvent.VK_SHIFT) {
             dirs.remove("TURBO SPEED");
             dirs.remove("up");
             dirs.remove("down");

@@ -41,33 +41,38 @@ public class Player extends Actor {
 
     public void move() {
         if (alive) {
-            if (dirs.contains("up")&&!dirs.contains("TURBO SPEED")) {
-                vy -= accel;
-                this.facing = Enums.Direction.NORTH;
+            if (!dirs.contains("TURBO SPEED")) {
+                if (dirs.contains("up") && !dirs.contains("TURBO SPEED")) {
+                    vy -= accel;
+                    this.facing = Enums.Direction.NORTH;
+                }
+                if (dirs.contains("down") && !dirs.contains("TURBO SPEED")) {
+                    vy += accel;
+                    this.facing = Enums.Direction.SOUTH;
+                }
+                if (dirs.contains("right") && !dirs.contains("TURBO SPEED")) {
+                    vx += accel;
+                    this.facing = Enums.Direction.EAST;
+                }
+                if (dirs.contains("left") && !dirs.contains("TURBO SPEED")) {
+                    vx -= accel;
+                    this.facing = Enums.Direction.WEST;
+                }
             }
-            if (dirs.contains("down")&&!dirs.contains("TURBO SPEED")) {
-                vy += accel;
-                this.facing = Enums.Direction.SOUTH;
-            }
-            if (dirs.contains("right")&&!dirs.contains("TURBO SPEED")) {
-                vx += accel;
-                this.facing = Enums.Direction.EAST;
-            }
-            if (dirs.contains("left")&&!dirs.contains("TURBO SPEED")) {
-                vx -= accel;
-                this.facing = Enums.Direction.WEST;
-            }
-            if (dirs.contains("up")&&dirs.contains("TURBO SPEED")) {
-                vy -= turboSpeed;
-            }
-            if (dirs.contains("down")&&dirs.contains("TURBO SPEED")) {
-                vy += turboSpeed;
-            }
-            if (dirs.contains("right")&&dirs.contains("TURBO SPEED")) {
-                vx += turboSpeed;
-            }
-            if (dirs.contains("left")&&dirs.contains("TURBO SPEED")) {
-                vx -= turboSpeed;
+            if (dirs.contains("TURBO SPEED")) {
+                if (dirs.contains("up") && dirs.contains("TURBO SPEED")) {
+                    vy -= turboSpeed;
+                }
+                if (dirs.contains("down") && dirs.contains("TURBO SPEED")) {
+                    vy += turboSpeed;
+                }
+                if (dirs.contains("right") && dirs.contains("TURBO SPEED")) {
+                    vx += turboSpeed;
+                }
+                if (dirs.contains("left") && dirs.contains("TURBO SPEED")) {
+                    vx -= turboSpeed;
+
+                }
             }
             if (dirs.contains("right") && dirs.contains("up")) {
                 this.facing = Enums.Direction.NORTH_EAST;
@@ -103,7 +108,7 @@ public class Player extends Actor {
         }
         if(dirs.contains("TURBO SPEED")&&stamina>0){
             running();
-        } else if(stamina < 100) {
+        } else if(!dirs.contains("TURBO SPEED")&&stamina < 100) {
             resting();
         } else if(stamina <= 0){
             dirs.remove("TURBO SPEED");
