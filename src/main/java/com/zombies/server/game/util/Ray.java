@@ -20,7 +20,7 @@ public class Ray {
         closestFraction = 1.0f;
 
         RayCastCallback callback = (fixture, point, normal, fraction) -> {
-            if (!fixture.getBody().getUserData().equals("Player")) {
+            if (!fixture.getUserData().equals("Player")) {
                 if (fraction < closestFraction) {
                     closestFraction = fraction;
                     collisionPoint.set(point);
@@ -34,8 +34,8 @@ public class Ray {
         world.raycast(callback, fromPoint, toPoint);
 
         if (collisionObject != null) {
-            System.out.println("A " + collisionObject.getBody().getUserData() + " has been shot");
-            ActorInfo info = (ActorInfo) collisionObject.getBody().getUserData();
+            System.out.println("A " + collisionObject.getUserData() + " has been shot");
+            ActorInfo info = (ActorInfo) collisionObject.getUserData();
             info.getActor().hit(dmg);
         }
     }
