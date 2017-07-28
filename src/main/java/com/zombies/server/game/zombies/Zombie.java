@@ -165,9 +165,9 @@ public class Zombie extends Actor {
     }
 
     private void act(Player player) {
-        if (contains(player.getBounds())) {
-            player.hit(attackPower);
-        }
+//        if (contains(player.getBounds())) {
+//            player.hit(attackPower);
+//        }
     }
 
     public double getHealth(){
