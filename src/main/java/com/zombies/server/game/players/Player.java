@@ -22,6 +22,7 @@ public class Player extends Actor {
     private String user;
     private Enums.Direction facing;
 
+
     public Player(World world, String user) {
         super(world, new Rectangle(500, 500, 32, 32), new ActorInfo("Player"), 100, 100);
         this.bounds = new Rectangle(32, 32);
@@ -36,10 +37,14 @@ public class Player extends Actor {
     }
 
     public ClientPlayer clientPlayer() {
-        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health, stamina, this.facing);
+        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health,
+                stamina, this.facing, hitTimer > 0);
     }
 
+    float hitTimer;
     public void update(int dt) {
+        if (hitTimer>0)
+            hitTimer-=dt;
 
         move();
     }
@@ -136,6 +141,12 @@ public class Player extends Actor {
 
     public Vec2 getLoc() {
         return body.getPosition();
+    }
+
+    @Override
+    public void hit(double dmg){
+        super.hit(dmg);
+        hitTimer = 1000;
     }
 
 

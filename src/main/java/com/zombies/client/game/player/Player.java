@@ -10,8 +10,9 @@ import java.awt.*;
 public class Player {
     private Rectangle bounds;
     private String user;
-    double health, stamina;
+    private double health, stamina;
     private Enums.Direction facing;
+    private boolean hit;
     private final Bar bar = new Bar((Color.red), (Color.green), new Rectangle(16, 10));
 
     public void draw(Graphics g, Point shift) {
@@ -36,7 +37,10 @@ public class Player {
 
 
         if(!Client.user.equals(this.user)) {
-            bar.draw(g, getHealth() / 100, new Point(bounds.x + shift.x, bounds.y - 25 + shift.y));
+            if (hit) {
+                bar.draw(g, getHealth() / 100, new Point(bounds.x + shift.x, bounds.y - 25 + shift.y));
+//
+            }
         }
 
 
