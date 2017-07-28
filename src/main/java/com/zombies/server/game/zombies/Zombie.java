@@ -19,7 +19,6 @@ public class Zombie extends Actor {
     private double attackPower;
     private float sight;
 
-
     private Zombie(World world, Rectangle bounds, float speed, double attackPower, int sight) {
         super(world, bounds, new ActorInfo("Zombie"), 100, 100);
         this.bounds = new Rectangle(32, 32);
@@ -131,5 +130,9 @@ public class Zombie extends Actor {
         if (contains(player.getBounds())) {
             player.hit(attackPower);
         }
+    }
+
+    public double getHealth(){
+        return health;
     }
 }

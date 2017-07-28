@@ -111,7 +111,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
     private Player getPlayer() {
         for (Player player : players)
             if (player.getUser().equals(user)) {
-            HUD.player = player;
+                HUD.player = player;
                 return player;
             }
         return null;
@@ -148,28 +148,23 @@ public class Client extends JPanel implements MouseListener, KeyListener {
                 dirs.add("TURBO SPEED");
         }
 
-            String[] dirsArray = new String[dirs.size()];
-            dirsArray = dirs.toArray(dirsArray);
-            Communicator.setDirection(dirsArray);
-        }
-
-
-
-
-
+        String[] dirsArray = new String[dirs.size()];
+        dirsArray = dirs.toArray(dirsArray);
+        Communicator.setDirection(dirsArray);
+    }
 
 
     @Override
     public void keyReleased(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_W) {
             dirs.remove("up");
-        }  else if (e.getKeyCode() == VK_S) {
+        } else if (e.getKeyCode() == VK_S) {
             dirs.remove("down");
-        }  else if (e.getKeyCode() == KeyEvent.VK_D) {
+        } else if (e.getKeyCode() == KeyEvent.VK_D) {
             dirs.remove("right");
         } else if (e.getKeyCode() == KeyEvent.VK_A) {
             dirs.remove("left");
-        } else if (e.getKeyCode()==KeyEvent.VK_SHIFT) {
+        } else if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
             dirs.remove("TURBO SPEED");
 
         }

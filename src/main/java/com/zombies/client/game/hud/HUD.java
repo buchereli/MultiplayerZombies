@@ -1,9 +1,9 @@
 package com.zombies.client.game.hud;
 
 import com.zombies.client.game.player.Player;
+import com.zombies.client.game.zombies.Zombie;
 
 import java.awt.*;
-
 
 public class HUD {
     public static Player player;

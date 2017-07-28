@@ -15,10 +15,12 @@ public class Player {
     private Bar bar;
 
     public void draw(Graphics g, Point shift) {
-        if (Client.user.equals(user))
+        if (Client.user.equals(user)) {
             g.setColor(Color.BLUE);
-        else
+        } else {
+
             g.setColor(Color.BLACK);
+        }
 //        g.fillRect(bounds.x + shift.x, bounds.y + shift.y, bounds.width, bounds.height);
         g.setColor(Color.WHITE);
         g.drawRect((bounds.x) + shift.x, (bounds.y) + shift.y, bounds.width, bounds.height);
