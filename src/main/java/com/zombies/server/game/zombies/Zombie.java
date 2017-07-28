@@ -102,29 +102,31 @@ public class Zombie extends Actor {
     }
     private void setDir(int dx,int dy){
 
-        if(dy >= (dx*2)) {
-            this.facing = Enums.Direction.NORTH;
+        if(Math.abs(dx) >= Math.abs(dy*2)) {
+            if(dx > 0)
+                this.facing = Enums.Direction.SOUTH;
+            if(dx < 0)
+                this.facing = Enums.Direction.NORTH;
         }
-        if(dy > 0){
-            this.facing = Enums.Direction.SOUTH;
+        else if(Math.abs(dy) >= Math.abs(dx*2)) {
+            if(dy > 0)
+                this.facing = Enums.Direction.EAST;
+            if(dy < 0)
+                this.facing = Enums.Direction.WEST;
         }
-        if(dx > 0){
-            this.facing = Enums.Direction.EAST;
-        }
-        if(dx < 0){
-            this.facing = Enums.Direction.WEST;
-        }
-        if((dy > 0)&(dx > 0)) {
-            this.facing = Enums.Direction.SOUTH_EAST;
-        }
-        if((dy > 0)&(dx < 0)){
-            this.facing = Enums.Direction.NORTH_EAST;
-        }
-        if((dy < 0)&(dx > 0)){
-            this.facing = Enums.Direction.SOUTH_WEST;
-        }
-        if((dy < 0)&(dx < 0)){
-            this.facing = Enums.Direction.NORTH_WEST;
+        else {
+            if ((dy > 0) && (dx > 0)) {
+                this.facing = Enums.Direction.SOUTH_EAST;
+            }
+            if ((dy > 0) && (dx < 0)) {
+                this.facing = Enums.Direction.NORTH_EAST;
+            }
+            if ((dy < 0) && (dx > 0)) {
+                this.facing = Enums.Direction.SOUTH_WEST;
+            }
+            if ((dy < 0) && (dx < 0)) {
+                this.facing = Enums.Direction.NORTH_WEST;
+            }
         }
     }
 
