@@ -39,6 +39,11 @@ public class Player extends Actor {
         return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health, stamina, this.facing);
     }
 
+    public void update(int dt) {
+
+        move();
+    }
+
     public void move() {
         if (alive) {
             if (!dirs.contains("TURBO SPEED")) {
@@ -132,4 +137,6 @@ public class Player extends Actor {
     public Vec2 getLoc() {
         return body.getPosition();
     }
+
+
 }

@@ -4,6 +4,7 @@ import com.zombies.server.game.Game;
 import com.zombies.server.game.players.Player;
 import com.zombies.server.game.util.Actor;
 import com.zombies.server.game.util.ActorInfo;
+import com.zombies.server.game.util.Enums;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 
@@ -18,6 +19,7 @@ public class Zombie extends Actor {
     private float speed;
     private double attackPower;
     private float sight;
+    private Enums.Direction facing;
 
     private Zombie(World world, Rectangle bounds, float speed, double attackPower, int sight) {
         super(world, bounds, new ActorInfo("Zombie"), 100, 100);
@@ -25,6 +27,7 @@ public class Zombie extends Actor {
         this.speed = speed;
         this.attackPower = 5;
         this.sight = 250;
+        this.facing = Enums.Direction.NORTH;
     }
 
     public static Point getSpawn() {
@@ -51,7 +54,7 @@ public class Zombie extends Actor {
     }
 
     public ClientZombie clientZombie() {
-        return new ClientZombie(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height));
+        return new ClientZombie(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), this.facing);
     }
 
     public void move(ArrayList<Player> players) {
@@ -61,21 +64,27 @@ public class Zombie extends Actor {
             Rectangle pBounds = player.getBounds();
             act(player);
             if (inSight(pBounds)) {
-                int d = pBounds.x - bounds.x;
-                if (d > 0)
-                    setVX(Math.min(d, speed));
-                else if (d < 0)
-                    setVX(Math.max(d, -speed));
+                int dy = pBounds.x - bounds.x;
+                if (dy > 0) {
+                    setVX(Math.min(dy, speed));
+                }
+                else if (dy < 0) {
+                    setVX(Math.max(dy, -speed));
+                }
                 else
                     setVX(0);
 
-                d = pBounds.y - bounds.y;
-                if (d > 0)
-                    setVY(Math.min(d, speed));
-                else if (d < 0)
-                    setVY(Math.max(d, -speed));
-                else
+                int dx = pBounds.y - bounds.y;
+                if (dx > 0) {
+                    setVY(Math.min(dx, speed));
+                }
+                else if (dx < 0) {
+                    setVY(Math.max(dx, -speed));
+                }
+                else {
                     setVY(0);
+                }
+                setDir(dx, dy);
             } else {
                 // Players in world but not in sight
                 if (Math.random() < .015) {
@@ -89,6 +98,35 @@ public class Zombie extends Actor {
         } else {
             // No players in world
             body.setLinearVelocity(new Vec2(0.0f, 0.0f));
+        }
+    }
+    private void setDir(int dx,int dy){
+
+        if(Math.abs(dx) >= Math.abs(dy*2)) {
+            if(dx > 0)
+                this.facing = Enums.Direction.SOUTH;
+            if(dx < 0)
+                this.facing = Enums.Direction.NORTH;
+        }
+        else if(Math.abs(dy) >= Math.abs(dx*2)) {
+            if(dy > 0)
+                this.facing = Enums.Direction.EAST;
+            if(dy < 0)
+                this.facing = Enums.Direction.WEST;
+        }
+        else {
+            if ((dy > 0) && (dx > 0)) {
+                this.facing = Enums.Direction.SOUTH_EAST;
+            }
+            if ((dy > 0) && (dx < 0)) {
+                this.facing = Enums.Direction.NORTH_EAST;
+            }
+            if ((dy < 0) && (dx > 0)) {
+                this.facing = Enums.Direction.SOUTH_WEST;
+            }
+            if ((dy < 0) && (dx < 0)) {
+                this.facing = Enums.Direction.NORTH_WEST;
+            }
         }
     }
 
