@@ -43,10 +43,6 @@ public class Player {
             }
         }
 
-
-        //check if player is not player then draw bar
-        //do the same for zombies if you have time tonight!
-
     }
 
     public String getUser() {
@@ -64,5 +60,6 @@ public class Player {
     public double getStamina() {
         return stamina;
     }
+
 }
 

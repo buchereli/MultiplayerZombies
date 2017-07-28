@@ -141,7 +141,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
                 dirs.add("left");
             }
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            Communicator.fireShot(getRotation());
+            Communicator.fireShot();
         }
         if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
             if (!dirs.contains("TURBO SPEED"))
@@ -181,42 +181,6 @@ public class Client extends JPanel implements MouseListener, KeyListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-    }
-
-    private double getRotation() {
-        double radians = 0;
-        if (dirs.contains("up")) {
-            radians += .5;
-            if (dirs.contains("right"))
-                radians -= .25;
-            if (dirs.contains("left"))
-                radians += .25;
-        }
-
-        if (dirs.contains("down")) {
-            radians -= .5;
-            if (dirs.contains("right"))
-                radians += .25;
-            if (dirs.contains("left"))
-                radians -= .25;
-        }
-
-        if (dirs.contains("right")) {
-            if (dirs.contains("down"))
-                radians -= .25;
-            if (dirs.contains("up"))
-                radians += .25;
-        }
-
-        if (dirs.contains("left")) {
-            radians += 1;
-            if (dirs.contains("down"))
-                radians += .25;
-            if (dirs.contains("up"))
-                radians -= .25;
-        }
-
-        return radians;
     }
 
     @Override
