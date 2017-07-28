@@ -1,5 +1,6 @@
 package com.zombies.client.game.player;
 
+import com.zombies.client.game.hud.Bar;
 import com.zombies.client.screens.Client;
 import com.zombies.client.util.Enums;
 import com.zombies.client.util.ImageManager;
@@ -11,6 +12,7 @@ public class Player {
     private String user;
     double health, stamina;
     private Enums.Direction facing;
+    private Bar bar;
 
     public void draw(Graphics g, Point shift) {
         if (Client.user.equals(user))
@@ -29,6 +31,12 @@ public class Player {
         int strWidth = fontMetrics.stringWidth(user);
 
         g.drawString(user, bounds.x + shift.x - strWidth / 2 + bounds.width / 2, bounds.y + shift.y - 10);
+        bar.draw(g, getHealth()/100, new Point(bounds.x-20, bounds.y-20));
+        bar.draw(g, getStamina()/100, new Point(bounds.x-20, bounds.y-40));
+
+
+        //check if player is not player then draw bar
+        //do the same for zombies if you have time tonight!
 
     }
 
