@@ -57,7 +57,7 @@ public class Game {
 
             // Update player velocity vector
             for (Player player : players)
-                player.move();
+                player.update(30);
 
             // Update zombie velocity vector
             for (Zombie zed : zombies)

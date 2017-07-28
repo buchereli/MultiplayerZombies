@@ -64,9 +64,14 @@ public class Actor {
         stamina-=2;
 
     }
+    public void runningZomb(){
+        stamina-=5;
+    }
     public void resting(){
         stamina+=.2;
-
+    }
+    public void restingZomb(){
+        stamina+=.1;
     }
 
     public boolean isAlive() {
