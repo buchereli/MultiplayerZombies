@@ -36,14 +36,14 @@ public class Player {
         g.drawString(user, bounds.x + shift.x - strWidth / 2 + bounds.width / 2, bounds.y + shift.y - 10);
 
 
-        if(!Client.user.equals(this.user)) {
+        if (!Client.user.equals(this.user)) {
             if (hit) {
                 bar.draw(g, getHealth() / 100, new Point(bounds.x + shift.x, bounds.y - 25 + shift.y));
-//
             }
-        }
 
+        }
     }
+
 
     public String getUser() {
         return user;
