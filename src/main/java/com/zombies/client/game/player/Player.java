@@ -33,7 +33,11 @@ public class Player {
         int strWidth = fontMetrics.stringWidth(user);
 
         g.drawString(user, bounds.x + shift.x - strWidth / 2 + bounds.width / 2, bounds.y + shift.y - 10);
-        bar.draw(g, getHealth() / 100, new Point(bounds.x + shift.x, bounds.y - 25 + shift.y));
+
+
+        if(!Client.user.equals(this.user)) {
+            bar.draw(g, getHealth() / 100, new Point(bounds.x + shift.x, bounds.y - 25 + shift.y));
+        }
 
 
         //check if player is not player then draw bar
