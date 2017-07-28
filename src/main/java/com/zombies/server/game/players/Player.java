@@ -16,7 +16,7 @@ import java.util.Arrays;
  */
 public class Player extends Actor {
     private Rectangle bounds;
-    private double vx, vy, accel;
+    private double vx, vy, accel, radian;
     private float maxSpeed, turboSpeed;
     private ArrayList<String> dirs;
     private String user;
@@ -138,5 +138,25 @@ public class Player extends Actor {
         return body.getPosition();
     }
 
+    public double getRotation(){
+        if (this.facing == Enums.Direction.NORTH)
+            radian = -Math.PI/2;
+        else if (this.facing == Enums.Direction.SOUTH)
+            radian = -3*Math.PI/2;
+        else if (this.facing == Enums.Direction.EAST)
+            radian = 2*Math.PI;
+        else if (this.facing == Enums.Direction.WEST)
+            radian = Math.PI;
+//        else if (this.facing == Enums.Direction.NORTH_EAST)
+//            radian = Math.PI/4;
+//        else if (this.facing == Enums.Direction.NORTH_WEST)
+//            radian = 3*Math.PI/4;
+//        else if (this.facing == Enums.Direction.SOUTH_WEST)
+//            radian = 5*Math.PI/4;
+//        else if (this.facing == Enums.Direction.SOUTH_EAST)
+//            radian = 7*Math.PI/4;
+
+        return radian;
+    }
 
 }

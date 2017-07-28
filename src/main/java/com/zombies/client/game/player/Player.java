@@ -39,10 +39,6 @@ public class Player {
             bar.draw(g, getHealth() / 100, new Point(bounds.x + shift.x, bounds.y - 25 + shift.y));
         }
 
-
-        //check if player is not player then draw bar
-        //do the same for zombies if you have time tonight!
-
     }
 
     public String getUser() {
@@ -60,5 +56,6 @@ public class Player {
     public double getStamina() {
         return stamina;
     }
+
 }
 

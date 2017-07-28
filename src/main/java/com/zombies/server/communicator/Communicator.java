@@ -35,7 +35,7 @@ public class Communicator {
                     game.setDirection(json.getString("user"), gson.fromJson(json.getString("directions"), String[].class));
                     break;
                 case "fireShot":
-                    game.fireShot(json.getString("user"), json.getDouble("radians"));
+                    game.fireShot(json.getString("user"));
                     break;
                 case "newGame":
                     game = new Game();

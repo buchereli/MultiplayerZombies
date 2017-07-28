@@ -54,7 +54,7 @@ public class Zombie extends Actor {
     }
 
     public ClientZombie clientZombie() {
-        return new ClientZombie(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), this.facing);
+        return new ClientZombie(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), this.facing, health);
     }
 
     public void move(ArrayList<Player> players) {
