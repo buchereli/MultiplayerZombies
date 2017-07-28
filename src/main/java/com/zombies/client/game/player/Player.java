@@ -10,8 +10,9 @@ import java.awt.*;
 public class Player {
     private Rectangle bounds;
     private String user;
-    double health, stamina;
+    private double health, stamina;
     private Enums.Direction facing;
+    private boolean hit;
     private final Bar bar = new Bar((Color.red), (Color.green), new Rectangle(16, 10));
 
     public void draw(Graphics g, Point shift) {
@@ -35,15 +36,14 @@ public class Player {
         g.drawString(user, bounds.x + shift.x - strWidth / 2 + bounds.width / 2, bounds.y + shift.y - 10);
 
 
-        if(!Client.user.equals(this.user)) {
-            bar.draw(g, getHealth() / 100, new Point(bounds.x + shift.x, bounds.y - 25 + shift.y));
+        if (!Client.user.equals(this.user)) {
+            if (hit) {
+                bar.draw(g, getHealth() / 100, new Point(bounds.x + shift.x, bounds.y - 25 + shift.y));
+            }
+
         }
-
-
-        //check if player is not player then draw bar
-        //do the same for zombies if you have time tonight!
-
     }
+
 
     public String getUser() {
         return user;
@@ -60,5 +60,6 @@ public class Player {
     public double getStamina() {
         return stamina;
     }
+
 }
 

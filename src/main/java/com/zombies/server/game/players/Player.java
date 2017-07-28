@@ -16,7 +16,7 @@ import java.util.Arrays;
  */
 public class Player extends Actor {
     private Rectangle bounds;
-    private double vx, vy, accel;
+    private double vx, vy, accel, radian, hitTimer;
     private float maxSpeed, turboSpeed;
     private ArrayList<String> dirs;
     private String user;
@@ -36,10 +36,13 @@ public class Player extends Actor {
     }
 
     public ClientPlayer clientPlayer() {
-        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health, stamina, this.facing);
+        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health, stamina, this.facing, hitTimer > 0);
     }
 
     public void update(int dt) {
+        if (hitTimer > 0) {
+            hitTimer -= dt;
+        }
 
         move();
     }
@@ -112,11 +115,11 @@ public class Player extends Actor {
             bounds.x = (int) (body.getPosition().x * Game.PPM) - bounds.width / 2;
             bounds.y = (int) (body.getPosition().y * Game.PPM) - bounds.height / 2;
         }
-        if(dirs.contains("TURBO SPEED")&&stamina>0){
+        if (dirs.contains("TURBO SPEED") && stamina > 0) {
             running();
-        } else if(!dirs.contains("TURBO SPEED")&&stamina < 100) {
+        } else if (!dirs.contains("TURBO SPEED") && stamina < 100) {
             resting();
-        } else if(stamina <= 0){
+        } else if (stamina <= 0) {
             dirs.remove("TURBO SPEED");
         }
 
@@ -138,5 +141,31 @@ public class Player extends Actor {
         return body.getPosition();
     }
 
+    @Override
+    public void hit(double dmg) {
+        super.hit(dmg);
+        hitTimer = 1000;
+    }
+
+    public double getRotation() {
+        if (this.facing == Enums.Direction.NORTH)
+            radian = -Math.PI / 2;
+        else if (this.facing == Enums.Direction.SOUTH)
+            radian = -3 * Math.PI / 2;
+        else if (this.facing == Enums.Direction.EAST)
+            radian = 2 * Math.PI;
+        else if (this.facing == Enums.Direction.WEST)
+            radian = Math.PI;
+        else if (this.facing == Enums.Direction.NORTH_EAST)
+            radian = -Math.PI / 4;
+        else if (this.facing == Enums.Direction.NORTH_WEST)
+            radian = -3 * Math.PI / 4;
+        else if (this.facing == Enums.Direction.SOUTH_WEST)
+            radian = -5 * Math.PI / 4;
+        else if (this.facing == Enums.Direction.SOUTH_EAST)
+            radian = -7 * Math.PI / 4;
+
+        return radian;
+    }
 
 }

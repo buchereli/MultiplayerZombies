@@ -1,7 +1,6 @@
 package com.zombies.server.game;
 
 import com.google.gson.Gson;
-import com.zombies.client.game.hud.Bar;
 import com.zombies.server.communicator.Communicator;
 import com.zombies.server.communicator.LocalServerEndpoint;
 import com.zombies.server.communicator.ServerGameEndpoint;
@@ -52,7 +51,13 @@ public class Game {
         int time = 30;
         Timer timer = new Timer(time, ae -> {
             // Remove dead actors
+            for(Player player : players)
+                if(!player.isAlive())
+                    player.destroy(world);
             players.removeIf(player -> !player.isAlive());
+            for(Zombie zombie : zombies)
+                if(!zombie.isAlive())
+                    zombie.destroy(world);
             zombies.removeIf(zombie -> !zombie.isAlive());
 
             // Update player velocity vector
@@ -109,15 +114,15 @@ public class Game {
 
     }
 
-    public void fireShot(String fromUser, double radians) {
+    public void fireShot(String fromUser) {
         Player player = null;
         for (Player p : players)
             if (p.getUser().equals(fromUser))
                 player = p;
 
         if (player != null) {
-            int range = 1000;
-            Point rangePoint = rotate(range, radians);
+            int range = 100;
+            Point rangePoint = rotate(range, player.getRotation());
 
             Ray.fireShot(world, player.getLoc(), new Vec2(player.getLoc().x + rangePoint.x,
                     player.getLoc().y + rangePoint.y), 10);
@@ -130,7 +135,5 @@ public class Game {
         xy.y = (int) (range * Math.sin(radians));
         return xy;
     }
-
-
 
 }

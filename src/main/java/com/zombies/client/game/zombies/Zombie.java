@@ -11,8 +11,8 @@ import java.awt.*;
  */
 public class Zombie {
     private Rectangle bounds;
+    double health;
     private Enums.Direction facing;
-    double health = 100;
     double stamina = 25;
     public static final Bar zombieBar = new Bar(Color.red, Color.green, new Rectangle(40, 10));
     public static final Bar burstBar = new Bar(Color.GRAY, Color.BLUE, new Rectangle(10, 10));

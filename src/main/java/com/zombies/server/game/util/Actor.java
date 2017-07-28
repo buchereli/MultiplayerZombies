@@ -77,4 +77,8 @@ public class Actor {
     public boolean isAlive() {
         return alive;
     }
+
+    public void destroy(World world){
+        world.destroyBody(body);
+    }
 }

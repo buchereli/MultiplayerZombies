@@ -54,7 +54,7 @@ public class Zombie extends Actor {
     }
 
     public ClientZombie clientZombie() {
-        return new ClientZombie(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), this.facing);
+        return new ClientZombie(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), this.facing, health);
     }
 
     public void move(ArrayList<Player> players) {
@@ -165,9 +165,9 @@ public class Zombie extends Actor {
     }
 
     private void act(Player player) {
-        if (contains(player.getBounds())) {
-            player.hit(attackPower);
-        }
+//        if (contains(player.getBounds())) {
+//            player.hit(attackPower);
+//        }
     }
 
     public double getHealth(){
