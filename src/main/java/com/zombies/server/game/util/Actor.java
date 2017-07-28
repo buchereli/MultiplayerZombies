@@ -54,6 +54,10 @@ public class Actor {
         body.setLinearVelocity(new Vec2(body.getLinearVelocity().x, vy / Game.PPM));
     }
 
+    public Vec2 getVel(){
+        return body.getLinearVelocity();
+    }
+
     public void hit(double dmg) {
         health -= dmg;
         if (health <= 0)
