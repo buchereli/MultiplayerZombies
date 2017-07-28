@@ -95,14 +95,14 @@ public class Player extends Actor {
                 this.facing = Enums.Direction.SOUTH_WEST;
             }
 
-            if (vx > maxSpeed && !dirs.contains("TURBO SPEED"))
+            if (vx > maxSpeed&&!dirs.contains("TURBO SPEED"))
                 vx = maxSpeed;
-            else if (vx < -maxSpeed && !dirs.contains("TURBO SPEED"))
+            else if (vx < -maxSpeed&&!dirs.contains("TURBO SPEED"))
                 vx = -maxSpeed;
 
-            if (vy > maxSpeed && !dirs.contains("TURBO SPEED"))
+            if (vy > maxSpeed&&!dirs.contains("TURBO SPEED"))
                 vy = maxSpeed;
-            else if (vy < -maxSpeed && !dirs.contains("TURBO SPEED"))
+            else if (vy < -maxSpeed&&!dirs.contains("TURBO SPEED"))
                 vy = -maxSpeed;
 
             setVY((float) vy);
@@ -156,14 +156,14 @@ public class Player extends Actor {
             radian = 2 * Math.PI;
         else if (this.facing == Enums.Direction.WEST)
             radian = Math.PI;
-//        else if (this.facing == Enums.Direction.NORTH_EAST)
-//            radian = Math.PI/4;
-//        else if (this.facing == Enums.Direction.NORTH_WEST)
-//            radian = 3*Math.PI/4;
-//        else if (this.facing == Enums.Direction.SOUTH_WEST)
-//            radian = 5*Math.PI/4;
-//        else if (this.facing == Enums.Direction.SOUTH_EAST)
-//            radian = 7*Math.PI/4;
+        else if (this.facing == Enums.Direction.NORTH_EAST)
+            radian = -Math.PI / 4;
+        else if (this.facing == Enums.Direction.NORTH_WEST)
+            radian = -3 * Math.PI / 4;
+        else if (this.facing == Enums.Direction.SOUTH_WEST)
+            radian = -5 * Math.PI / 4;
+        else if (this.facing == Enums.Direction.SOUTH_EAST)
+            radian = -7 * Math.PI / 4;
 
         return radian;
     }
