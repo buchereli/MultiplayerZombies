@@ -25,4 +25,8 @@ public class Animation {
         return imageString[frame];
     }
 
+    public int getFrame() {
+        return frame;
+    }
+
 }

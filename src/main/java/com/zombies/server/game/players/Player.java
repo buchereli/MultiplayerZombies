@@ -118,7 +118,7 @@ public class Player extends Actor {
             bounds.x = (int) (body.getPosition().x * Game.PPM) - bounds.width / 2;
             bounds.y = (int) (body.getPosition().y * Game.PPM) - bounds.height / 2;
         }
-        if (dirs.contains("TURBO SPEED") && stamina > 0) {
+        if (isRunning()) {
             running();
         } else if (!dirs.contains("TURBO SPEED") && stamina < 100) {
             resting();
@@ -150,6 +150,10 @@ public class Player extends Actor {
 
     public double getVy() {
         return this.vy;
+    }
+
+    public boolean isRunning() {
+        return dirs.contains("TURBO SPEED") && stamina > 0;
     }
 
     @Override
