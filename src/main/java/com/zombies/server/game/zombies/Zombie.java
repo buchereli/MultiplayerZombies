@@ -67,24 +67,19 @@ public class Zombie extends Actor {
                 int dy = pBounds.x - bounds.x;
                 if (dy > 0) {
                     setVX(Math.min(dy, speed));
-                }
-                else if (dy < 0) {
+                } else if (dy < 0) {
                     setVX(Math.max(dy, -speed));
-                }
-                else
+                } else
                     setVX(0);
 
                 int dx = pBounds.y - bounds.y;
                 if (dx > 0) {
                     setVY(Math.min(dx, speed));
-                }
-                else if (dx < 0) {
+                } else if (dx < 0) {
                     setVY(Math.max(dx, -speed));
-                }
-                else {
+                } else {
                     setVY(0);
                 }
-                setDir(dx, dy);
             } else {
                 // Players in world but not in sight
                 if (Math.random() < .015) {
@@ -93,6 +88,8 @@ public class Zombie extends Actor {
                 }
             }
 
+            setDir(getVel());
+
             bounds.x = (int) (body.getPosition().x * Game.PPM) - bounds.width / 2;
             bounds.y = (int) (body.getPosition().y * Game.PPM) - bounds.height / 2;
         } else {
@@ -100,29 +97,30 @@ public class Zombie extends Actor {
             body.setLinearVelocity(new Vec2(0.0f, 0.0f));
         }
     }
-    private void setDir(int dx,int dy){
 
-        if(Math.abs(dx) >= Math.abs(dy*2)) {
-            if(dx > 0)
-                this.facing = Enums.Direction.SOUTH;
-            if(dx < 0)
-                this.facing = Enums.Direction.NORTH;
-        }
-        else if(Math.abs(dy) >= Math.abs(dx*2)) {
-            if(dy > 0)
+    private void setDir(Vec2 vel) {
+        float dx = vel.x;
+        float dy = vel.y;
+
+        if (Math.abs(dx) >= Math.abs(dy * 2)) {
+            if (dx > 0)
                 this.facing = Enums.Direction.EAST;
-            if(dy < 0)
+            if (dx < 0)
                 this.facing = Enums.Direction.WEST;
-        }
-        else {
+        } else if (Math.abs(dy) >= Math.abs(dx * 2)) {
+            if (dy > 0)
+                this.facing = Enums.Direction.SOUTH;
+            if (dy < 0)
+                this.facing = Enums.Direction.NORTH;
+        } else {
             if ((dy > 0) && (dx > 0)) {
                 this.facing = Enums.Direction.SOUTH_EAST;
             }
             if ((dy > 0) && (dx < 0)) {
-                this.facing = Enums.Direction.NORTH_EAST;
+                this.facing = Enums.Direction.SOUTH_WEST;
             }
             if ((dy < 0) && (dx > 0)) {
-                this.facing = Enums.Direction.SOUTH_WEST;
+                this.facing = Enums.Direction.NORTH_EAST;
             }
             if ((dy < 0) && (dx < 0)) {
                 this.facing = Enums.Direction.NORTH_WEST;
@@ -170,7 +168,7 @@ public class Zombie extends Actor {
 //        }
     }
 
-    public double getHealth(){
+    public double getHealth() {
         return health;
     }
 }
