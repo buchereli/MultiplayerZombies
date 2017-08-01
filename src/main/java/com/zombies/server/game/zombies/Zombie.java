@@ -65,40 +65,38 @@ public class Zombie extends Actor {
             Rectangle pBounds = player.getBounds();
             act(player);
             if (inSight(pBounds) && !inBurstSight(pBounds) || (inBurstSight(pBounds) && stamina <= 0)) {
-                int dy = pBounds.x - bounds.x;
-                if (dy > 0) {
-                    setVX(Math.min(dy, speed));
-                } else if (dy < 0) {
-                    setVX(Math.max(dy, -speed));
-                } else
-                    setVX(0);
-
-                int dx = pBounds.y - bounds.y;
-                if (dx > 0) {
-                    setVY(Math.min(dx, speed));
-                } else if (dx < 0) {
-                    setVY(Math.max(dx, -speed));
-                } else {
-                    setVY(0);
-                }
-            } else if (inBurstSight(pBounds) && stamina > 0) {
                 int dx = pBounds.x - bounds.x;
-                if (dx > 0) {
-                    System.out.println(dx * Game.PPM);
-                    setVX(Math.min(dx * Game.PPM, speed * 3));
-                } else if (dx < 0) {
-                    setVX(Math.max(dx * Game.PPM, -speed * 3));
+                if (dx > Game.PPM) {
+                    setVX(speed);
+                } else if (dx < -Game.PPM) {
+                    setVX(-speed);
                 } else
-                    setVX(0);
+                    setVX(dx);
 
                 int dy = pBounds.y - bounds.y;
-                if (dy > 0) {
-                    setVY(Math.min(dy * Game.PPM, speed * 3));
-                } else if (dy < 0) {
-                    setVY(Math.max(dy * Game.PPM, -speed * 3));
-                } else {
-                    setVY(0);
-                }
+                if (dy > Game.PPM) {
+                    setVY(speed);
+                } else if (dy < -Game.PPM) {
+                    setVY(-speed);
+                } else
+                    setVY(dy);
+            } else if (inBurstSight(pBounds) && stamina > 0) {
+                int dx = pBounds.x - bounds.x;
+                if (dx > Game.PPM) {
+                    setVX(speed * 3);
+                } else if (dx < -Game.PPM) {
+                    setVX(-speed * 3);
+                } else
+                    setVX(dx);
+
+                int dy = pBounds.y - bounds.y;
+                if (dy > Game.PPM) {
+                    setVY(speed * 3);
+                } else if (dy < -Game.PPM) {
+                    setVY(-speed * 3);
+                } else
+                    setVY(dy);
+
                 runningZomb();
             } else {
                 // Players in world but not in sight
@@ -203,5 +201,9 @@ public class Zombie extends Actor {
 
     public double getStamina() {
         return stamina;
+    }
+
+    public double getAttackPower() {
+        return attackPower;
     }
 }
