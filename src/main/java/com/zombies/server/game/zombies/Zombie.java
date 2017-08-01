@@ -85,17 +85,17 @@ public class Zombie extends Actor {
             else if (inBurstSight(pBounds)){
                 int dy = pBounds.x - bounds.x;
                 if (dy > 0) {
-                    setVX(Math.min(dy+50, speed+50));
+                    setVX(Math.min(dy, speed+50));
                 } else if (dy < 0) {
-                    setVX(Math.max(dy-50, -speed-50));
+                    setVX(Math.max(dy, -speed-50));
                 } else
                     setVX(0);
 
                 int dx = pBounds.y - bounds.y;
                 if (dx > 0) {
-                    setVY(Math.min(dx+50, speed+50));
+                    setVY(Math.min(dx, speed+50));
                 } else if (dx < 0) {
-                    setVY(Math.max(dx-50, -speed-50));
+                    setVY(Math.max(dx, -speed-50));
                 } else {
                     setVY(0);
                 }
