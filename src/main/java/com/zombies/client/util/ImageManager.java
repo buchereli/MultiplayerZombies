@@ -18,7 +18,7 @@ public class ImageManager {
 
     static {
         try {
-            images.put("player", new ImageRotations(ImageIO.read(Client.class.getResourceAsStream("/player.png")), true));
+            images.put("player", new ImageRotations(ImageIO.read(Client.class.getResourceAsStream("/player_rightarm.png")), true));
             images.put("zombie", new ImageRotations(ImageIO.read(Client.class.getResourceAsStream("/zombie.png")), true));
         } catch (IOException e) {
             e.printStackTrace();

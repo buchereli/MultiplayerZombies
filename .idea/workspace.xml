@@ -2,7 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5ac6681-43d5-4734-87f8-03011b01d9ba" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zombies/client/screens/Client.java" afterPath="$PROJECT_DIR$/src/main/java/com/zombies/client/screens/Client.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/player_leftarm.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/player_noarm.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/player.png" afterPath="$PROJECT_DIR$/src/main/resources/player_rightarm.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/communicator/Communicator.class" afterPath="$PROJECT_DIR$/target/classes/com/zombies/client/communicator/Communicator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/game/player/Player.class" afterPath="$PROJECT_DIR$/target/classes/com/zombies/client/game/player/Player.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/game/zombies/Zombie.class" afterPath="$PROJECT_DIR$/target/classes/com/zombies/client/game/zombies/Zombie.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/screens/Client.class" afterPath="$PROJECT_DIR$/target/classes/com/zombies/client/screens/Client.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/communicator/Communicator.class" afterPath="$PROJECT_DIR$/target/classes/com/zombies/server/communicator/Communicator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/Game.class" afterPath="$PROJECT_DIR$/target/classes/com/zombies/server/game/Game.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/players/ClientPlayer.class" afterPath="$PROJECT_DIR$/target/classes/com/zombies/server/game/players/ClientPlayer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/players/Player.class" afterPath="$PROJECT_DIR$/target/classes/com/zombies/server/game/players/Player.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/util/Actor.class" afterPath="$PROJECT_DIR$/target/classes/com/zombies/server/game/util/Actor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/zombies/ClientZombie.class" afterPath="$PROJECT_DIR$/target/classes/com/zombies/server/game/zombies/ClientZombie.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/zombies/Zombie.class" afterPath="$PROJECT_DIR$/target/classes/com/zombies/server/game/zombies/Zombie.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/heroku-tomcat-websocket.jar" afterPath="$PROJECT_DIR$/target/heroku-tomcat-websocket.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/com/zombies/heroku-tomcat-websocket/1.0/heroku-tomcat-websocket-1.0.jar" afterPath="$PROJECT_DIR$/target/repo/com/zombies/heroku-tomcat-websocket/1.0/heroku-tomcat-websocket-1.0.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zombies/client/util/ImageManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/zombies/client/util/ImageManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/com/google/code/gson/gson/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/com/google/code/gson/gson/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/com/zombies/heroku-tomcat-websocket/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/com/zombies/heroku-tomcat-websocket/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-core/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-core/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-el/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-el/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-jasper/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-jasper/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-logging-juli/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-logging-juli/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-websocket/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-websocket/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-api/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-api/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-el-api/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-el-api/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-jasper-el/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-jasper-el/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-jasper/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-jasper/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-jsp-api/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-jsp-api/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-juli/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-juli/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-servlet-api/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-servlet-api/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-util-scan/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-util-scan/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-util/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-util/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/eclipse/jdt/core/compiler/ecj/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/eclipse/jdt/core/compiler/ecj/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/jbox2d/jbox2d-library/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/jbox2d/jbox2d-library/maven-metadata-appassembler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/repo/org/json/json/maven-metadata-appassembler.xml" afterPath="$PROJECT_DIR$/target/repo/org/json/json/maven-metadata-appassembler.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -19,8 +55,8 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/players/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="575">
+              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -29,37 +65,30 @@
       <file leaf-file-name="ImageManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/client/util/ImageManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1221">
+            <state relative-caret-position="-199">
               <caret line="46" column="28" lean-forward="false" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#840#841#0" expanded="true" />
-                <element signature="e#886#887#0" expanded="true" />
-                <element signature="e#2099#2100#0" expanded="true" />
-                <element signature="e#2135#2136#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/client/screens/Client.java">
+      <file leaf-file-name="ClientPlayer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/players/ClientPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="29" column="45" lean-forward="false" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1501259954477" expanded="true" signature="5208:5370" ph="{...}" />
-              </folding>
+            <state relative-caret-position="175">
+              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RepaintManager.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/javax/swing/RepaintManager.java">
+      <file leaf-file-name="Actor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/util/Actor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15906">
-              <caret line="1578" column="0" lean-forward="false" selection-start-line="1578" selection-start-column="0" selection-end-line="1578" selection-end-column="0" />
+            <state relative-caret-position="185">
+              <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -68,38 +97,18 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/client/game/player/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
-              <caret line="25" column="31" lean-forward="false" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
-              <folding>
-                <marker date="1501261186328" expanded="true" signature="1481:1488" ph="{...}" />
-                <marker date="1501261186328" expanded="false" signature="1517:1528" ph=" { " />
-                <marker date="1501261186328" expanded="false" signature="1540:1546" ph=" }" />
-                <marker date="1501261186328" expanded="false" signature="1580:1591" ph=" { " />
-                <marker date="1501261186328" expanded="false" signature="1605:1611" ph=" }" />
-                <marker date="1501261186328" expanded="false" signature="1642:1653" ph=" { " />
-                <marker date="1501261186328" expanded="false" signature="1667:1673" ph=" }" />
-                <marker date="1501261186328" expanded="true" signature="1705:1716" ph=" { " />
-                <marker date="1501261186328" expanded="true" signature="1731:1737" ph=" }" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Zombie.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/client/game/zombies/Zombie.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="17" column="92" lean-forward="false" selection-start-line="17" selection-start-column="92" selection-end-line="17" selection-end-column="92" />
+            <state relative-caret-position="375">
+              <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientMain.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ClientMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/client/ClientMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="845">
-              <caret line="34" column="30" lean-forward="true" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+            <state relative-caret-position="750">
+              <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -108,30 +117,34 @@
       <file leaf-file-name="Zombie.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/zombies/Zombie.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2607">
-              <caret line="87" column="82" lean-forward="false" selection-start-line="87" selection-start-column="82" selection-end-line="87" selection-end-column="82" />
+            <state relative-caret-position="1000">
+              <caret line="82" column="20" lean-forward="false" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/Game.java">
+      <file leaf-file-name="Animation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/util/Animation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3399">
-              <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+            <state relative-caret-position="50">
+              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Enums.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/client/util/Enums.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
-            </state>
+      <file leaf-file-name="player_rightarm.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/player_rightarm.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="player_noarm.png" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/player_noarm.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -220,12 +233,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/zombies/server/game/util/Emuns.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zombies/server/game/util/Enums.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zombies/client/util/Enums.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/zombies/client/util/ImageManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zombies/client/game/zombies/Zombie.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zombies/server/game/zombies/Zombie.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zombies/server/game/players/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zombies/client/game/player/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zombies/client/screens/Client.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zombies/client/util/ImageManager.java" />
       </list>
     </option>
   </component>
@@ -271,10 +284,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-13" />
-    <option name="y" value="-13" />
-    <option name="width" value="3026" />
-    <option name="height" value="1946" />
+    <option name="x" value="-11" />
+    <option name="y" value="-11" />
+    <option name="width" value="2272" />
+    <option name="height" value="1462" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -294,7 +307,6 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -813,6 +825,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -835,14 +848,6 @@
       <recent name="com.zombies.client.util" />
       <recent name="com.zombies.server.game.util" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\buche\IdeaProjects\MultiplayerZombies\src\main" />
-      <recent name="C:\Users\buche\IdeaProjects\MultiplayerZombies\src\main\java" />
-      <recent name="C:\Users\buche\IdeaProjects\MultiplayerZombies\src" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.zombies.client.util" />
       <recent name="com.zombies.client.zombies" />
@@ -851,6 +856,14 @@
       <recent name="C:\Users\buche\IdeaProjects\MultiplayerZombies\src\main\resources" />
       <recent name="C:\Users\buche\IdeaProjects\MultiplayerZombies\res" />
       <recent name="C:\Users\buche\IdeaProjects\MultiplayerZombies\.idea" />
+      <recent name="C:\Users\buche\IdeaProjects\MultiplayerZombies\src" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\buche\IdeaProjects\MultiplayerZombies\src\main" />
+      <recent name="C:\Users\buche\IdeaProjects\MultiplayerZombies\src\main\java" />
       <recent name="C:\Users\buche\IdeaProjects\MultiplayerZombies\src" />
     </key>
   </component>
@@ -868,10 +881,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/zombies/client/game/hud/HUD.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/zombies/client/game/player/Player.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/zombies/client/game/zombies/Zombie.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/zombies/client/screens/Client.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/zombies/server/game/util/Actor.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/zombies/server/game/zombies/Zombie.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
@@ -880,7 +890,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/zombies/server/game/util/Animation.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -1457,6 +1466,7 @@
       <workItem from="1500941879878" duration="5037000" />
       <workItem from="1501000881832" duration="16506000" />
       <workItem from="1501259518444" duration="1072000" />
+      <workItem from="1501605412379" duration="1303000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1500232470493</created>
@@ -1809,28 +1819,27 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86094000" />
+    <option name="totallyTimeSpent" value="87397000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-13" y="-13" width="3026" height="1946" extended-state="6" />
+    <frame x="-11" y="-11" width="2272" height="1462" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918888" sideWeight="0.49725273" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918888" sideWeight="0.5041209" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978094" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32918888" sideWeight="0.4958791" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3291039" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918888" sideWeight="0.4958791" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978094" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29361263" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29816514" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1842,6 +1851,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918888" sideWeight="0.49725273" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978094" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1891,41 +1901,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="uml://JAVA/com.zombies.server.game.zombies.Zombie">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>com.zombies.server.game.zombies.Zombie</OriginalElement>
-          <nodes>
-            <node x="" y="">com.zombies.server.game.zombies.Zombie</node>
-            <node x="" y="">com.zombies.server.game.util.Character</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="99.0" y="81.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
@@ -2033,7 +2008,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="712">
           <caret line="45" column="13" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2067,20 +2041,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/players/ClientPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/util/Actor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/util/ActorInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -2093,77 +2053,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="7" column="55" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/client/util/Enums.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
+        <state relative-caret-position="200">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/client/util/ImageManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1221">
-          <caret line="46" column="28" lean-forward="false" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#840#841#0" expanded="true" />
-            <element signature="e#886#887#0" expanded="true" />
-            <element signature="e#2099#2100#0" expanded="true" />
-            <element signature="e#2135#2136#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/players/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/zombies/Zombie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2607">
-          <caret line="87" column="82" lean-forward="false" selection-start-line="87" selection-start-column="82" selection-end-line="87" selection-end-column="82" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3399">
-          <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+        <state relative-caret-position="3100">
+          <caret line="125" column="0" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/client/game/player/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="25" column="31" lean-forward="false" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
-          <folding>
-            <marker date="1501261186328" expanded="true" signature="1481:1488" ph="{...}" />
-            <marker date="1501261186328" expanded="false" signature="1517:1528" ph=" { " />
-            <marker date="1501261186328" expanded="false" signature="1540:1546" ph=" }" />
-            <marker date="1501261186328" expanded="false" signature="1580:1591" ph=" { " />
-            <marker date="1501261186328" expanded="false" signature="1605:1611" ph=" }" />
-            <marker date="1501261186328" expanded="false" signature="1642:1653" ph=" { " />
-            <marker date="1501261186328" expanded="false" signature="1667:1673" ph=" }" />
-            <marker date="1501261186328" expanded="true" signature="1705:1716" ph=" { " />
-            <marker date="1501261186328" expanded="true" signature="1731:1737" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/javax/swing/RepaintManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15906">
+        <state relative-caret-position="37550">
           <caret line="1578" column="0" lean-forward="false" selection-start-line="1578" selection-start-column="0" selection-end-line="1578" selection-end-column="0" />
           <folding />
         </state>
@@ -2171,29 +2082,102 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/client/game/zombies/Zombie.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
+        <state relative-caret-position="325">
           <caret line="17" column="92" lean-forward="false" selection-start-line="17" selection-start-column="92" selection-end-line="17" selection-end-column="92" />
-          <folding />
+          <folding>
+            <marker date="1501266081988" expanded="true" signature="598:1063" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/client/screens/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
+        <state relative-caret-position="325">
           <caret line="29" column="45" lean-forward="false" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1501259954477" expanded="true" signature="5208:5370" ph="{...}" />
+            <marker date="1501266082033" expanded="true" signature="5484:5490" ph="{...}" />
+            <marker date="1501266082033" expanded="true" signature="5550:5558" ph="{...}" />
+            <marker date="1501266082033" expanded="true" signature="5617:5625" ph="{...}" />
+            <marker date="1501266082033" expanded="true" signature="5683:5691" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/client/ClientMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="845">
-          <caret line="34" column="30" lean-forward="true" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+        <state relative-caret-position="750">
+          <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/zombies/Zombie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1000">
+          <caret line="82" column="20" lean-forward="false" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/util/Animation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/util/Actor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/players/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/server/game/players/ClientPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/client/game/player/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zombies/client/util/ImageManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-199">
+          <caret line="46" column="28" lean-forward="false" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/player_rightarm.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/player_noarm.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
   </component>
