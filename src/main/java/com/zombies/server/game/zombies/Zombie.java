@@ -64,7 +64,7 @@ public class Zombie extends Actor {
         if (player != null) {
             Rectangle pBounds = player.getBounds();
             act(player);
-            if (inSight(pBounds)&&!inBurstSight(pBounds)) {
+            if (inSight(pBounds)&&!inBurstSight(pBounds)||(inBurstSight(pBounds)&&stamina<=0)) {
                 int dy = pBounds.x - bounds.x;
                 if (dy > 0) {
                     setVX(Math.min(dy, speed));
@@ -82,7 +82,7 @@ public class Zombie extends Actor {
                     setVY(0);
                 }
             }
-            else if (inBurstSight(pBounds)){
+            else if (inBurstSight(pBounds)&&stamina>0){
                 int dy = pBounds.x - bounds.x;
                 if (dy > 0) {
                     setVX(Math.min(dy+50, speed+50));

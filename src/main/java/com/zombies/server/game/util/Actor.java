@@ -69,7 +69,7 @@ public class Actor {
 
     }
     public void runningZomb(){
-        stamina-=2;
+        stamina-=1;
     }
     public void resting(){
         stamina+=.2;
