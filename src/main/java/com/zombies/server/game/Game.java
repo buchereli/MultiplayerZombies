@@ -51,12 +51,12 @@ public class Game {
         int time = 30;
         Timer timer = new Timer(time, ae -> {
             // Remove dead actors
-            for(Player player : players)
-                if(!player.isAlive())
+            for (Player player : players)
+                if (!player.isAlive())
                     player.destroy(world);
             players.removeIf(player -> !player.isAlive());
-            for(Zombie zombie : zombies)
-                if(!zombie.isAlive())
+            for (Zombie zombie : zombies)
+                if (!zombie.isAlive())
                     zombie.destroy(world);
             zombies.removeIf(zombie -> !zombie.isAlive());
 

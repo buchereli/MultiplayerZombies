@@ -54,7 +54,7 @@ public class Actor {
         body.setLinearVelocity(new Vec2(body.getLinearVelocity().x, vy / Game.PPM));
     }
 
-    public Vec2 getVel(){
+    public Vec2 getVel() {
         return body.getLinearVelocity();
     }
 
@@ -64,25 +64,28 @@ public class Actor {
             alive = false;
     }
 
-    public void running(){
-        stamina-=2;
+    public void running() {
+        stamina -= 2;
 
     }
-    public void runningZomb(){
-        stamina-=1;
+
+    public void runningZomb() {
+        stamina -= 1;
     }
-    public void resting(){
-        stamina+=.2;
+
+    public void resting() {
+        stamina += .2;
     }
-    public void restingZomb(){
-        stamina+=.5;
+
+    public void restingZomb() {
+        stamina += .5;
     }
 
     public boolean isAlive() {
         return alive;
     }
 
-    public void destroy(World world){
+    public void destroy(World world) {
         world.destroyBody(body);
     }
 }

@@ -14,7 +14,7 @@ public class ClientMain {
         //Window to hold our main screen
         JFrame jframe = new JFrame();
         jframe.setTitle("Zombie Game");
-        jframe.setSize(500,500);
+        jframe.setSize(500, 500);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Card layout to switch through screens

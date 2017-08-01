@@ -41,7 +41,7 @@ public class CollisionCallbackHandler implements ContactListener {
         ActorInfo actorInfoB = (ActorInfo) fixtureB.getUserData();
 
         //Are they both things with info about them?
-        if(actorInfoA != null && actorInfoB != null) {
+        if (actorInfoA != null && actorInfoB != null) {
             //Get their id's
             String idA = actorInfoA.getID();
             String idB = actorInfoB.getID();

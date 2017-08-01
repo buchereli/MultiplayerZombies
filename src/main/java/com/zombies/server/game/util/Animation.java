@@ -16,11 +16,12 @@ public class Animation {
 
     public void update(int dt) {
         timePast += dt;
-        if(timePast > timeBetweenFrame) {
+        if (timePast > timeBetweenFrame) {
             frame = (frame + 1) % imageString.length;
             timePast -= timeBetweenFrame;
         }
     }
+
     public String get() {
         return imageString[frame];
     }

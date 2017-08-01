@@ -1,7 +1,10 @@
 package com.zombies.server.game.players;
 
 import com.zombies.server.game.Game;
-import com.zombies.server.game.util.*;
+import com.zombies.server.game.util.Actor;
+import com.zombies.server.game.util.ActorInfo;
+import com.zombies.server.game.util.AnimationManager;
+import com.zombies.server.game.util.Enums;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 
@@ -13,9 +16,9 @@ import java.util.Arrays;
  * Created by Faylo on 7/11/2017.
  */
 public class Player extends Actor {
+    public float maxSpeed, turboSpeed;
     private Rectangle bounds;
     private double vx, vy, accel, radian, hitTimer;
-    public float maxSpeed, turboSpeed;
     private ArrayList<String> dirs;
     private String user;
     private Enums.Direction facing;
@@ -98,14 +101,14 @@ public class Player extends Actor {
                 this.facing = Enums.Direction.SOUTH_WEST;
             }
 
-            if (vx > maxSpeed&&!dirs.contains("TURBO SPEED"))
+            if (vx > maxSpeed && !dirs.contains("TURBO SPEED"))
                 vx = maxSpeed;
-            else if (vx < -maxSpeed&&!dirs.contains("TURBO SPEED"))
+            else if (vx < -maxSpeed && !dirs.contains("TURBO SPEED"))
                 vx = -maxSpeed;
 
-            if (vy > maxSpeed&&!dirs.contains("TURBO SPEED"))
+            if (vy > maxSpeed && !dirs.contains("TURBO SPEED"))
                 vy = maxSpeed;
-            else if (vy < -maxSpeed&&!dirs.contains("TURBO SPEED"))
+            else if (vy < -maxSpeed && !dirs.contains("TURBO SPEED"))
                 vy = -maxSpeed;
 
             setVY((float) vy);

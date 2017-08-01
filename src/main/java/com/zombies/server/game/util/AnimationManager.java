@@ -2,8 +2,6 @@ package com.zombies.server.game.util;
 
 import com.zombies.server.game.players.Player;
 
-import java.util.ArrayList;
-
 public class AnimationManager {
 
     private Animation walking = new Animation(200, 0, 0, new String[]{"player_rightarm", "player_noarm", "player_leftarm", "player_noarm"});
@@ -11,8 +9,12 @@ public class AnimationManager {
     private Animation standing = new Animation(0, 0, 0, new String[]{"player_noarm"});
     private Animation currentAnimation = standing;
 
+    public Animation getAnimation() {
+        return currentAnimation;
+    }
+
     public void setAnimation(Player p) {
-        if(currentAnimation.getFrame() == 0) {
+        if (currentAnimation.getFrame() == 0) {
             if (Math.abs(p.getVx()) < 1 && Math.abs(p.getVy()) < 1) {
                 currentAnimation = standing;
             } else if (p.isRunning()) {
@@ -21,10 +23,6 @@ public class AnimationManager {
                 currentAnimation = walking;
             }
         }
-    }
-
-    public Animation getAnimation() {
-        return currentAnimation;
     }
 
     public String getImage() {

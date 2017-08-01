@@ -9,9 +9,9 @@ import java.awt.*;
  */
 public class ClientPlayer {
 
+    public double health, stamina;
     private Rectangle bounds;
     private String user;
-    public double health, stamina;
     private Enums.Direction facing;
     private boolean hit;
     private String image;

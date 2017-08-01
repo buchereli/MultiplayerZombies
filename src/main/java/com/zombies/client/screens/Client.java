@@ -31,11 +31,14 @@ public class Client extends JPanel implements MouseListener, KeyListener {
     public static ArrayList<Zombie> zombies;
     public static ArrayList<Player> players;
     public static String user;
+    //FPS variables
+    long nextSecond = System.currentTimeMillis() + 1000;
+    int framesInCurrentSecond = 0;
+    int framesInLastSecond = 0;
     private Graphics bufferGraphics;
     private Image offscreen;
     private ArrayList<String> dirs;
     private BufferedImage map;
-
     /*
      * Now takes in the main window that
      * holds the main panel.
@@ -62,11 +65,6 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         window.addMouseListener(this);
         window.addKeyListener(this);
     }
-
-    //FPS variables
-    long nextSecond = System.currentTimeMillis() + 1000;
-    int framesInCurrentSecond = 0;
-    int framesInLastSecond = 0;
 
     public void paint(Graphics g) {
         bufferGraphics.clearRect(0, 0, offscreen.getWidth(this), offscreen.getHeight(this));

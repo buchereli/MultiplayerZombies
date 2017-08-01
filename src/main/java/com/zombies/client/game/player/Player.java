@@ -8,13 +8,13 @@ import com.zombies.client.util.ImageManager;
 import java.awt.*;
 
 public class Player {
+    private final Bar bar = new Bar((Color.red), (Color.green), new Rectangle(16, 10));
     private Rectangle bounds;
     private String user;
     private double health, stamina;
     private Enums.Direction facing;
     private boolean hit;
     private String image;
-    private final Bar bar = new Bar((Color.red), (Color.green), new Rectangle(16, 10));
 
     public void draw(Graphics g, Point shift) {
         if (Client.user.equals(user)) {
