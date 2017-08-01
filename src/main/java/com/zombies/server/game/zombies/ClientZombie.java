@@ -11,11 +11,12 @@ public class ClientZombie {
 
     private Rectangle bounds;
     private Enums.Direction facing;
-    private double health;
+    private double health, stamina;
 
-    ClientZombie(Rectangle bounds, Enums.Direction facing, double health) {
+    ClientZombie(Rectangle bounds, Enums.Direction facing, double health, double stamina) {
         this.bounds = bounds;
         this.facing = facing;
         this.health = health;
+        this.stamina = stamina;
     }
 }

@@ -13,7 +13,7 @@ public class Zombie {
     private Rectangle bounds;
     double health;
     private Enums.Direction facing;
-    double stamina = 25;
+    double stamina;
     public static final Bar zombieBar = new Bar(Color.red, Color.green, new Rectangle(40, 10));
     public static final Bar burstBar = new Bar(Color.GRAY, Color.BLUE, new Rectangle(10, 10));
 

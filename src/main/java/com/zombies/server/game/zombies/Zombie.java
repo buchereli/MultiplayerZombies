@@ -18,15 +18,16 @@ public class Zombie extends Actor {
     private Rectangle bounds;
     private float speed;
     private double attackPower;
-    private float sight;
+    private float sight, burstSight;
     private Enums.Direction facing;
 
-    private Zombie(World world, Rectangle bounds, float speed, double attackPower, int sight) {
-        super(world, bounds, new ActorInfo("Zombie"), 100, 100);
+    private Zombie(World world, Rectangle bounds, float speed, double attackPower, int sight, int burstSight) {
+        super(world, bounds, new ActorInfo("Zombie"), 100, 25);
         this.bounds = new Rectangle(32, 32);
         this.speed = speed;
         this.attackPower = 5;
         this.sight = 250;
+        this.burstSight = 100;
         this.facing = Enums.Direction.NORTH;
     }
 
@@ -45,16 +46,16 @@ public class Zombie extends Actor {
     // Different types of zombies that do not modify methods
     public static Zombie normal(World w) {
         Point spawn = getSpawn();
-        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 32, 32), 50, 5, 250);
+        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 32, 32), 50, 5, 250, 100);
     }
 
     public static Zombie fat(World w) {
         Point spawn = getSpawn();
-        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 32, 32), 30, 25, 250);
+        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 32, 32), 30, 25, 250, 100);
     }
 
     public ClientZombie clientZombie() {
-        return new ClientZombie(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), this.facing, health);
+        return new ClientZombie(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), this.facing, health, stamina);
     }
 
     public void move(ArrayList<Player> players) {
@@ -63,7 +64,7 @@ public class Zombie extends Actor {
         if (player != null) {
             Rectangle pBounds = player.getBounds();
             act(player);
-            if (inSight(pBounds)) {
+            if (inSight(pBounds)&&!inBurstSight(pBounds)) {
                 int dy = pBounds.x - bounds.x;
                 if (dy > 0) {
                     setVX(Math.min(dy, speed));
@@ -80,12 +81,39 @@ public class Zombie extends Actor {
                 } else {
                     setVY(0);
                 }
-            } else {
+            }
+            else if (inBurstSight(pBounds)){
+                int dy = pBounds.x - bounds.x;
+                if (dy > 0) {
+                    setVX(Math.min(dy+50, speed+50));
+                } else if (dy < 0) {
+                    setVX(Math.max(dy-50, -speed-50));
+                } else
+                    setVX(0);
+
+                int dx = pBounds.y - bounds.y;
+                if (dx > 0) {
+                    setVY(Math.min(dx+50, speed+50));
+                } else if (dx < 0) {
+                    setVY(Math.max(dx-50, -speed-50));
+                } else {
+                    setVY(0);
+                }
+                runningZomb();
+            }
+
+
+
+
+            else {
                 // Players in world but not in sight
                 if (Math.random() < .015) {
                     setVX((float) Math.random() * speed - (speed / 2));
                     setVY((float) Math.random() * speed - (speed / 2));
+
                 }
+                if(stamina<25)
+                restingZomb();
             }
 
             setDir(getVel());
@@ -152,11 +180,17 @@ public class Zombie extends Actor {
         double distance = getDistance(pBounds);
         return distance < sight;
     }
+    private boolean inBurstSight(Rectangle pBounds){
+        double distance = getDistance(pBounds);
+        return distance< burstSight;
+    }
 
     // Get the distance from the zombie to player bounds
     private double getDistance(Rectangle pBounds) {
         return Math.sqrt(Math.pow((bounds.x - pBounds.x), 2) + Math.pow((bounds.y - pBounds.y), 2));
     }
+
+
 
     public boolean contains(Rectangle rect) {
         return bounds.intersects(rect);
@@ -171,4 +205,5 @@ public class Zombie extends Actor {
     public double getHealth() {
         return health;
     }
+    public double getStamina(){return stamina;}
 }
