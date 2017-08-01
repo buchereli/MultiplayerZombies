@@ -14,13 +14,15 @@ public class ClientPlayer {
     public double health, stamina;
     private Enums.Direction facing;
     private boolean hit;
+    private String image;
 
-    ClientPlayer(Rectangle bounds, String user, double health, double stamina, Enums.Direction facing, boolean hit) {
+    ClientPlayer(Rectangle bounds, String user, double health, double stamina, Enums.Direction facing, boolean hit, String image) {
         this.bounds = bounds;
         this.user = user;
         this.health = health;
         this.stamina = stamina;
         this.facing = facing;
         this.hit = hit;
+        this.image = image;
     }
 }

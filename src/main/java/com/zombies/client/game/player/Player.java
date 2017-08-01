@@ -13,6 +13,7 @@ public class Player {
     private double health, stamina;
     private Enums.Direction facing;
     private boolean hit;
+    private String image;
     private final Bar bar = new Bar((Color.red), (Color.green), new Rectangle(16, 10));
 
     public void draw(Graphics g, Point shift) {
@@ -27,7 +28,7 @@ public class Player {
         g.drawRect((bounds.x) + shift.x, (bounds.y) + shift.y, bounds.width, bounds.height);
         g.setColor(Color.RED);
 
-        g.drawImage(ImageManager.get("player", facing), bounds.x + shift.x, bounds.y + shift.y, null);
+        g.drawImage(ImageManager.get(image, facing), bounds.x + shift.x, bounds.y + shift.y, null);
 
         g.setFont(new Font("default", Font.BOLD, 12));
         FontMetrics fontMetrics = g.getFontMetrics();

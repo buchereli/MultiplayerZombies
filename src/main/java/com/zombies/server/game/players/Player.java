@@ -1,9 +1,7 @@
 package com.zombies.server.game.players;
 
 import com.zombies.server.game.Game;
-import com.zombies.server.game.util.Actor;
-import com.zombies.server.game.util.ActorInfo;
-import com.zombies.server.game.util.Enums;
+import com.zombies.server.game.util.*;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 
@@ -21,6 +19,7 @@ public class Player extends Actor {
     private ArrayList<String> dirs;
     private String user;
     private Enums.Direction facing;
+    private AnimationManager animations;
 
     public Player(World world, String user) {
         super(world, new Rectangle(500, 500, 32, 32), new ActorInfo("Player"), 100, 100);
@@ -33,10 +32,11 @@ public class Player extends Actor {
         this.dirs = new ArrayList<>();
         this.user = user;
         this.facing = Enums.Direction.NORTH;
+        this.animations = new AnimationManager();
     }
 
     public ClientPlayer clientPlayer() {
-        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health, stamina, this.facing, hitTimer > 0);
+        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health, stamina, this.facing, hitTimer > 0, animations.getImage());
     }
 
     public void update(int dt) {
@@ -45,6 +45,9 @@ public class Player extends Actor {
         }
 
         move();
+
+        animations.setAnimation(this);
+        animations.getAnimation().update(dt);
     }
 
     public void move() {
@@ -139,6 +142,14 @@ public class Player extends Actor {
 
     public Vec2 getLoc() {
         return body.getPosition();
+    }
+
+    public double getVx() {
+        return this.vx;
+    }
+
+    public double getVy() {
+        return this.vy;
     }
 
     @Override
