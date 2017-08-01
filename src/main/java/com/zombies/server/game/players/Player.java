@@ -15,7 +15,7 @@ import java.util.Arrays;
 public class Player extends Actor {
     private Rectangle bounds;
     private double vx, vy, accel, radian, hitTimer;
-    private float maxSpeed, turboSpeed;
+    public float maxSpeed, turboSpeed;
     private ArrayList<String> dirs;
     private String user;
     private Enums.Direction facing;

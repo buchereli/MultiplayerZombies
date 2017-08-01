@@ -64,7 +64,7 @@ public class Zombie extends Actor {
         if (player != null) {
             Rectangle pBounds = player.getBounds();
             act(player);
-            if (inSight(pBounds)&&!inBurstSight(pBounds)||(inBurstSight(pBounds)&&stamina<=0)) {
+            if (inSight(pBounds) && !inBurstSight(pBounds) || (inBurstSight(pBounds) && stamina <= 0)) {
                 int dy = pBounds.x - bounds.x;
                 if (dy > 0) {
                     setVX(Math.min(dy, speed));
@@ -81,39 +81,34 @@ public class Zombie extends Actor {
                 } else {
                     setVY(0);
                 }
-            }
-            else if (inBurstSight(pBounds)&&stamina>0){
-                int dy = pBounds.x - bounds.x;
-                if (dy > 0) {
-                    setVX(Math.min(dy, speed+50));
-                } else if (dy < 0) {
-                    setVX(Math.max(dy, -speed-50));
+            } else if (inBurstSight(pBounds) && stamina > 0) {
+                int dx = pBounds.x - bounds.x;
+                if (dx > 0) {
+                    System.out.println(dx * Game.PPM);
+                    setVX(Math.min(dx * Game.PPM, speed * 3));
+                } else if (dx < 0) {
+                    setVX(Math.max(dx * Game.PPM, -speed * 3));
                 } else
                     setVX(0);
 
-                int dx = pBounds.y - bounds.y;
-                if (dx > 0) {
-                    setVY(Math.min(dx, speed+50));
-                } else if (dx < 0) {
-                    setVY(Math.max(dx, -speed-50));
+                int dy = pBounds.y - bounds.y;
+                if (dy > 0) {
+                    setVY(Math.min(dy * Game.PPM, speed * 3));
+                } else if (dy < 0) {
+                    setVY(Math.max(dy * Game.PPM, -speed * 3));
                 } else {
                     setVY(0);
                 }
                 runningZomb();
-            }
-
-
-
-
-            else {
+            } else {
                 // Players in world but not in sight
                 if (Math.random() < .015) {
                     setVX((float) Math.random() * speed - (speed / 2));
                     setVY((float) Math.random() * speed - (speed / 2));
 
                 }
-                if(stamina<25)
-                restingZomb();
+                if (stamina < 25)
+                    restingZomb();
             }
 
             setDir(getVel());
@@ -180,16 +175,16 @@ public class Zombie extends Actor {
         double distance = getDistance(pBounds);
         return distance < sight;
     }
-    private boolean inBurstSight(Rectangle pBounds){
+
+    private boolean inBurstSight(Rectangle pBounds) {
         double distance = getDistance(pBounds);
-        return distance< burstSight;
+        return distance < burstSight;
     }
 
     // Get the distance from the zombie to player bounds
     private double getDistance(Rectangle pBounds) {
         return Math.sqrt(Math.pow((bounds.x - pBounds.x), 2) + Math.pow((bounds.y - pBounds.y), 2));
     }
-
 
 
     public boolean contains(Rectangle rect) {
@@ -205,5 +200,8 @@ public class Zombie extends Actor {
     public double getHealth() {
         return health;
     }
-    public double getStamina(){return stamina;}
+
+    public double getStamina() {
+        return stamina;
+    }
 }
