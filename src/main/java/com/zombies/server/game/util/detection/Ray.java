@@ -1,5 +1,6 @@
-package com.zombies.server.game.util;
+package com.zombies.server.game.util.detection;
 
+import com.zombies.server.game.util.actor.ActorInfo;
 import org.jbox2d.callbacks.RayCastCallback;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Fixture;

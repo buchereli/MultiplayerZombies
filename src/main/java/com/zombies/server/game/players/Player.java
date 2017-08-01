@@ -1,10 +1,10 @@
 package com.zombies.server.game.players;
 
 import com.zombies.server.game.Game;
-import com.zombies.server.game.util.Actor;
-import com.zombies.server.game.util.ActorInfo;
 import com.zombies.server.game.util.AnimationManager;
 import com.zombies.server.game.util.Enums;
+import com.zombies.server.game.util.actor.ActorInfo;
+import com.zombies.server.game.util.actor.DynamicActor;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 
@@ -15,10 +15,10 @@ import java.util.Arrays;
 /**
  * Created by Faylo on 7/11/2017.
  */
-public class Player extends Actor {
-    public float maxSpeed, turboSpeed;
+public class Player extends DynamicActor {
     private Rectangle bounds;
-    private double vx, vy, accel, radian, hitTimer;
+    private double radian;
+    private float acceleration, maxSpeed, hitTimer;
     private ArrayList<String> dirs;
     private String user;
     private Enums.Direction facing;
@@ -27,11 +27,8 @@ public class Player extends Actor {
     public Player(World world, String user) {
         super(world, new Rectangle(500, 500, 32, 32), new ActorInfo("Player"), 100, 100);
         this.bounds = new Rectangle(32, 32);
-        this.vx = 0;
-        this.vy = 0;
-        this.maxSpeed = 100;
-        this.turboSpeed = 50;
-        this.accel = 100;
+        this.maxSpeed = 200;
+        this.acceleration = 100;
         this.dirs = new ArrayList<>();
         this.user = user;
         this.facing = Enums.Direction.NORTH;
@@ -48,87 +45,55 @@ public class Player extends Actor {
         }
 
         move();
+        setFacing();
 
         animations.setAnimation(this);
         animations.getAnimation().update(dt);
     }
 
-    public void move() {
+    private void move() {
+        // Only move if alive
         if (alive) {
-            if (!dirs.contains("TURBO SPEED")) {
-                if (dirs.contains("up") && !dirs.contains("TURBO SPEED")) {
-                    vy -= accel;
-                    this.facing = Enums.Direction.NORTH;
-                }
-                if (dirs.contains("down") && !dirs.contains("TURBO SPEED")) {
-                    vy += accel;
-                    this.facing = Enums.Direction.SOUTH;
-                }
-                if (dirs.contains("right") && !dirs.contains("TURBO SPEED")) {
-                    vx += accel;
-                    this.facing = Enums.Direction.EAST;
-                }
-                if (dirs.contains("left") && !dirs.contains("TURBO SPEED")) {
-                    vx -= accel;
-                    this.facing = Enums.Direction.WEST;
-                }
-            }
-            if (dirs.contains("TURBO SPEED")) {
-                if (dirs.contains("up") && dirs.contains("TURBO SPEED")) {
-                    vy -= turboSpeed;
-                }
-                if (dirs.contains("down") && dirs.contains("TURBO SPEED")) {
-                    vy += turboSpeed;
-                }
-                if (dirs.contains("right") && dirs.contains("TURBO SPEED")) {
-                    vx += turboSpeed;
-                }
-                if (dirs.contains("left") && dirs.contains("TURBO SPEED")) {
-                    vx -= turboSpeed;
+            // Get velocities and apply friction
+            float vx = body.getLinearVelocity().x * Game.PPM * .8f;
+            float vy = body.getLinearVelocity().y * Game.PPM * .8f;
 
-                }
-            }
-            if (dirs.contains("right") && dirs.contains("up")) {
-                this.facing = Enums.Direction.NORTH_EAST;
-            }
-            if (dirs.contains("left") && dirs.contains("up")) {
-                this.facing = Enums.Direction.NORTH_WEST;
-            }
-            if (dirs.contains("right") && dirs.contains("down")) {
-                this.facing = Enums.Direction.SOUTH_EAST;
-            }
-            if (dirs.contains("left") && dirs.contains("down")) {
-                this.facing = Enums.Direction.SOUTH_WEST;
-            }
+            // Update stamina
+            boolean running = isRunning();
+            if (running)
+                stamina -= 2;
+            else if (stamina < 100)
+                stamina += .2;
 
-            if (vx > maxSpeed && !dirs.contains("TURBO SPEED"))
-                vx = maxSpeed;
-            else if (vx < -maxSpeed && !dirs.contains("TURBO SPEED"))
-                vx = -maxSpeed;
+            // Calculate speed
+            float speed = running ? acceleration * 2 : acceleration;
+            float max = running ? maxSpeed * 2 : maxSpeed;
 
-            if (vy > maxSpeed && !dirs.contains("TURBO SPEED"))
-                vy = maxSpeed;
-            else if (vy < -maxSpeed && !dirs.contains("TURBO SPEED"))
-                vy = -maxSpeed;
+            // Update vel
+            if (dirs.contains("up"))
+                vy -= speed;
+            if (dirs.contains("down"))
+                vy += speed;
+            if (dirs.contains("right"))
+                vx += speed;
+            if (dirs.contains("left"))
+                vx -= speed;
 
-            setVY((float) vy);
-            setVX((float) vx);
+            if (vx > max)
+                vx = max;
+            else if (vx < -max)
+                vx = -max;
+            if (vy > max)
+                vy = max;
+            else if (vy < -max)
+                vy = -max;
 
-            vx *= .8;
-            vy *= .8;
+            setVelocities(vx, vy);
 
-
+            // Update bounds
             bounds.x = (int) (body.getPosition().x * Game.PPM) - bounds.width / 2;
             bounds.y = (int) (body.getPosition().y * Game.PPM) - bounds.height / 2;
         }
-        if (isRunning()) {
-            running();
-        } else if (!dirs.contains("TURBO SPEED") && stamina < 100) {
-            resting();
-        } else if (stamina <= 0) {
-            dirs.remove("TURBO SPEED");
-        }
-
     }
 
     public Rectangle getBounds() {
@@ -147,12 +112,8 @@ public class Player extends Actor {
         return body.getPosition();
     }
 
-    public double getVx() {
-        return this.vx;
-    }
-
-    public double getVy() {
-        return this.vy;
+    public Vec2 getVel() {
+        return body.getLinearVelocity();
     }
 
     public boolean isRunning() {
@@ -163,6 +124,25 @@ public class Player extends Actor {
     public void hit(double dmg) {
         super.hit(dmg);
         hitTimer = 1000;
+    }
+
+    private void setFacing() {
+        if (dirs.contains("right") && dirs.contains("up"))
+            this.facing = Enums.Direction.NORTH_EAST;
+        else if (dirs.contains("left") && dirs.contains("up"))
+            this.facing = Enums.Direction.NORTH_WEST;
+        else if (dirs.contains("right") && dirs.contains("down"))
+            this.facing = Enums.Direction.SOUTH_EAST;
+        else if (dirs.contains("left") && dirs.contains("down"))
+            this.facing = Enums.Direction.SOUTH_WEST;
+        else if (dirs.contains("up"))
+            this.facing = Enums.Direction.NORTH;
+        else if (dirs.contains("down"))
+            this.facing = Enums.Direction.SOUTH;
+        else if (dirs.contains("right"))
+            this.facing = Enums.Direction.EAST;
+        else if (dirs.contains("left"))
+            this.facing = Enums.Direction.WEST;
     }
 
     public double getRotation() {

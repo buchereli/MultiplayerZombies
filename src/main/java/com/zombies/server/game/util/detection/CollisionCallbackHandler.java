@@ -1,5 +1,8 @@
-package com.zombies.server.game.util;
+package com.zombies.server.game.util.detection;
 
+import com.zombies.server.game.players.Player;
+import com.zombies.server.game.util.actor.ActorInfo;
+import com.zombies.server.game.zombies.Zombie;
 import org.jbox2d.callbacks.ContactImpulse;
 import org.jbox2d.callbacks.ContactListener;
 import org.jbox2d.collision.Manifold;
@@ -49,10 +52,14 @@ public class CollisionCallbackHandler implements ContactListener {
             //Check for either a Player -> Zombie Collision or the other way around
             if (idA.equals("Player") && idB.equals("Zombie")) {
                 //We have a hit
-                actorInfoA.getActor().hit(PLAYER_DAMAGE);
+                Player player = (Player) actorInfoA.getActor();
+                Zombie zombie = (Zombie) actorInfoB.getActor();
+                player.hit(zombie.getAttackPower());
             } else if (idA.equals("Zombie") && idB.equals("Player")) {
                 //We have the same hit just opposite
-                actorInfoB.getActor().hit(PLAYER_DAMAGE);
+                Player player = (Player) actorInfoB.getActor();
+                Zombie zombie = (Zombie) actorInfoA.getActor();
+                player.hit(zombie.getAttackPower());
             }
         }
     }

@@ -1,4 +1,6 @@
-package com.zombies.server.game.util;
+package com.zombies.server.game.util.actor;
+
+import com.zombies.server.game.util.actor.Actor;
 
 /**
  * Created by buche on 7/24/2017.
@@ -20,7 +22,7 @@ public class ActorInfo {
         return actor;
     }
 
-    public void setActor(Actor actor) {
+    void setActor(Actor actor) {
         this.actor = actor;
     }
 

@@ -15,7 +15,7 @@ public class AnimationManager {
 
     public void setAnimation(Player p) {
         if (currentAnimation.getFrame() == 0) {
-            if (Math.abs(p.getVx()) < 1 && Math.abs(p.getVy()) < 1) {
+            if (Math.abs(p.getVel().x) < 1 && Math.abs(p.getVel().y) < 1) {
                 currentAnimation = standing;
             } else if (p.isRunning()) {
                 currentAnimation = running;

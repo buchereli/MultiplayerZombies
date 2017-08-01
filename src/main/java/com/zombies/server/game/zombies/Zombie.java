@@ -2,19 +2,16 @@ package com.zombies.server.game.zombies;
 
 import com.zombies.server.game.Game;
 import com.zombies.server.game.players.Player;
-import com.zombies.server.game.util.Actor;
-import com.zombies.server.game.util.ActorInfo;
 import com.zombies.server.game.util.Enums;
+import com.zombies.server.game.util.actor.ActorInfo;
+import com.zombies.server.game.util.actor.DynamicActor;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-/**
- * Created by Faylo on 7/11/2017.
- */
-public class Zombie extends Actor {
+public class Zombie extends DynamicActor {
     private Rectangle bounds;
     private float speed;
     private double attackPower;
@@ -23,15 +20,15 @@ public class Zombie extends Actor {
 
     private Zombie(World world, Rectangle bounds, float speed, double attackPower, int sight, int burstSight) {
         super(world, bounds, new ActorInfo("Zombie"), 100, 25);
-        this.bounds = new Rectangle(32, 32);
+        this.bounds = bounds;
         this.speed = speed;
-        this.attackPower = 5;
-        this.sight = 250;
-        this.burstSight = 100;
+        this.attackPower = attackPower;
+        this.sight = sight;
+        this.burstSight = burstSight;
         this.facing = Enums.Direction.NORTH;
     }
 
-    public static Point getSpawn() {
+    private static Point getSpawn() {
         int x, y;
         x = (int) (Math.random() * 10000) - 5000;
         y = (int) (Math.random() * 10000) - 5000;
@@ -51,7 +48,7 @@ public class Zombie extends Actor {
 
     public static Zombie fat(World w) {
         Point spawn = getSpawn();
-        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 32, 32), 30, 25, 250, 100);
+        return new Zombie(w, new Rectangle(spawn.x, spawn.y, 64, 64), 30, 25, 400, 150);
     }
 
     public ClientZombie clientZombie() {
@@ -63,7 +60,6 @@ public class Zombie extends Actor {
 
         if (player != null) {
             Rectangle pBounds = player.getBounds();
-            act(player);
             if (inSight(pBounds) && !inBurstSight(pBounds) || (inBurstSight(pBounds) && stamina <= 0)) {
                 int dx = pBounds.x - bounds.x;
                 if (dx > Game.PPM) {
@@ -97,7 +93,7 @@ public class Zombie extends Actor {
                 } else
                     setVY(dy);
 
-                runningZomb();
+                stamina--;
             } else {
                 // Players in world but not in sight
                 if (Math.random() < .015) {
@@ -105,8 +101,9 @@ public class Zombie extends Actor {
                     setVY((float) Math.random() * speed - (speed / 2));
 
                 }
+
                 if (stamina < 25)
-                    restingZomb();
+                    stamina++;
             }
 
             setDir(getVel());
@@ -182,17 +179,6 @@ public class Zombie extends Actor {
     // Get the distance from the zombie to player bounds
     private double getDistance(Rectangle pBounds) {
         return Math.sqrt(Math.pow((bounds.x - pBounds.x), 2) + Math.pow((bounds.y - pBounds.y), 2));
-    }
-
-
-    public boolean contains(Rectangle rect) {
-        return bounds.intersects(rect);
-    }
-
-    private void act(Player player) {
-//        if (contains(player.getBounds())) {
-//            player.hit(attackPower);
-//        }
     }
 
     public double getHealth() {
