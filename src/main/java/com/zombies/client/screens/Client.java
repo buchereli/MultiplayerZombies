@@ -39,12 +39,12 @@ public class Client extends JPanel implements MouseListener, KeyListener {
     private Image offscreen;
     private ArrayList<String> dirs;
     private BufferedImage map;
+
     /*
      * Now takes in the main window that
      * holds the main panel.
      */
     public Client(JFrame window) {
-
         window.setSize(1000, 1000);
         window.setFocusable(true);
 
@@ -121,54 +121,58 @@ public class Client extends JPanel implements MouseListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_W) {
-            if (!dirs.contains("up")) {
-                dirs.add("up");
+        if (user != null) {
+            if (e.getKeyCode() == KeyEvent.VK_W) {
+                if (!dirs.contains("up")) {
+                    dirs.add("up");
+                }
+            } else if (e.getKeyCode() == KeyEvent.VK_S) {
+                if (!dirs.contains("down")) {
+                    dirs.add("down");
+                }
+            } else if (e.getKeyCode() == KeyEvent.VK_D) {
+                if (!dirs.contains("right")) {
+                    dirs.add("right");
+                }
+            } else if (e.getKeyCode() == KeyEvent.VK_A) {
+                if (!dirs.contains("left")) {
+                    dirs.add("left");
+                }
+            } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                Communicator.fireShot();
             }
-        } else if (e.getKeyCode() == KeyEvent.VK_S) {
-            if (!dirs.contains("down")) {
-                dirs.add("down");
+            if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+                if (!dirs.contains("TURBO SPEED"))
+                    dirs.add("TURBO SPEED");
             }
-        } else if (e.getKeyCode() == KeyEvent.VK_D) {
-            if (!dirs.contains("right")) {
-                dirs.add("right");
-            }
-        } else if (e.getKeyCode() == KeyEvent.VK_A) {
-            if (!dirs.contains("left")) {
-                dirs.add("left");
-            }
-        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            Communicator.fireShot();
-        }
-        if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-            if (!dirs.contains("TURBO SPEED"))
-                dirs.add("TURBO SPEED");
-        }
 
-        String[] dirsArray = new String[dirs.size()];
-        dirsArray = dirs.toArray(dirsArray);
-        Communicator.setDirection(dirsArray);
+            String[] dirsArray = new String[dirs.size()];
+            dirsArray = dirs.toArray(dirsArray);
+            Communicator.setDirection(dirsArray);
+        }
     }
 
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_W) {
-            dirs.remove("up");
-        } else if (e.getKeyCode() == VK_S) {
-            dirs.remove("down");
-        } else if (e.getKeyCode() == KeyEvent.VK_D) {
-            dirs.remove("right");
-        } else if (e.getKeyCode() == KeyEvent.VK_A) {
-            dirs.remove("left");
-        } else if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
-            dirs.remove("TURBO SPEED");
+        if (user != null) {
+            if (e.getKeyCode() == KeyEvent.VK_W) {
+                dirs.remove("up");
+            } else if (e.getKeyCode() == VK_S) {
+                dirs.remove("down");
+            } else if (e.getKeyCode() == KeyEvent.VK_D) {
+                dirs.remove("right");
+            } else if (e.getKeyCode() == KeyEvent.VK_A) {
+                dirs.remove("left");
+            } else if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+                dirs.remove("TURBO SPEED");
 
+            }
+
+            String[] dirsArray = new String[dirs.size()];
+            dirsArray = dirs.toArray(dirsArray);
+            Communicator.setDirection(dirsArray);
         }
-
-        String[] dirsArray = new String[dirs.size()];
-        dirsArray = dirs.toArray(dirsArray);
-        Communicator.setDirection(dirsArray);
     }
 
     @Override
