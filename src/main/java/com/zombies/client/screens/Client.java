@@ -2,6 +2,7 @@ package com.zombies.client.screens;
 
 import com.zombies.client.communicator.Communicator;
 import com.zombies.client.game.hud.HUD;
+import com.zombies.client.game.map.Map;
 import com.zombies.client.game.player.Player;
 import com.zombies.client.game.zombies.Zombie;
 
@@ -64,14 +65,20 @@ public class Client extends JPanel implements MouseListener, KeyListener {
 
         window.addMouseListener(this);
         window.addKeyListener(this);
+        new Map();
     }
 
     public void paint(Graphics g) {
         bufferGraphics.clearRect(0, 0, offscreen.getWidth(this), offscreen.getHeight(this));
 
+        Rectangle bounds = new Rectangle();
+        if (getPlayer() != null)
+            bounds = getPlayer().getBounds();
         Point shift = getShift();
 
-        bufferGraphics.drawImage(map, shift.x, shift.y, this);
+//        bufferGraphics.drawImage(map, shift.x, shift.y, this);
+
+        Map.draw(bufferGraphics, new Point(bounds.x, bounds.y), shift);
 
         for (Zombie zombie : zombies)
             zombie.draw(bufferGraphics, shift);

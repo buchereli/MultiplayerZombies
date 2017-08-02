@@ -46,5 +46,6 @@
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:8.0.28" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.websocket:javax.websocket-api:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.jbox2d:jbox2d-library:2.2.1.1" level="project" />
+    <orderEntry type="library" name="com.opencsv:opencsv:3.10" level="project" />
   </component>
 </module>

@@ -22,6 +22,7 @@ public class ImageManager {
             images.put("player_leftarm", new ImageRotations(ImageIO.read(Client.class.getResourceAsStream("/player_leftarm.png")), true));
             images.put("player_noarm", new ImageRotations(ImageIO.read(Client.class.getResourceAsStream("/player_noarm.png")), true));
             images.put("zombie", new ImageRotations(ImageIO.read(Client.class.getResourceAsStream("/zombie.png")), true));
+            images.put("tile_0", new ImageRotations(ImageIO.read(Client.class.getResourceAsStream("/tile_0.png")), false));
         } catch (IOException e) {
             e.printStackTrace();
         }
