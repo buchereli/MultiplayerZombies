@@ -24,6 +24,7 @@ import java.util.ArrayList;
  */
 public class Game {
     public static final float PPM = 20.0f;
+    public static final int MAP_SIZE = 5120;
     private ArrayList<Player> players;
     private ArrayList<Zombie> zombies;
     private World world;
@@ -46,8 +47,12 @@ public class Game {
             zombies.add(Zombie.fat(world));
         }
 
-        Wall wall = new Wall(world, new Rectangle(0, -5, 5000, 5));
-        new Wall(world, new Rectangle(-5, 0, 5, 5000));
+        // Walls surrounding world
+        new Wall(world, new Rectangle(MAP_SIZE / 2, 0, MAP_SIZE, 5));
+        new Wall(world, new Rectangle(0, MAP_SIZE / 2, 5, MAP_SIZE));
+        new Wall(world, new Rectangle(MAP_SIZE, MAP_SIZE / 2, 5, MAP_SIZE));
+        new Wall(world, new Rectangle(MAP_SIZE / 2, MAP_SIZE, MAP_SIZE, 5));
+
 
         players = new ArrayList<>();
 
@@ -74,8 +79,6 @@ public class Game {
 
             // Move all objects in world using box2d physics
             world.step(time * .001f, 6, 2);
-
-            System.out.println(wall.body().getPosition());
 
             // Send message to clients
             ArrayList<ClientZombie> clientZombies = new ArrayList<>();

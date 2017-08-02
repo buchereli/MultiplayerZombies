@@ -25,7 +25,7 @@ public class Player extends DynamicActor {
     private AnimationManager animations;
 
     public Player(World world, String user) {
-        super(world, new Rectangle(500, 500, 32, 32), new ActorInfo("Player"), 100, 100);
+        super(world, new Rectangle(500, 500, 32, 32), new ActorInfo("Player"), 10000, 10000);
         this.bounds = new Rectangle(32, 32);
         this.maxSpeed = 200;
         this.acceleration = 100;

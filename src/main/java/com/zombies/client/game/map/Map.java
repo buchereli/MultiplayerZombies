@@ -36,7 +36,7 @@ public class Map {
 
         for (int dx = -1; dx < 2; dx++)
             for (int dy = -1; dy < 2; dy++)
-                if (x + dx >= 0 && y + dy >= 0)
+                if (x + dx >= 0 && y + dy >= 0 && x + dx < tiles.length && y + dy < tiles[0].length)
                     g.drawImage(ImageManager.get("tile_" + tiles[x + dx][y + dy]), (x + dx) * TILE_SIZE + shift.x,
                             (y + dy) * TILE_SIZE + shift.y, null);
     }
