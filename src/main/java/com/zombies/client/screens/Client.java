@@ -32,10 +32,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
     public static ArrayList<Zombie> zombies;
     public static ArrayList<Player> players;
     public static String user;
-    //FPS variables
-    long nextSecond = System.currentTimeMillis() + 1000;
-    int framesInCurrentSecond = 0;
-    int framesInLastSecond = 0;
+
     private Graphics bufferGraphics;
     private Image offscreen;
     private ArrayList<String> dirs;
@@ -86,20 +83,9 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         for (Player player : players)
             player.draw(bufferGraphics, shift);
 
-        HUD.draw(bufferGraphics, getHeight(), getWidth(), framesInLastSecond);
+        HUD.draw(bufferGraphics, getHeight(), getWidth());
 
         g.drawImage(offscreen, 0, 0, this);
-
-        // start of FPS counter code
-        // every second, it counts the number of times it repaints
-        long currentTime = System.currentTimeMillis();
-        if (currentTime > nextSecond) {
-            nextSecond += 1000;
-            framesInLastSecond = framesInCurrentSecond;
-            framesInCurrentSecond = 0;
-        }
-        framesInCurrentSecond++;
-        // end
 
         repaint();
     }
