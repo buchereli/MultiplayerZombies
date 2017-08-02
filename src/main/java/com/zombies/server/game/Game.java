@@ -8,6 +8,7 @@ import com.zombies.server.game.players.ClientPlayer;
 import com.zombies.server.game.players.Player;
 import com.zombies.server.game.util.detection.CollisionCallbackHandler;
 import com.zombies.server.game.util.detection.Ray;
+import com.zombies.server.game.walls.Wall;
 import com.zombies.server.game.zombies.ClientZombie;
 import com.zombies.server.game.zombies.Zombie;
 import org.jbox2d.common.Vec2;
@@ -45,6 +46,9 @@ public class Game {
             zombies.add(Zombie.fat(world));
         }
 
+        Wall wall = new Wall(world, new Rectangle(0, -5, 5000, 5));
+        new Wall(world, new Rectangle(-5, 0, 5, 5000));
+
         players = new ArrayList<>();
 
         // ServerMain game timer loop
@@ -70,6 +74,8 @@ public class Game {
 
             // Move all objects in world using box2d physics
             world.step(time * .001f, 6, 2);
+
+            System.out.println(wall.body().getPosition());
 
             // Send message to clients
             ArrayList<ClientZombie> clientZombies = new ArrayList<>();
