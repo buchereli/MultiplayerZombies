@@ -5,6 +5,7 @@ import com.zombies.server.game.util.AnimationManager;
 import com.zombies.server.game.util.Enums;
 import com.zombies.server.game.util.actor.ActorInfo;
 import com.zombies.server.game.util.actor.DynamicActor;
+import com.zombies.server.game.util.Weapon;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 
@@ -23,6 +24,7 @@ public class Player extends DynamicActor {
     private String user;
     private Enums.Direction facing;
     private AnimationManager animations;
+    public Weapon weapon = new Weapon(2000, 10, 2000, 50, 5, 5, 10, 100);
 
     public Player(World world, String user) {
         super(world, new Rectangle(500, 500, 32, 32), new ActorInfo("Player"), 100, 100);
@@ -39,6 +41,10 @@ public class Player extends DynamicActor {
         return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health, stamina, this.facing, hitTimer > 0, animations.getImage());
     }
 
+
+//        return weapon = new Weapon(2000, 10, 2000, 50, 5, 5, 10, 100);
+
+
     public void update(int dt) {
         if (hitTimer > 0) {
             hitTimer -= dt;
@@ -46,6 +52,7 @@ public class Player extends DynamicActor {
 
         move();
         setFacing();
+        weapon.update(dt);
 
         animations.setAnimation(this);
         animations.getAnimation().update(dt);

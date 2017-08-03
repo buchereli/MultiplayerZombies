@@ -5,6 +5,7 @@ import com.zombies.client.game.hud.HUD;
 import com.zombies.client.game.map.Map;
 import com.zombies.client.game.player.Player;
 import com.zombies.client.game.zombies.Zombie;
+import com.zombies.server.game.util.Weapon;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -138,6 +139,8 @@ public class Client extends JPanel implements MouseListener, KeyListener {
                 if (!dirs.contains("TURBO SPEED"))
                     dirs.add("TURBO SPEED");
             }
+//            if (e.getKeyChar() == KeyEvent.VK_R)
+//                Weapon.reload();
 
             String[] dirsArray = new String[dirs.size()];
             dirsArray = dirs.toArray(dirsArray);

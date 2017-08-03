@@ -6,6 +6,7 @@ import com.zombies.server.communicator.LocalServerEndpoint;
 import com.zombies.server.communicator.ServerGameEndpoint;
 import com.zombies.server.game.players.ClientPlayer;
 import com.zombies.server.game.players.Player;
+import com.zombies.server.game.util.Weapon;
 import com.zombies.server.game.util.detection.CollisionCallbackHandler;
 import com.zombies.server.game.util.detection.Ray;
 import com.zombies.server.game.walls.Wall;
@@ -130,11 +131,16 @@ public class Game {
                 player = p;
 
         if (player != null) {
-            int range = 100;
-            Point rangePoint = rotate(range, player.getRotation());
-
-            Ray.fireShot(world, player.getLoc(), new Vec2(player.getLoc().x + rangePoint.x,
-                    player.getLoc().y + rangePoint.y), 10);
+            Player p = player;
+            Weapon pwep = player.weapon;
+            Point rangePoint = rotate(pwep.getRange(), player.getRotation());
+            if (pwep.clipSize > 0) {
+                System.out.println("Clipsize before: "+pwep.clipSize);
+                Ray.fireShot(world, player.getLoc(), new Vec2(player.getLoc().x + rangePoint.x,
+                        player.getLoc().y + rangePoint.y), pwep.getDamage());
+                pwep.clipSize -= 1;
+                System.out.println("Clipsize after: "+pwep.clipSize);
+            }
         }
     }
 
