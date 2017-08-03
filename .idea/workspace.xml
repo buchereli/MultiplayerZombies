@@ -1,101 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f5ac6681-43d5-4734-87f8-03011b01d9ba" name="Default" comment="">
+    <list default="true" id="f5ac6681-43d5-4734-87f8-03011b01d9ba" name="Default" comment="DELETED FILES THAT SHOULDN'T BE TRACKED">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/bin/webapp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/bin/webapp.bat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/background.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/ClientMain.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/communicator/ClientGameEndpoint.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/communicator/Communicator$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/communicator/Communicator$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/communicator/Communicator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/communicator/LocalClientEndpoint.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/game/hud/Bar.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/game/hud/HUD.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/game/map/Map.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/game/player/Player.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/game/zombies/Zombie.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/screens/Client.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/screens/Login.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/util/Compressor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/util/Enums$Direction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/util/Enums.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/util/ImageManager$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/util/ImageManager$ImageRotations.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/client/util/ImageManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/communicator/Communicator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/communicator/LocalServerEndpoint.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/communicator/ServerGameEndpoint.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/communicator/ServerMain.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/Game.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/players/ClientPlayer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/players/Player.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/util/Animation.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/util/AnimationManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/util/Compressor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/util/Enums$Direction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/util/Enums.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/util/actor/Actor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/util/actor/ActorInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/util/actor/DynamicActor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/util/detection/CollisionCallbackHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/util/detection/Ray.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/walls/Wall.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/zombies/ClientZombie.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/zombies/server/game/zombies/Zombie.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/map.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/player_leftarm.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/player_noarm.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/player_pistol.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/player_pistolfire.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/player_rightarm.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/tile_0.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/zombie.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku-tomcat-websocket.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/com/google/code/gson/gson/2.8.1/gson-2.8.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/com/google/code/gson/gson/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/com/zombies/heroku-tomcat-websocket/1.0/heroku-tomcat-websocket-1.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/com/zombies/heroku-tomcat-websocket/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-core/8.0.28/tomcat-embed-core-8.0.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-core/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-el/8.0.28/tomcat-embed-el-8.0.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-el/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-jasper/8.0.28/tomcat-embed-jasper-8.0.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-jasper/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-logging-juli/8.0.28/tomcat-embed-logging-juli-8.0.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-logging-juli/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-websocket/8.0.28/tomcat-embed-websocket-8.0.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/embed/tomcat-embed-websocket/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-api/8.0.28/tomcat-api-8.0.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-api/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-el-api/8.0.28/tomcat-el-api-8.0.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-el-api/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-jasper-el/8.0.28/tomcat-jasper-el-8.0.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-jasper-el/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-jasper/8.0.28/tomcat-jasper-8.0.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-jasper/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-jsp-api/8.0.28/tomcat-jsp-api-8.0.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-jsp-api/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-juli/8.0.28/tomcat-juli-8.0.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-juli/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-servlet-api/8.0.28/tomcat-servlet-api-8.0.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-servlet-api/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-util-scan/8.0.28/tomcat-util-scan-8.0.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-util-scan/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-util/8.0.28/tomcat-util-8.0.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/apache/tomcat/tomcat-util/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/eclipse/jdt/core/compiler/ecj/4.4.2/ecj-4.4.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/eclipse/jdt/core/compiler/ecj/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/jbox2d/jbox2d-library/2.2.1.1/jbox2d-library-2.2.1.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/jbox2d/jbox2d-library/maven-metadata-appassembler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/json/json/20170516/json-20170516.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/repo/org/json/json/maven-metadata-appassembler.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -1206,11 +1114,18 @@
       <option name="project" value="LOCAL" />
       <updated>1501694942494</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="DELETED FILES THAT SHOULDN'T BE TRACKED">
+      <created>1501778430921</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1501778430921</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20677000" />
+    <option name="totallyTimeSpent" value="20848000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="2272" height="1462" extended-state="6" />
@@ -1259,7 +1174,8 @@
     <MESSAGE value="Fixed walls" />
     <MESSAGE value="Moved fps to HUD" />
     <MESSAGE value="Updated server" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated server" />
+    <MESSAGE value="DELETED FILES THAT SHOULDN'T BE TRACKED" />
+    <option name="LAST_COMMIT_MESSAGE" value="DELETED FILES THAT SHOULDN'T BE TRACKED" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
