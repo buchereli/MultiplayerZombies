@@ -6,8 +6,6 @@ import com.zombies.server.communicator.LocalServerEndpoint;
 import com.zombies.server.communicator.ServerGameEndpoint;
 import com.zombies.server.game.players.ClientPlayer;
 import com.zombies.server.game.players.Player;
-import com.zombies.server.game.supplies.ClientSupplyCache;
-import com.zombies.server.game.supplies.SupplyCache;
 import com.zombies.server.game.util.Weapon;
 import com.zombies.server.game.util.detection.CollisionCallbackHandler;
 import com.zombies.server.game.util.detection.Ray;
@@ -21,6 +19,7 @@ import org.json.JSONObject;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created by buche on 7/18/2017.
@@ -28,9 +27,8 @@ import java.util.ArrayList;
 public class Game {
     public static final float PPM = 20.0f;
     public static final int MAP_SIZE = 5120;
-    private ArrayList<Player> players;
-    private ArrayList<Zombie> zombies;
-    private ArrayList<SupplyCache> supplies;
+    private CopyOnWriteArrayList<Player> players;
+    private CopyOnWriteArrayList<Zombie> zombies;
     private World world;
 
     public Game() {
@@ -43,8 +41,8 @@ public class Game {
         world.setContactListener(callbackHandler);
 
         // Create 100 zombies with random locations and add them to the world
-        zombies = new ArrayList<>();
-        for (int i = 0; i < 1000; i++) {
+        zombies = new CopyOnWriteArrayList<>();
+        for (int i = 0; i < 250; i++) {
             zombies.add(Zombie.normal(world));
         }
         for (int i = 0; i < 100; i++) {
@@ -57,14 +55,8 @@ public class Game {
         new Wall(world, new Rectangle(MAP_SIZE, MAP_SIZE / 2, 5, MAP_SIZE));
         new Wall(world, new Rectangle(MAP_SIZE / 2, MAP_SIZE, MAP_SIZE, 5));
 
-        supplies = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
-            supplies.add(SupplyCache.spawnSupplyCache(world));
-        }
-
-
-        players = new ArrayList<>();
+        players = new CopyOnWriteArrayList<>();
 
         // ServerMain game timer loop
         int time = 30;
@@ -78,11 +70,6 @@ public class Game {
                 if (!zombie.isAlive())
                     zombie.destroy(world);
             zombies.removeIf(zombie -> !zombie.isAlive());
-
-            for (SupplyCache supply : supplies)
-                if(!supply.isAlive())
-                    supply.destroy(world);
-            supplies.removeIf(supply -> !supply.isAlive());
 
             // Update player velocity vector
             for (Player player : players)
@@ -101,20 +88,13 @@ public class Game {
                 clientZombies.add(zombie.clientZombie());
 
             ArrayList<ClientPlayer> clientPlayers = new ArrayList<>();
-            for (Player player : players){
+            for (Player player : players)
                 clientPlayers.add(player.clientPlayer());
-                player.reloading();
-            }
-
-            ArrayList<ClientSupplyCache> clientSupplies = new ArrayList<>();
-            for (SupplyCache supplyCache : supplies)
-                clientSupplies.add(supplyCache.clientSupplyCache());
 
             JSONObject message = new JSONObject();
             message.put("packetType", "gamePacket");
             message.put("zombies", new Gson().toJson(clientZombies));
             message.put("players", new Gson().toJson(clientPlayers));
-            message.put("supplies", new Gson().toJson(clientSupplies));
             for (Player player : players) {
                 if (Communicator.LOCAL)
                     LocalServerEndpoint.broadcast(player.getUser(), message.toString());
@@ -152,15 +132,12 @@ public class Game {
                 player = p;
 
         if (player != null) {
-            Player p = player;
-            Weapon pwep = player.weapon;
-            Point rangePoint = rotate(pwep.getRange(), player.getRotation());
-            if (pwep.clipSize > 0) {
-                System.out.println("Clipsize before: "+pwep.clipSize);
-                Ray.fireShot(world, player.getLoc(), new Vec2(player.getLoc().x + rangePoint.x,
-                        player.getLoc().y + rangePoint.y), pwep.getDamage());
-                pwep.clipSize -= 1;
-                System.out.println("Clipsize after: "+pwep.clipSize);
+            if (player.fire()) {
+                player.setShooting(true);
+                Weapon weapon = player.weapon;
+                Point endPoint = rotate(weapon.getRange(), player.getRotation());
+                Ray.fireShot(world, player.getLoc(), new Vec2(player.getLoc().x + endPoint.x,
+                        player.getLoc().y + endPoint.y), weapon.getDamage());
             }
         }
     }

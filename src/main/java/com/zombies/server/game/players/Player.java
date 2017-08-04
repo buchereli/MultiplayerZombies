@@ -3,9 +3,9 @@ package com.zombies.server.game.players;
 import com.zombies.server.game.Game;
 import com.zombies.server.game.util.AnimationManager;
 import com.zombies.server.game.util.Enums;
+import com.zombies.server.game.util.Weapon;
 import com.zombies.server.game.util.actor.ActorInfo;
 import com.zombies.server.game.util.actor.DynamicActor;
-import com.zombies.server.game.util.Weapon;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 
@@ -25,10 +25,10 @@ public class Player extends DynamicActor {
     private Enums.Direction facing;
     private AnimationManager animations;
     private boolean shooting;
-    public Weapon weapon = new Weapon(900, 10, 2000, 30, 8, 8, 16, 100);
+    public Weapon weapon = new Weapon(10, 0, 2000, 8, 8, 8, 1600);
 
     public Player(World world, String user) {
-        super(world, new Rectangle(500, 500, 32, 32), new ActorInfo("Player"), 100, 100);
+        super(world, new Rectangle((int) (Math.random() * 500), (int) (Math.random() * 500), 32, 32), new ActorInfo("Player"), 100, 100);
         this.bounds = new Rectangle(32, 32);
         this.maxSpeed = 200;
         this.acceleration = 100;
@@ -39,7 +39,7 @@ public class Player extends DynamicActor {
     }
 
     public ClientPlayer clientPlayer() {
-        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health, stamina, this.facing, hitTimer > 0, animations.getImage(), shooting);
+        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health, stamina, this.facing, hitTimer > 0, animations.getImage(), shooting, weapon.getClip(), weapon.getClipSize());
     }
 
     public void update(int dt) {
@@ -49,9 +49,13 @@ public class Player extends DynamicActor {
 
         move();
         setFacing();
+
+        if (dirs.contains("r"))
+            weapon.reload();
+
         weapon.update(dt);
 
-        animations.setAnimation(this, dirs.contains("SPACE"));
+        animations.setAnimation(this);
         animations.getAnimation().update(dt);
 
         System.out.println(this.getHealth());
@@ -126,17 +130,12 @@ public class Player extends DynamicActor {
         return dirs.contains("TURBO SPEED") && stamina > 0;
     }
 
-    public void reloading() {
-        if (dirs.contains("r"))
-            weapon.reload();
-        else if (weapon.clipSize == weapon.maxClipSize && dirs.contains("r")) {
-            weapon.reloadTime = 1200;
-            dirs.remove("r");
+    public boolean fire() {
+        if (weapon.fire()) {
+            animations.setAnimationShooting();
+            return true;
         }
-    }
-
-    public void shot() {
-        animations.setAnimationShooting();
+        return false;
     }
 
     public void setShooting(boolean b) {
@@ -191,6 +190,10 @@ public class Player extends DynamicActor {
             radian = -7 * Math.PI / 4;
 
         return radian;
+    }
+
+    public boolean shooting(){
+        return shooting;
     }
 
 }
