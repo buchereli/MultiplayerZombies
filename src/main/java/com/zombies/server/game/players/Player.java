@@ -25,7 +25,7 @@ public class Player extends DynamicActor {
     private Enums.Direction facing;
     private AnimationManager animations;
     private boolean shooting;
-    public Weapon weapon = new Weapon(2000, 10, 2000, 50, 5, 5, 10, 100);
+    public Weapon weapon = new Weapon(900, 10, 2000, 30, 8, 8, 16, 100);
 
     public Player(World world, String user) {
         super(world, new Rectangle((int) (Math.random() * 500), (int) (Math.random() * 500), 32, 32), new ActorInfo("Player"), 100, 100);
@@ -41,10 +41,6 @@ public class Player extends DynamicActor {
     public ClientPlayer clientPlayer() {
         return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health, stamina, this.facing, hitTimer > 0, animations.getImage(), shooting);
     }
-
-
-//        return weapon = new Weapon(2000, 10, 2000, 50, 5, 5, 10, 100);
-
 
     public void update(int dt) {
         if (hitTimer > 0) {
@@ -126,6 +122,15 @@ public class Player extends DynamicActor {
 
     public boolean isRunning() {
         return dirs.contains("TURBO SPEED") && stamina > 0;
+    }
+
+    public void reloading() {
+        if (dirs.contains("r"))
+            weapon.reload();
+        else if (weapon.clipSize == weapon.maxClipSize && dirs.contains("r")) {
+            weapon.reloadTime = 1200;
+            dirs.remove("r");
+        }
     }
 
     public void shot() {
