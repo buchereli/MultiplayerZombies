@@ -1,8 +1,10 @@
 package com.zombies.server.game.util.detection;
 
 import com.zombies.server.game.players.Player;
+import com.zombies.server.game.supplies.SupplyCache;
 import com.zombies.server.game.util.actor.ActorInfo;
 import com.zombies.server.game.zombies.Zombie;
+import org.eclipse.jdt.internal.compiler.lookup.SourceTypeBinding;
 import org.jbox2d.callbacks.ContactImpulse;
 import org.jbox2d.callbacks.ContactListener;
 import org.jbox2d.collision.Manifold;
@@ -60,6 +62,22 @@ public class CollisionCallbackHandler implements ContactListener {
                 Player player = (Player) actorInfoB.getActor();
                 Zombie zombie = (Zombie) actorInfoA.getActor();
                 player.hit(zombie.getAttackPower());
+            }
+
+            if (idA.equals("SupplyCache") && idB.equals("Player")) {
+                Player player = (Player) actorInfoB.getActor();
+                SupplyCache supplyCache = (SupplyCache) actorInfoA.getActor();
+                supplyCache.setAlive(false);
+                if(player.getHealth() < 90) {
+                    player.hit(supplyCache.getHealAmount());
+                }
+            } else if (idA.equals("Player") && idB.equals("SupplyCache")) {
+                Player player = (Player) actorInfoA.getActor();
+                SupplyCache supplyCache = (SupplyCache) actorInfoB.getActor();
+                supplyCache.setAlive(false);
+                if(player.getHealth() < 90) {
+                    player.hit(supplyCache.getHealAmount());
+                }
             }
         }
     }

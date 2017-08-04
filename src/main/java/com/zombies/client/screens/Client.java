@@ -4,6 +4,7 @@ import com.zombies.client.communicator.Communicator;
 import com.zombies.client.game.hud.HUD;
 import com.zombies.client.game.map.Map;
 import com.zombies.client.game.player.Player;
+import com.zombies.client.game.supplies.SupplyCache;
 import com.zombies.client.game.zombies.Zombie;
 
 import javax.imageio.ImageIO;
@@ -15,6 +16,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static java.awt.event.KeyEvent.VK_S;
@@ -31,6 +33,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
     public static final boolean LOCAL = true;
     public static ArrayList<Zombie> zombies;
     public static ArrayList<Player> players;
+    public static ArrayList<SupplyCache> supplies;
     public static String user;
 
     private Graphics bufferGraphics;
@@ -52,6 +55,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         dirs = new ArrayList<>();
         zombies = new ArrayList<>();
         players = new ArrayList<>();
+        supplies = new ArrayList<>();
 
         window.addMouseListener(this);
         window.addKeyListener(this);
@@ -75,6 +79,9 @@ public class Client extends JPanel implements MouseListener, KeyListener {
 
         for (Player player : players)
             player.draw(bufferGraphics, shift);
+
+        for (SupplyCache supplyCache : supplies)
+            supplyCache.draw(bufferGraphics, shift);
 
         HUD.draw(bufferGraphics, getHeight(), getWidth());
 

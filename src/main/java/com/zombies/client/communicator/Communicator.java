@@ -3,6 +3,7 @@ package com.zombies.client.communicator;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.zombies.client.game.player.Player;
+import com.zombies.client.game.supplies.SupplyCache;
 import com.zombies.client.game.zombies.Zombie;
 import com.zombies.client.screens.Client;
 import com.zombies.client.util.Compressor;
@@ -27,6 +28,7 @@ public class Communicator {
 
     public static ArrayList<Zombie> zombies = new ArrayList<>();
     public static ArrayList<Player> players = new ArrayList<>();
+    public static ArrayList<SupplyCache> supplies = new ArrayList<>();
     private static boolean updated = false;
 
     static void processMessage(ByteBuffer message) {
@@ -45,6 +47,10 @@ public class Communicator {
                 type = new TypeToken<ArrayList<Player>>() {
                 }.getType();
                 players = new Gson().fromJson(json.getString("players"), type);
+
+                type = new TypeToken<ArrayList<SupplyCache>>() {
+                }.getType();
+                supplies = new Gson().fromJson(json.getString("supplies"), type);
 
                 updated = true;
             }
@@ -115,6 +121,7 @@ public class Communicator {
         if (updated) {
             Client.zombies = zombies;
             Client.players = players;
+            Client.supplies = supplies;
             updated = false;
         }
     }

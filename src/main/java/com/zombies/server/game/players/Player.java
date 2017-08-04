@@ -53,6 +53,8 @@ public class Player extends DynamicActor {
 
         animations.setAnimation(this, dirs.contains("SPACE"));
         animations.getAnimation().update(dt);
+
+        System.out.println(this.getHealth());
     }
 
     private void move() {
@@ -139,6 +141,10 @@ public class Player extends DynamicActor {
 
     public void setShooting(boolean b) {
         shooting = b;
+    }
+
+    public double getHealth() {
+        return health;
     }
 
     @Override
