@@ -36,7 +36,6 @@ public class Client extends JPanel implements MouseListener, KeyListener {
     private Graphics bufferGraphics;
     private Image offscreen;
     private ArrayList<String> dirs;
-    private BufferedImage map;
 
     /*
      * Now takes in the main window that
@@ -49,12 +48,6 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         Rectangle screen = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
         offscreen = new BufferedImage(screen.width, screen.height, BufferedImage.TYPE_INT_ARGB);
         bufferGraphics = offscreen.getGraphics();
-
-        try {
-            map = ImageIO.read(Client.class.getResourceAsStream("/background.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         dirs = new ArrayList<>();
         zombies = new ArrayList<>();
@@ -74,8 +67,6 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         if (getPlayer() != null)
             bounds = getPlayer().getBounds();
         Point shift = getShift();
-
-//        bufferGraphics.drawImage(map, shift.x, shift.y, this);
 
         Map.draw(bufferGraphics, new Point(bounds.x, bounds.y), shift);
 
