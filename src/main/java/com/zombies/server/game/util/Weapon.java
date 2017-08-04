@@ -59,4 +59,6 @@ public class Weapon {
         }
         return false;
     }
+    public int getClip(){return clip;}
+    public int getClipSize(){return clipSize;}
 }

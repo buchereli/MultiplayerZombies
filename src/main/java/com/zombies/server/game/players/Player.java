@@ -39,7 +39,7 @@ public class Player extends DynamicActor {
     }
 
     public ClientPlayer clientPlayer() {
-        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health, stamina, this.facing, hitTimer > 0, animations.getImage(), shooting);
+        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health, stamina, this.facing, hitTimer > 0, animations.getImage(), shooting, weapon.getClip(), weapon.getClipSize());
     }
 
     public void update(int dt) {

@@ -29,6 +29,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
     public static final boolean LOCAL = true;
     public static ArrayList<Zombie> zombies;
     public static ArrayList<Player> players;
+
     public static String user;
 
     private Graphics bufferGraphics;
@@ -50,6 +51,8 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         dirs = new ArrayList<>();
         zombies = new ArrayList<>();
         players = new ArrayList<>();
+
+
 
         window.addMouseListener(this);
         window.addKeyListener(this);
@@ -73,6 +76,8 @@ public class Client extends JPanel implements MouseListener, KeyListener {
 
         for (Player player : players)
             player.draw(bufferGraphics, shift);
+
+
 
         HUD.draw(bufferGraphics, getHeight(), getWidth());
 
@@ -125,6 +130,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
             } else if (e.getKeyCode() == KeyEvent.VK_SPACE && !dirs.contains("SPACE")) {
                 Communicator.fireShot();
                 dirs.add("SPACE");
+
             }
             if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
                 if (!dirs.contains("TURBO SPEED"))

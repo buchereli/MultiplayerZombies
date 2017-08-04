@@ -17,6 +17,8 @@ public class Player {
     private String image;
     private boolean shooting;
 
+    private int clip, clipSize;
+
     public void draw(Graphics g, Point shift) {
         int x = bounds.x + shift.x;
         int y = bounds.y + shift.y;
@@ -62,6 +64,11 @@ public class Player {
     public double getStamina() {
         return stamina;
     }
+
+    public int getClip(){return clip;}
+    public int getClipSize(){return clipSize;}
+
+
 
 }
 

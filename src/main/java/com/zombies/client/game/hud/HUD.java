@@ -7,7 +7,9 @@ import java.awt.*;
 public class HUD {
     private static final Bar healthBar = new Bar(Color.red, Color.green, new Rectangle(100, 10));
     private static final Bar staminaBar = new Bar(Color.GRAY, Color.BLUE, new Rectangle(100, 10));
+    private static final Bar reloadBar = new Bar(Color.yellow, Color.RED, new Rectangle(100, 10));
     public static Player player;
+
 
     private static long nextSecond = System.currentTimeMillis() + 1000;
     private static int framesInCurrentSecond = 0;
@@ -17,6 +19,7 @@ public class HUD {
         if (player != null) {
             healthBar.draw(g, player.getHealth() / 100, new Point(10, height - 20));
             staminaBar.draw(g, player.getStamina() / 100, new Point(10, height - 40));
+            reloadBar.draw(g, player.getClip() / (double) player.getClipSize(), new Point(10, height-60));
         }
 
         fps();
