@@ -57,8 +57,6 @@ public class Player extends DynamicActor {
 
         animations.setAnimation(this);
         animations.getAnimation().update(dt);
-
-        System.out.println(this.getHealth());
     }
 
     private void move() {

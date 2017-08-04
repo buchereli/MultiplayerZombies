@@ -168,6 +168,8 @@ public class Client extends JPanel implements MouseListener, KeyListener {
                 dirs.remove("TURBO SPEED");
             } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 dirs.remove("SPACE");
+            } else if (e.getKeyCode() == KeyEvent.VK_R) {
+                    dirs.remove("r");
             }
 
             String[] dirsArray = new String[dirs.size()];

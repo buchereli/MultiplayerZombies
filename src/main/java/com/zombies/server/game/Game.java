@@ -6,6 +6,8 @@ import com.zombies.server.communicator.LocalServerEndpoint;
 import com.zombies.server.communicator.ServerGameEndpoint;
 import com.zombies.server.game.players.ClientPlayer;
 import com.zombies.server.game.players.Player;
+import com.zombies.server.game.supplies.ClientSupplyCache;
+import com.zombies.server.game.supplies.SupplyCache;
 import com.zombies.server.game.util.Weapon;
 import com.zombies.server.game.util.detection.CollisionCallbackHandler;
 import com.zombies.server.game.util.detection.Ray;
@@ -29,6 +31,7 @@ public class Game {
     public static final int MAP_SIZE = 5120;
     private CopyOnWriteArrayList<Player> players;
     private CopyOnWriteArrayList<Zombie> zombies;
+    private ArrayList<SupplyCache> supplies;
     private World world;
 
     public Game() {
@@ -55,6 +58,12 @@ public class Game {
         new Wall(world, new Rectangle(MAP_SIZE, MAP_SIZE / 2, 5, MAP_SIZE));
         new Wall(world, new Rectangle(MAP_SIZE / 2, MAP_SIZE, MAP_SIZE, 5));
 
+        supplies = new ArrayList<>();
+
+        for(int i = 0; i < 10; i++) {
+            supplies.add(SupplyCache.spawnSupplyCache(world));
+        }
+
 
         players = new CopyOnWriteArrayList<>();
 
@@ -70,6 +79,11 @@ public class Game {
                 if (!zombie.isAlive())
                     zombie.destroy(world);
             zombies.removeIf(zombie -> !zombie.isAlive());
+
+            for (SupplyCache supply : supplies)
+                if (!supply.isAlive())
+                    supply.destroy(world);
+            supplies.removeIf(supply -> !supply.isAlive());
 
             // Update player velocity vector
             for (Player player : players)
@@ -91,10 +105,15 @@ public class Game {
             for (Player player : players)
                 clientPlayers.add(player.clientPlayer());
 
+            ArrayList<ClientSupplyCache> clientSupplies = new ArrayList<>();
+            for (SupplyCache supplyCache : supplies)
+                clientSupplies.add(supplyCache.clientSupplyCache());
+
             JSONObject message = new JSONObject();
             message.put("packetType", "gamePacket");
             message.put("zombies", new Gson().toJson(clientZombies));
             message.put("players", new Gson().toJson(clientPlayers));
+            message.put("supplies", new Gson().toJson(clientSupplies));
             for (Player player : players) {
                 if (Communicator.LOCAL)
                     LocalServerEndpoint.broadcast(player.getUser(), message.toString());
