@@ -41,10 +41,10 @@ public class Game {
 
         // Create 100 zombies with random locations and add them to the world
         zombies = new ArrayList<>();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 250; i++) {
             zombies.add(Zombie.normal(world));
         }
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             zombies.add(Zombie.fat(world));
         }
 
