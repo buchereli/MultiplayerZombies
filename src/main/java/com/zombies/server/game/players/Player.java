@@ -3,9 +3,9 @@ package com.zombies.server.game.players;
 import com.zombies.server.game.Game;
 import com.zombies.server.game.util.AnimationManager;
 import com.zombies.server.game.util.Enums;
+import com.zombies.server.game.util.Weapon;
 import com.zombies.server.game.util.actor.ActorInfo;
 import com.zombies.server.game.util.actor.DynamicActor;
-import com.zombies.server.game.util.Weapon;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 
@@ -28,7 +28,7 @@ public class Player extends DynamicActor {
     public Weapon weapon = new Weapon(2000, 10, 2000, 50, 5, 5, 10, 100);
 
     public Player(World world, String user) {
-        super(world, new Rectangle(500, 500, 32, 32), new ActorInfo("Player"), 100, 100);
+        super(world, new Rectangle((int) (Math.random() * 500), (int) (Math.random() * 500), 32, 32), new ActorInfo("Player"), 100, 100);
         this.bounds = new Rectangle(32, 32);
         this.maxSpeed = 200;
         this.acceleration = 100;
