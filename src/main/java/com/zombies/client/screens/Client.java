@@ -5,7 +5,6 @@ import com.zombies.client.game.hud.HUD;
 import com.zombies.client.game.map.Map;
 import com.zombies.client.game.player.Player;
 import com.zombies.client.game.zombies.Zombie;
-import com.zombies.server.game.util.Weapon;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -29,7 +28,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         Use the next command and first command to switch between login and game panels.
      */
 
-    public static final boolean LOCAL = true;
+    public static final boolean LOCAL = false;
     public static ArrayList<Zombie> zombies;
     public static ArrayList<Player> players;
     public static String user;
@@ -67,6 +66,8 @@ public class Client extends JPanel implements MouseListener, KeyListener {
     }
 
     public void paint(Graphics g) {
+        Communicator.update();
+
         bufferGraphics.clearRect(0, 0, offscreen.getWidth(this), offscreen.getHeight(this));
 
         Rectangle bounds = new Rectangle();

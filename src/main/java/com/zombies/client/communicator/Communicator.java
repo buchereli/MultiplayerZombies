@@ -25,6 +25,10 @@ public class Communicator {
     private static LocalClientEndpoint localEndpoint;
     private static String user;
 
+    public static ArrayList<Zombie> zombies = new ArrayList<>();
+    public static ArrayList<Player> players = new ArrayList<>();
+    private static boolean updated = false;
+
     static void processMessage(ByteBuffer message) {
         String msg = Compressor.decompress(message);
 //        System.out.println("RECEIVED MSG FROM SERVER OF SIZE: " + message.remaining() + " - " + msg.length());
@@ -36,11 +40,13 @@ public class Communicator {
             if (json.getString("packetType").equals("gamePacket")) {
                 Type type = new TypeToken<ArrayList<Zombie>>() {
                 }.getType();
-                Client.zombies = new Gson().fromJson(json.getString("zombies"), type);
+                zombies = new Gson().fromJson(json.getString("zombies"), type);
 
                 type = new TypeToken<ArrayList<Player>>() {
                 }.getType();
-                Client.players = new Gson().fromJson(json.getString("players"), type);
+                players = new Gson().fromJson(json.getString("players"), type);
+
+                updated = true;
             }
         }
     }
@@ -103,6 +109,14 @@ public class Communicator {
         JSONObject message = new JSONObject();
         message.put("method", "newGame");
         endpoint.sendMessage(message.toString());
+    }
+
+    public static void update() {
+        if (updated) {
+            Client.zombies = zombies;
+            Client.players = players;
+            updated = false;
+        }
     }
 
 }
