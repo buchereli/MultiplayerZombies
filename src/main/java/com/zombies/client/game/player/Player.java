@@ -6,6 +6,7 @@ import com.zombies.client.util.Enums;
 import com.zombies.client.util.ImageManager;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Player {
     private final Bar bar = new Bar((Color.red), (Color.green), new Rectangle(16, 10));
@@ -15,6 +16,7 @@ public class Player {
     private Enums.Direction facing;
     private boolean hit;
     private String image;
+    private boolean shooting;
 
     public void draw(Graphics g, Point shift) {
         if (Client.user.equals(user)) {
@@ -28,7 +30,11 @@ public class Player {
         g.drawRect((bounds.x) + shift.x, (bounds.y) + shift.y, bounds.width, bounds.height);
         g.setColor(Color.RED);
 
-        g.drawImage(ImageManager.get(image, facing), bounds.x + shift.x, bounds.y + shift.y, null);
+        if (shooting) {
+            g.drawImage(ImageManager.get(image, facing), bounds.x + shift.x - 16, bounds.y + shift.y - 16, null);
+        } else {
+            g.drawImage(ImageManager.get(image, facing), bounds.x + shift.x, bounds.y + shift.y, null);
+        }
 
         g.setFont(new Font("default", Font.BOLD, 12));
         FontMetrics fontMetrics = g.getFontMetrics();
@@ -51,7 +57,7 @@ public class Player {
     }
 
     public Rectangle getBounds() {
-        return bounds;
+        return new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height);
     }
 
     public double getHealth() {

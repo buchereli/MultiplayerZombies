@@ -2,6 +2,7 @@ package com.zombies.server.communicator;
 
 import com.google.gson.Gson;
 import com.zombies.server.game.Game;
+import com.zombies.server.game.util.AnimationManager;
 import org.json.JSONObject;
 
 import javax.websocket.Session;

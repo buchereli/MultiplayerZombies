@@ -5,6 +5,7 @@ import com.zombies.client.game.hud.HUD;
 import com.zombies.client.game.map.Map;
 import com.zombies.client.game.player.Player;
 import com.zombies.client.game.zombies.Zombie;
+import com.zombies.server.game.util.Weapon;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -28,7 +29,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         Use the next command and first command to switch between login and game panels.
      */
 
-    public static final boolean LOCAL = false;
+    public static final boolean LOCAL = true;
     public static ArrayList<Zombie> zombies;
     public static ArrayList<Player> players;
     public static String user;
@@ -131,13 +132,16 @@ public class Client extends JPanel implements MouseListener, KeyListener {
                 if (!dirs.contains("left")) {
                     dirs.add("left");
                 }
-            } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            } else if (e.getKeyCode() == KeyEvent.VK_SPACE && !dirs.contains("SPACE")) {
                 Communicator.fireShot();
+                dirs.add("SPACE");
             }
             if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
                 if (!dirs.contains("TURBO SPEED"))
                     dirs.add("TURBO SPEED");
             }
+//            if (e.getKeyChar() == KeyEvent.VK_R)
+//                Weapon.reload();
 
             String[] dirsArray = new String[dirs.size()];
             dirsArray = dirs.toArray(dirsArray);
@@ -159,7 +163,8 @@ public class Client extends JPanel implements MouseListener, KeyListener {
                 dirs.remove("left");
             } else if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
                 dirs.remove("TURBO SPEED");
-
+            } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                dirs.remove("SPACE");
             }
 
             String[] dirsArray = new String[dirs.size()];
