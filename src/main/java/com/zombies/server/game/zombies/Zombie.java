@@ -32,8 +32,9 @@ public class Zombie extends DynamicActor {
         int x, y;
         x = (int) (Math.random() * 10000) - 5000;
         y = (int) (Math.random() * 10000) - 5000;
-        Rectangle rect = new Rectangle(0, 0, 1000, 1000);
-        while (rect.contains(x, y)) {
+        Rectangle rect = new Rectangle(0, 0, 5120, 5120);
+        Rectangle recta = new Rectangle(0, 0, 1000, 1000);
+        while (!rect.contains(x, y) || recta.contains(x,y)) {
             x = (int) (Math.random() * 10000) - 5000;
             y = (int) (Math.random() * 10000) - 5000;
         }
