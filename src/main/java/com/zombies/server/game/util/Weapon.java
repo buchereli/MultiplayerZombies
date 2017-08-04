@@ -8,11 +8,11 @@ public class Weapon {
 
     private double reloadSpeed;
     private double shotTimer;
-    private double reloadTime;
+    public double reloadTime;
     private double attackDMG;
 
     private int ammo, reloadSize;
-    private int maxClipSize;
+    public int maxClipSize;
     private int range;
 
     public Weapon(double reloadTime, double attackDMG, double shotTimer, double reloadSpeed, int clipSize, int maxClipSize, int ammo, int range) {
@@ -27,21 +27,22 @@ public class Weapon {
     }
 
     public void reload() {
-        System.out.println("Reloading!");
+        reloadTime -= reloadSpeed;
+        System.out.println("Reload time: "+reloadTime);
         if (reloadTime <= 0) {
-            reloadTime -= reloadSpeed;
             if (clipSize < maxClipSize) {
                 reloadSize = maxClipSize - clipSize;
-                reloadTime = reloadSpeed;
-                ammo -= reloadSize;
-                clipSize += reloadSize;
+                if (reloadSize <= ammo) {
+                    ammo -= reloadSize;
+                    clipSize += reloadSize;
+                }
             }
         }
     }
 
     public void update (int dt){
         if (clipSize == maxClipSize){
-            reloadTime -= dt;
+            reloadSpeed = dt;
         }
     }
 

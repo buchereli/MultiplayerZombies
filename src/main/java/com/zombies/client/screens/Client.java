@@ -28,7 +28,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
         Use the next command and first command to switch between login and game panels.
      */
 
-    public static final boolean LOCAL = false;
+    public static final boolean LOCAL = true;
     public static ArrayList<Zombie> zombies;
     public static ArrayList<Player> players;
     public static String user;
@@ -132,8 +132,12 @@ public class Client extends JPanel implements MouseListener, KeyListener {
                 if (!dirs.contains("TURBO SPEED"))
                     dirs.add("TURBO SPEED");
             }
-//            if (e.getKeyChar() == KeyEvent.VK_R)
-//                Weapon.reload();
+            if (e.getKeyCode() == KeyEvent.VK_R) {
+                if (!dirs.contains("r")){
+                    dirs.add("r");
+                }
+            }
+
 
             String[] dirsArray = new String[dirs.size()];
             dirsArray = dirs.toArray(dirsArray);

@@ -87,8 +87,10 @@ public class Game {
                 clientZombies.add(zombie.clientZombie());
 
             ArrayList<ClientPlayer> clientPlayers = new ArrayList<>();
-            for (Player player : players)
+            for (Player player : players){
                 clientPlayers.add(player.clientPlayer());
+                player.reloading();
+            }
 
             JSONObject message = new JSONObject();
             message.put("packetType", "gamePacket");
