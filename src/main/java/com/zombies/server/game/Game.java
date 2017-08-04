@@ -19,6 +19,7 @@ import org.json.JSONObject;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created by buche on 7/18/2017.
@@ -26,8 +27,8 @@ import java.util.ArrayList;
 public class Game {
     public static final float PPM = 20.0f;
     public static final int MAP_SIZE = 5120;
-    private ArrayList<Player> players;
-    private ArrayList<Zombie> zombies;
+    private CopyOnWriteArrayList<Player> players;
+    private CopyOnWriteArrayList<Zombie> zombies;
     private World world;
 
     public Game() {
@@ -40,11 +41,11 @@ public class Game {
         world.setContactListener(callbackHandler);
 
         // Create 100 zombies with random locations and add them to the world
-        zombies = new ArrayList<>();
+        zombies = new CopyOnWriteArrayList<>();
         for (int i = 0; i < 250; i++) {
             zombies.add(Zombie.normal(world));
         }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             zombies.add(Zombie.fat(world));
         }
 
@@ -55,7 +56,7 @@ public class Game {
         new Wall(world, new Rectangle(MAP_SIZE / 2, MAP_SIZE, MAP_SIZE, 5));
 
 
-        players = new ArrayList<>();
+        players = new CopyOnWriteArrayList<>();
 
         // ServerMain game timer loop
         int time = 30;
@@ -131,6 +132,7 @@ public class Game {
                 player = p;
 
         if (player != null) {
+            Player p = player;
             Weapon pwep = player.weapon;
             Point rangePoint = rotate(pwep.getRange(), player.getRotation());
             if (pwep.reloadTime <= 0 && pwep.clipSize > 0) {

@@ -10,6 +10,7 @@ import org.jbox2d.dynamics.World;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Zombie extends DynamicActor {
     private Rectangle bounds;
@@ -56,7 +57,7 @@ public class Zombie extends DynamicActor {
         return new ClientZombie(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), this.facing, health, stamina);
     }
 
-    public void move(ArrayList<Player> players) {
+    public void move(CopyOnWriteArrayList<Player> players) {
         Player player = closestPlayer(players);
 
         if (player != null) {
@@ -148,7 +149,7 @@ public class Zombie extends DynamicActor {
     }
 
     // Find closest player to zombie
-    private Player closestPlayer(ArrayList<Player> players) {
+    private Player closestPlayer(CopyOnWriteArrayList<Player> players) {
         if (players.isEmpty())
             return null;
 
