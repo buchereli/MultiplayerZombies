@@ -6,7 +6,6 @@ import com.zombies.client.game.map.Map;
 import com.zombies.client.game.player.Player;
 import com.zombies.client.game.zombies.Zombie;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -14,7 +13,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import static java.awt.event.KeyEvent.VK_S;
@@ -133,7 +131,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
                     dirs.add("TURBO SPEED");
             }
             if (e.getKeyCode() == KeyEvent.VK_R) {
-                if (!dirs.contains("r")){
+                if (!dirs.contains("r")) {
                     dirs.add("r");
                 }
             }
@@ -160,7 +158,7 @@ public class Client extends JPanel implements MouseListener, KeyListener {
                 dirs.remove("TURBO SPEED");
             } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 dirs.remove("SPACE");
-            } else if (e.getKeyCode() == KeyEvent.VK_R){
+            } else if (e.getKeyCode() == KeyEvent.VK_R) {
                 dirs.remove("r");
             }
 

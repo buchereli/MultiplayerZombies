@@ -132,16 +132,12 @@ public class Game {
                 player = p;
 
         if (player != null) {
-            Player p = player;
-            Weapon pwep = player.weapon;
-            Point rangePoint = rotate(pwep.getRange(), player.getRotation());
-            if (pwep.reloadTime <= 0 && pwep.clipSize > 0) {
-                player.shot();
-                System.out.println("Clipsize before: "+pwep.clipSize);
-                Ray.fireShot(world, player.getLoc(), new Vec2(player.getLoc().x + rangePoint.x,
-                        player.getLoc().y + rangePoint.y), pwep.getDamage());
-                pwep.clipSize --;
-                System.out.println("Clipsize after: "+pwep.clipSize);
+            if (player.fire()) {
+                player.setShooting(true);
+                Weapon weapon = player.weapon;
+                Point endPoint = rotate(weapon.getRange(), player.getRotation());
+                Ray.fireShot(world, player.getLoc(), new Vec2(player.getLoc().x + endPoint.x,
+                        player.getLoc().y + endPoint.y), weapon.getDamage());
             }
         }
     }

@@ -1,29 +1,23 @@
 package com.zombies.server.game.util;
 
-import com.zombies.server.game.players.Player;
-
 /**
  * Created by Faylo on 8/1/2017.
  */
 public class Weapon {
-    public Player player;
-
-    public int clipSize;
-
     private double reloadSpeed;
     private double shotTimer;
-    public double reloadTime;
+    private double reloadTimer;
     private double attackDMG;
 
-    private int ammo, reloadSize;
-    private int maxClipSize;
+    private int ammo;
+    private int clip, clipSize;
     private int range;
 
-    public Weapon(double reloadTime, double attackDMG, double shotTimer, double reloadSpeed, int clipSize, int maxClipSize, int ammo, int range) {
-        this.reloadTime = reloadTime;
+    public Weapon(double attackDMG, double shotTimer, double reloadSpeed, int clip, int clipSize, int ammo, int range) {
+        this.reloadTimer = 0;
         this.attackDMG = attackDMG;
+        this.clip = clip;
         this.clipSize = clipSize;
-        this.maxClipSize = maxClipSize;
         this.shotTimer = shotTimer;
         this.ammo = ammo;
         this.reloadSpeed = reloadSpeed;
@@ -31,22 +25,23 @@ public class Weapon {
     }
 
     public void reload() {
-        System.out.println("Reload time: " + reloadTime);
-        if (reloadTime <= 0) {
-            if (clipSize < maxClipSize) {
-                reloadSize = maxClipSize - clipSize;
-                if (reloadSize <= ammo) {
-                    ammo -= reloadSize;
-                    clipSize += reloadSize;
-                    reloadTime = reloadSpeed;
-                }
+        if (reloadTimer <= 0 && clip < clipSize) {
+            int reloadSize = clipSize - clip;
+            if (reloadSize <= ammo) {
+                ammo -= reloadSize;
+                clip = clipSize;
+                reloadTimer = reloadSpeed;
+            } else if (ammo > 0) {
+                ammo = 0;
+                clip += ammo;
+                reloadTimer = reloadSpeed;
             }
         }
     }
 
     public void update(int dt) {
-        if (reloadTime > 0)
-            reloadTime -= dt;
+        if (reloadTimer > 0)
+            reloadTimer -= dt;
     }
 
     public int getRange() {
@@ -55,5 +50,13 @@ public class Weapon {
 
     public double getDamage() {
         return attackDMG;
+    }
+
+    public boolean fire() {
+        if (reloadTimer <= 0 && clip > 0) {
+            clip--;
+            return true;
+        }
+        return false;
     }
 }
