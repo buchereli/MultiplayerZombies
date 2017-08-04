@@ -1,9 +1,13 @@
 package com.zombies.server.game.util;
 
+import com.zombies.server.game.players.Player;
+
 /**
  * Created by Faylo on 8/1/2017.
  */
 public class Weapon {
+    public Player player;
+
     public int clipSize;
 
     private double reloadSpeed;
@@ -12,7 +16,7 @@ public class Weapon {
     private double attackDMG;
 
     private int ammo, reloadSize;
-    public int maxClipSize;
+    private int maxClipSize;
     private int range;
 
     public Weapon(double reloadTime, double attackDMG, double shotTimer, double reloadSpeed, int clipSize, int maxClipSize, int ammo, int range) {
@@ -27,32 +31,23 @@ public class Weapon {
     }
 
     public void reload() {
-        reloadTime -= reloadSpeed;
-        System.out.println("Reload time: "+reloadTime);
+        System.out.println("Reload time: " + reloadTime);
         if (reloadTime <= 0) {
             if (clipSize < maxClipSize) {
                 reloadSize = maxClipSize - clipSize;
                 if (reloadSize <= ammo) {
                     ammo -= reloadSize;
                     clipSize += reloadSize;
+                    reloadTime = reloadSpeed;
                 }
             }
         }
     }
 
-    public void update (int dt){
-        if (clipSize == maxClipSize){
-            reloadSpeed = dt;
-        }
+    public void update(int dt) {
+        if (reloadTime > 0)
+            reloadTime -= dt;
     }
-
-//    public boolean cooldown() {
-//        long sinceLastShot = System.currentTimeMillis() + 1000;
-//        if (sinceLastShot >= shotTimer)
-//            return true;
-//        else
-//            return false;
-//    }
 
     public int getRange() {
         return range;

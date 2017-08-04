@@ -87,10 +87,8 @@ public class Game {
                 clientZombies.add(zombie.clientZombie());
 
             ArrayList<ClientPlayer> clientPlayers = new ArrayList<>();
-            for (Player player : players){
+            for (Player player : players)
                 clientPlayers.add(player.clientPlayer());
-                player.reloading();
-            }
 
             JSONObject message = new JSONObject();
             message.put("packetType", "gamePacket");
@@ -133,14 +131,14 @@ public class Game {
                 player = p;
 
         if (player != null) {
-            Player p = player;
             Weapon pwep = player.weapon;
             Point rangePoint = rotate(pwep.getRange(), player.getRotation());
-            if (pwep.clipSize > 0) {
+            if (pwep.reloadTime <= 0 && pwep.clipSize > 0) {
+                player.shot();
                 System.out.println("Clipsize before: "+pwep.clipSize);
                 Ray.fireShot(world, player.getLoc(), new Vec2(player.getLoc().x + rangePoint.x,
                         player.getLoc().y + rangePoint.y), pwep.getDamage());
-                pwep.clipSize -= 1;
+                pwep.clipSize --;
                 System.out.println("Clipsize after: "+pwep.clipSize);
             }
         }

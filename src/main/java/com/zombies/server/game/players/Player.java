@@ -20,12 +20,12 @@ public class Player extends DynamicActor {
     private Rectangle bounds;
     private double radian;
     private float acceleration, maxSpeed, hitTimer;
-    private ArrayList<String> dirs;
+    public ArrayList<String> dirs;
     private String user;
     private Enums.Direction facing;
     private AnimationManager animations;
     private boolean shooting;
-    public Weapon weapon = new Weapon(900, 10, 2000, 30, 8, 8, 16, 100);
+    public Weapon weapon = new Weapon(90, 10, 2000, 90, 8, 8, 1600, 100);
 
     public Player(World world, String user) {
         super(world, new Rectangle(500, 500, 32, 32), new ActorInfo("Player"), 100, 100);
@@ -49,6 +49,9 @@ public class Player extends DynamicActor {
 
         move();
         setFacing();
+        if (dirs.contains("r"))
+            weapon.reload();
+
         weapon.update(dt);
 
         animations.setAnimation(this, dirs.contains("SPACE"));
@@ -122,15 +125,6 @@ public class Player extends DynamicActor {
 
     public boolean isRunning() {
         return dirs.contains("TURBO SPEED") && stamina > 0;
-    }
-
-    public void reloading() {
-        if (dirs.contains("r"))
-            weapon.reload();
-        else if (weapon.clipSize == weapon.maxClipSize && dirs.contains("r")) {
-            weapon.reloadTime = 1200;
-            dirs.remove("r");
-        }
     }
 
     public void shot() {
