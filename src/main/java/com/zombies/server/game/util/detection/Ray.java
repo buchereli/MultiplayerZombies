@@ -20,6 +20,7 @@ public class Ray {
         collisionObject = null;
         closestFraction = 1.0f;
 
+
         RayCastCallback callback = (fixture, point, normal, fraction) -> {
             if (!fixture.getUserData().equals("Player")) {
                 if (fraction < closestFraction) {

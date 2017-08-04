@@ -132,8 +132,9 @@ public class Client extends JPanel implements MouseListener, KeyListener {
                 if (!dirs.contains("left")) {
                     dirs.add("left");
                 }
-            } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            } else if (e.getKeyCode() == KeyEvent.VK_SPACE && !dirs.contains("SPACE")) {
                 Communicator.fireShot();
+                dirs.add("SPACE");
             }
             if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
                 if (!dirs.contains("TURBO SPEED"))
@@ -162,7 +163,8 @@ public class Client extends JPanel implements MouseListener, KeyListener {
                 dirs.remove("left");
             } else if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
                 dirs.remove("TURBO SPEED");
-
+            } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                dirs.remove("SPACE");
             }
 
             String[] dirsArray = new String[dirs.size()];

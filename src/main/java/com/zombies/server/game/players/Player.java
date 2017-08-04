@@ -24,6 +24,7 @@ public class Player extends DynamicActor {
     private String user;
     private Enums.Direction facing;
     private AnimationManager animations;
+    private boolean shooting;
     public Weapon weapon = new Weapon(2000, 10, 2000, 50, 5, 5, 10, 100);
 
     public Player(World world, String user) {
@@ -38,7 +39,7 @@ public class Player extends DynamicActor {
     }
 
     public ClientPlayer clientPlayer() {
-        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health, stamina, this.facing, hitTimer > 0, animations.getImage());
+        return new ClientPlayer(new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height), user, health, stamina, this.facing, hitTimer > 0, animations.getImage(), shooting);
     }
 
 
@@ -54,7 +55,7 @@ public class Player extends DynamicActor {
         setFacing();
         weapon.update(dt);
 
-        animations.setAnimation(this);
+        animations.setAnimation(this, dirs.contains("SPACE"));
         animations.getAnimation().update(dt);
     }
 
@@ -125,6 +126,14 @@ public class Player extends DynamicActor {
 
     public boolean isRunning() {
         return dirs.contains("TURBO SPEED") && stamina > 0;
+    }
+
+    public void shot() {
+        animations.setAnimationShooting();
+    }
+
+    public void setShooting(boolean b) {
+        shooting = b;
     }
 
     @Override

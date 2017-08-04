@@ -15,8 +15,9 @@ public class ClientPlayer {
     private Enums.Direction facing;
     private boolean hit;
     private String image;
+    private boolean shooting;
 
-    ClientPlayer(Rectangle bounds, String user, double health, double stamina, Enums.Direction facing, boolean hit, String image) {
+    ClientPlayer(Rectangle bounds, String user, double health, double stamina, Enums.Direction facing, boolean hit, String image, boolean shooting) {
         this.bounds = bounds;
         this.user = user;
         this.health = health;
@@ -24,5 +25,6 @@ public class ClientPlayer {
         this.facing = facing;
         this.hit = hit;
         this.image = image;
+        this.shooting = shooting;
     }
 }
